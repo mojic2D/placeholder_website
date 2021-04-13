@@ -39,7 +39,7 @@ class HomePage extends StatelessWidget {
 
                     children: <Widget>[
                       Center(child: RoomList(),),
-                      Image.network('https://cdn3.iconfinder.com/data/icons/devices-57/100/Smartphone-512.png'),
+
 
                     ]
                 ),

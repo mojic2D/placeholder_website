@@ -109,7 +109,7 @@ class _RoomListTileState extends State<RoomListTile> {
           label: 'UNDO',
           textColor: Colors.orange,
           onPressed: () {
-            _updateRoomStatusUI('N');
+            _updateUI('N');
           },
         ),
       ));
