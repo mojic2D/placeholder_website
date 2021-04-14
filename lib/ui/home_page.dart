@@ -59,7 +59,9 @@ class HomePage extends StatelessWidget {
                               ),
                             ),
                           ),
-                          SizedBox(height: 7,),
+                          SizedBox(
+                            height: 7,
+                          ),
                           ElevatedButton(
                             onPressed: () {},
                             child: Text(
@@ -70,7 +72,9 @@ class HomePage extends StatelessWidget {
                               ),
                             ),
                           ),
-                          SizedBox(height: 7,),
+                          SizedBox(
+                            height: 7,
+                          ),
                           ElevatedButton(
                             onPressed: () {},
                             child: Text(
@@ -86,41 +90,55 @@ class HomePage extends StatelessWidget {
                   Flexible(
                     child: Text(
                       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse commodo rutrum condimentum. Pellentesque interdum eleifend egestas.\n\n'
-                          ' Proin sollicitudin ornare dolor. Proin tincidunt quam ut sollicitudin cursus. Integer auctor, enim vitae tempor imperdiet, dui ante tempor orci, finibus viverra quam justo id purus.'
-                          '\n\n Vestibulum tincidunt mollis quam, vel tempus ante tincidunt at. Donec id erat sagittis, auctor ligula non, faucibus nisi. Nunc id sapien a mauris suscipit elementum.\n\n'
-                          ' Nam nisi tortor, ultrices eget nibh id, rutrum interdum elit. Pellentesque lectus turpis, imperdiet ut nulla in, volutpat bibendum tortor. \n\n'
-                          'Morbi quam dui, maximus nec venenatis ac, convallis ac elit. Donec nec lacus turpis.',
+                      ' Proin sollicitudin ornare dolor. Proin tincidunt quam ut sollicitudin cursus. Integer auctor, enim vitae tempor imperdiet, dui ante tempor orci, finibus viverra quam justo id purus.'
+                      '\n\n Vestibulum tincidunt mollis quam, vel tempus ante tincidunt at. Donec id erat sagittis, auctor ligula non, faucibus nisi. Nunc id sapien a mauris suscipit elementum.\n\n'
+                      ' Nam nisi tortor, ultrices eget nibh id, rutrum interdum elit. Pellentesque lectus turpis, imperdiet ut nulla in, volutpat bibendum tortor. \n\n'
+                      'Morbi quam dui, maximus nec venenatis ac, convallis ac elit. Donec nec lacus turpis.',
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.w600,
-
                       ),
                     ),
                   ),
-
-                      Container(
-                        width:420,
-                        height:675,
-                        child: Navigator(
-
-                          onGenerateRoute: (RouteSettings settings){
-                            return new MaterialPageRoute(
-                              builder: (context){
-                                return RoomList();
-                              }
-                            );
-                          },),
+                  Stack(children: [
+                    Container(
+                      decoration: BoxDecoration(
+                        color: Colors.black,
+                        borderRadius: BorderRadius.circular(30.0),
                       ),
-
-
+                      width: 420,
+                      height: 675,
+                    ),
+                    Positioned.fill(
+                      child: Align(
+                        alignment: Alignment.center,
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(30.0),
+                          child: Container(
+                            width: 400,
+                            height: 640,
+                            child: Navigator(
+                              onGenerateRoute: (RouteSettings settings) {
+                                return new MaterialPageRoute(
+                                    builder: (context) {
+                                  return RoomList();
+                                });
+                              },
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ]),
+                  SizedBox(width:50)
                 ],
               ),
             ),
           ],
         ),
-      ),);
-
+      ),
+    );
   }
 
   _border() {

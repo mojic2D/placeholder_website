@@ -1,37 +1,32 @@
-define(['dart_sdk', 'packages/flutter/src/gestures/debug.dart', 'packages/flutter/src/foundation/print.dart'], (function load__packages__flutter__src__gestures__arena_dart(dart_sdk, packages__flutter__src__gestures__debug$46dart, packages__flutter__src__foundation__print$46dart) {
+define(['dart_sdk', 'packages/flutter/src/gestures/recognizer.dart', 'packages/flutter/src/gestures/velocity_tracker.dart', 'packages/flutter/src/gestures/events.dart', 'packages/flutter/src/gestures/arena.dart', 'packages/vector_math/vector_math_64.dart', 'packages/flutter/src/gestures/drag_details.dart', 'packages/flutter/src/foundation/debug.dart'], (function load__packages__flutter__src__gestures__monodrag_dart(dart_sdk, packages__flutter__src__gestures__recognizer$46dart, packages__flutter__src__gestures__velocity_tracker$46dart, packages__flutter__src__gestures__events$46dart, packages__flutter__src__gestures__arena$46dart, packages__vector_math__vector_math_64$46dart, packages__flutter__src__gestures__drag_details$46dart, packages__flutter__src__foundation__debug$46dart) {
   'use strict';
   const core = dart_sdk.core;
-  const _interceptors = dart_sdk._interceptors;
   const _js_helper = dart_sdk._js_helper;
-  const async = dart_sdk.async;
+  const _internal = dart_sdk._internal;
+  const ui = dart_sdk.ui;
   const dart = dart_sdk.dart;
   const dartx = dart_sdk.dartx;
-  const debug = packages__flutter__src__gestures__debug$46dart.src__gestures__debug;
-  const print = packages__flutter__src__foundation__print$46dart.src__foundation__print;
-  var arena = Object.create(dart.library);
-  var $add = dartx.add;
-  var $isEmpty = dartx.isEmpty;
-  var $map = dartx.map;
-  var $join = dartx.join;
-  var $putIfAbsent = dartx.putIfAbsent;
+  const recognizer = packages__flutter__src__gestures__recognizer$46dart.src__gestures__recognizer;
+  const velocity_tracker = packages__flutter__src__gestures__velocity_tracker$46dart.src__gestures__velocity_tracker;
+  const events = packages__flutter__src__gestures__events$46dart.src__gestures__events;
+  const arena = packages__flutter__src__gestures__arena$46dart.src__gestures__arena;
+  const vector_math_64 = packages__vector_math__vector_math_64$46dart.vector_math_64;
+  const drag_details = packages__flutter__src__gestures__drag_details$46dart.src__gestures__drag_details;
+  const diagnostics = packages__flutter__src__foundation__debug$46dart.src__foundation__diagnostics;
+  var monodrag = Object.create(dart.library);
+  var $_set = dartx._set;
   var $_get = dartx._get;
-  var $remove = dartx.remove;
-  var $isNotEmpty = dartx.isNotEmpty;
-  var $first = dartx.first;
-  var $length = dartx.length;
-  var $contains = dartx.contains;
-  var $containsKey = dartx.containsKey;
-  var $toString = dartx.toString;
-  var $padRight = dartx.padRight;
+  var $sign = dartx.sign;
+  var $clear = dartx.clear;
+  var $abs = dartx.abs;
   dart._checkModuleNullSafetyMode(false);
   var T = {
-    GestureDispositionL: () => (T.GestureDispositionL = dart.constFn(dart.legacy(arena.GestureDisposition)))(),
-    JSArrayOfGestureArenaMember: () => (T.JSArrayOfGestureArenaMember = dart.constFn(_interceptors.JSArray$(arena.GestureArenaMember)))(),
-    GestureArenaMemberToString: () => (T.GestureArenaMemberToString = dart.constFn(dart.fnType(core.String, [arena.GestureArenaMember])))(),
-    IdentityMapOfint$_GestureArena: () => (T.IdentityMapOfint$_GestureArena = dart.constFn(_js_helper.IdentityMap$(core.int, arena._GestureArena)))(),
-    VoidTo_GestureArena: () => (T.VoidTo_GestureArena = dart.constFn(dart.fnType(arena._GestureArena, [])))(),
+    _DragStateL: () => (T._DragStateL = dart.constFn(dart.legacy(monodrag._DragState)))(),
+    PointerEventToVelocityTracker: () => (T.PointerEventToVelocityTracker = dart.constFn(dart.fnType(velocity_tracker.VelocityTracker, [events.PointerEvent])))(),
+    IdentityMapOfint$VelocityTracker: () => (T.IdentityMapOfint$VelocityTracker = dart.constFn(_js_helper.IdentityMap$(core.int, velocity_tracker.VelocityTracker)))(),
     VoidTovoid: () => (T.VoidTovoid = dart.constFn(dart.fnType(dart.void, [])))(),
-    VoidTobool: () => (T.VoidTobool = dart.constFn(dart.fnType(core.bool, [])))()
+    VoidToString: () => (T.VoidToString = dart.constFn(dart.fnType(core.String, [])))(),
+    EnumPropertyOfDragStartBehavior: () => (T.EnumPropertyOfDragStartBehavior = dart.constFn(diagnostics.EnumProperty$(recognizer.DragStartBehavior)))()
   };
   var T$Eval = Object.assign({
     _: () => T$Eval
@@ -48,308 +43,637 @@ define(['dart_sdk', 'packages/flutter/src/gestures/debug.dart', 'packages/flutte
   dart.defineLazy(CT, {
     get C0() {
       return C[0] = dart.const({
-        __proto__: arena.GestureDisposition.prototype,
-        [_name$]: "GestureDisposition.accepted",
+        __proto__: monodrag._DragState.prototype,
+        [_name$]: "_DragState.ready",
         index: 0
       });
     },
     get C1() {
       return C[1] = dart.const({
-        __proto__: arena.GestureDisposition.prototype,
-        [_name$]: "GestureDisposition.rejected",
+        __proto__: monodrag._DragState.prototype,
+        [_name$]: "_DragState.possible",
         index: 1
       });
     },
     get C2() {
-      return C[2] = dart.constList([C[0] || CT.C0, C[1] || CT.C1], T.GestureDispositionL());
+      return C[2] = dart.const({
+        __proto__: monodrag._DragState.prototype,
+        [_name$]: "_DragState.accepted",
+        index: 2
+      });
+    },
+    get C3() {
+      return C[3] = dart.constList([C[0] || CT.C0, C[1] || CT.C1, C[2] || CT.C2], T._DragStateL());
+    },
+    get C4() {
+      return C[4] = dart.const({
+        __proto__: recognizer.DragStartBehavior.prototype,
+        [_name]: "DragStartBehavior.start",
+        index: 1
+      });
+    },
+    get C5() {
+      return C[5] = dart.fn(monodrag.DragGestureRecognizer._defaultBuilder, T.PointerEventToVelocityTracker());
+    },
+    get C6() {
+      return C[6] = dart.const({
+        __proto__: recognizer.DragStartBehavior.prototype,
+        [_name]: "DragStartBehavior.down",
+        index: 0
+      });
     }
   }, false);
-  var C = Array(3).fill(void 0);
+  var C = Array(7).fill(void 0);
   var I = [
-    "file:///C:/flutter/packages/flutter/lib/src/gestures/arena.dart",
-    "package:flutter/src/gestures/arena.dart"
+    "file:///C:/flutter/packages/flutter/lib/src/gestures/monodrag.dart",
+    "package:flutter/src/gestures/monodrag.dart"
   ];
-  var _name$ = dart.privateName(arena, "_name");
-  arena.GestureDisposition = class GestureDisposition extends core.Object {
+  var _name$ = dart.privateName(monodrag, "_name");
+  monodrag._DragState = class _DragState extends core.Object {
     toString() {
       return this[_name$];
     }
   };
-  (arena.GestureDisposition.new = function(index, _name) {
-    if (index == null) dart.nullFailed(I[0], 13, 6, "index");
-    if (_name == null) dart.nullFailed(I[0], 13, 6, "_name");
+  (monodrag._DragState.new = function(index, _name) {
+    if (index == null) dart.nullFailed(I[0], 15, 6, "index");
+    if (_name == null) dart.nullFailed(I[0], 15, 6, "_name");
     this.index = index;
     this[_name$] = _name;
     ;
-  }).prototype = arena.GestureDisposition.prototype;
-  dart.addTypeTests(arena.GestureDisposition);
-  dart.addTypeCaches(arena.GestureDisposition);
-  dart.setLibraryUri(arena.GestureDisposition, I[1]);
-  dart.setFieldSignature(arena.GestureDisposition, () => ({
-    __proto__: dart.getFields(arena.GestureDisposition.__proto__),
+  }).prototype = monodrag._DragState.prototype;
+  dart.addTypeTests(monodrag._DragState);
+  dart.addTypeCaches(monodrag._DragState);
+  dart.setLibraryUri(monodrag._DragState, I[1]);
+  dart.setFieldSignature(monodrag._DragState, () => ({
+    __proto__: dart.getFields(monodrag._DragState.__proto__),
     index: dart.finalFieldType(core.int),
     [_name$]: dart.finalFieldType(core.String)
   }));
-  dart.defineExtensionMethods(arena.GestureDisposition, ['toString']);
-  arena.GestureDisposition.accepted = C[0] || CT.C0;
-  arena.GestureDisposition.rejected = C[1] || CT.C1;
-  arena.GestureDisposition.values = C[2] || CT.C2;
-  arena.GestureArenaMember = class GestureArenaMember extends core.Object {};
-  (arena.GestureArenaMember.new = function() {
-    ;
-  }).prototype = arena.GestureArenaMember.prototype;
-  dart.addTypeTests(arena.GestureArenaMember);
-  dart.addTypeCaches(arena.GestureArenaMember);
-  dart.setLibraryUri(arena.GestureArenaMember, I[1]);
-  var _arena$ = dart.privateName(arena, "_arena");
-  var _pointer$ = dart.privateName(arena, "_pointer");
-  var _member$ = dart.privateName(arena, "_member");
-  var _resolve = dart.privateName(arena, "_resolve");
-  arena.GestureArenaEntry = class GestureArenaEntry extends core.Object {
-    resolve(disposition) {
-      if (disposition == null) dart.nullFailed(I[0], 52, 35, "disposition");
-      this[_arena$][_resolve](this[_pointer$], this[_member$], disposition);
+  dart.defineExtensionMethods(monodrag._DragState, ['toString']);
+  monodrag._DragState.ready = C[0] || CT.C0;
+  monodrag._DragState.possible = C[1] || CT.C1;
+  monodrag._DragState.accepted = C[2] || CT.C2;
+  monodrag._DragState.values = C[3] || CT.C3;
+  var dragStartBehavior$ = dart.privateName(monodrag, "DragGestureRecognizer.dragStartBehavior");
+  var onDown = dart.privateName(monodrag, "DragGestureRecognizer.onDown");
+  var onStart = dart.privateName(monodrag, "DragGestureRecognizer.onStart");
+  var onUpdate = dart.privateName(monodrag, "DragGestureRecognizer.onUpdate");
+  var onEnd = dart.privateName(monodrag, "DragGestureRecognizer.onEnd");
+  var onCancel = dart.privateName(monodrag, "DragGestureRecognizer.onCancel");
+  var minFlingDistance = dart.privateName(monodrag, "DragGestureRecognizer.minFlingDistance");
+  var minFlingVelocity = dart.privateName(monodrag, "DragGestureRecognizer.minFlingVelocity");
+  var maxFlingVelocity = dart.privateName(monodrag, "DragGestureRecognizer.maxFlingVelocity");
+  var velocityTrackerBuilder$ = dart.privateName(monodrag, "DragGestureRecognizer.velocityTrackerBuilder");
+  var _name = dart.privateName(recognizer, "_name");
+  var _state = dart.privateName(monodrag, "_state");
+  var __DragGestureRecognizer__initialPosition = dart.privateName(monodrag, "_#DragGestureRecognizer#_initialPosition");
+  var __DragGestureRecognizer__initialPosition_isSet = dart.privateName(monodrag, "_#DragGestureRecognizer#_initialPosition#isSet");
+  var __DragGestureRecognizer__pendingDragOffset = dart.privateName(monodrag, "_#DragGestureRecognizer#_pendingDragOffset");
+  var __DragGestureRecognizer__pendingDragOffset_isSet = dart.privateName(monodrag, "_#DragGestureRecognizer#_pendingDragOffset#isSet");
+  var _lastPendingEventTimestamp = dart.privateName(monodrag, "_lastPendingEventTimestamp");
+  var _initialButtons = dart.privateName(monodrag, "_initialButtons");
+  var _lastTransform = dart.privateName(monodrag, "_lastTransform");
+  var __DragGestureRecognizer__globalDistanceMoved = dart.privateName(monodrag, "_#DragGestureRecognizer#_globalDistanceMoved");
+  var __DragGestureRecognizer__globalDistanceMoved_isSet = dart.privateName(monodrag, "_#DragGestureRecognizer#_globalDistanceMoved#isSet");
+  var _velocityTrackers = dart.privateName(monodrag, "_velocityTrackers");
+  var _initialPosition = dart.privateName(monodrag, "_initialPosition");
+  var _pendingDragOffset = dart.privateName(monodrag, "_pendingDragOffset");
+  var _globalDistanceMoved = dart.privateName(monodrag, "_globalDistanceMoved");
+  var _checkDown = dart.privateName(monodrag, "_checkDown");
+  var _giveUpPointer = dart.privateName(monodrag, "_giveUpPointer");
+  var _getDeltaForDetails = dart.privateName(monodrag, "_getDeltaForDetails");
+  var _getPrimaryValueFromOffset = dart.privateName(monodrag, "_getPrimaryValueFromOffset");
+  var _checkUpdate = dart.privateName(monodrag, "_checkUpdate");
+  var _hasSufficientGlobalDistanceToAccept = dart.privateName(monodrag, "_hasSufficientGlobalDistanceToAccept");
+  var _checkStart = dart.privateName(monodrag, "_checkStart");
+  var _checkCancel = dart.privateName(monodrag, "_checkCancel");
+  var _checkEnd = dart.privateName(monodrag, "_checkEnd");
+  monodrag.DragGestureRecognizer = class DragGestureRecognizer extends recognizer.OneSequenceGestureRecognizer {
+    get dragStartBehavior() {
+      return this[dragStartBehavior$];
     }
-  };
-  (arena.GestureArenaEntry.__ = function(_arena, _pointer, _member) {
-    if (_arena == null) dart.nullFailed(I[0], 42, 28, "_arena");
-    if (_pointer == null) dart.nullFailed(I[0], 42, 41, "_pointer");
-    if (_member == null) dart.nullFailed(I[0], 42, 56, "_member");
-    this[_arena$] = _arena;
-    this[_pointer$] = _pointer;
-    this[_member$] = _member;
-    ;
-  }).prototype = arena.GestureArenaEntry.prototype;
-  dart.addTypeTests(arena.GestureArenaEntry);
-  dart.addTypeCaches(arena.GestureArenaEntry);
-  dart.setMethodSignature(arena.GestureArenaEntry, () => ({
-    __proto__: dart.getMethods(arena.GestureArenaEntry.__proto__),
-    resolve: dart.fnType(dart.void, [arena.GestureDisposition])
-  }));
-  dart.setLibraryUri(arena.GestureArenaEntry, I[1]);
-  dart.setFieldSignature(arena.GestureArenaEntry, () => ({
-    __proto__: dart.getFields(arena.GestureArenaEntry.__proto__),
-    [_arena$]: dart.finalFieldType(arena.GestureArenaManager),
-    [_pointer$]: dart.finalFieldType(core.int),
-    [_member$]: dart.finalFieldType(arena.GestureArenaMember)
-  }));
-  arena._GestureArena = class _GestureArena extends core.Object {
-    add(member) {
-      if (member == null) dart.nullFailed(I[0], 69, 31, "member");
-      if (!dart.test(this.isOpen)) dart.assertFailed(null, I[0], 70, 12, "isOpen");
-      this.members[$add](member);
+    set dragStartBehavior(value) {
+      this[dragStartBehavior$] = value;
     }
-    toString() {
-      let buffer = new core.StringBuffer.new();
-      if (dart.test(this.members[$isEmpty])) {
-        buffer.write("<empty>");
-      } else {
-        buffer.write(this.members[$map](core.String, dart.fn(member => {
-          if (member == null) dart.nullFailed(I[0], 80, 60, "member");
-          if (dart.equals(member, this.eagerWinner)) return dart.str(member) + " (eager winner)";
-          return dart.str(member);
-        }, T.GestureArenaMemberToString()))[$join](", "));
-      }
-      if (dart.test(this.isOpen)) buffer.write(" [open]");
-      if (dart.test(this.isHeld)) buffer.write(" [held]");
-      if (dart.test(this.hasPendingSweep)) buffer.write(" [hasPendingSweep]");
-      return buffer.toString();
+    get onDown() {
+      return this[onDown];
     }
-  };
-  (arena._GestureArena.new = function() {
-    this.members = T.JSArrayOfGestureArenaMember().of([]);
-    this.isOpen = true;
-    this.isHeld = false;
-    this.hasPendingSweep = false;
-    this.eagerWinner = null;
-    ;
-  }).prototype = arena._GestureArena.prototype;
-  dart.addTypeTests(arena._GestureArena);
-  dart.addTypeCaches(arena._GestureArena);
-  dart.setMethodSignature(arena._GestureArena, () => ({
-    __proto__: dart.getMethods(arena._GestureArena.__proto__),
-    add: dart.fnType(dart.void, [arena.GestureArenaMember])
-  }));
-  dart.setLibraryUri(arena._GestureArena, I[1]);
-  dart.setFieldSignature(arena._GestureArena, () => ({
-    __proto__: dart.getFields(arena._GestureArena.__proto__),
-    members: dart.finalFieldType(core.List$(arena.GestureArenaMember)),
-    isOpen: dart.fieldType(core.bool),
-    isHeld: dart.fieldType(core.bool),
-    hasPendingSweep: dart.fieldType(core.bool),
-    eagerWinner: dart.fieldType(dart.nullable(arena.GestureArenaMember))
-  }));
-  dart.defineExtensionMethods(arena._GestureArena, ['toString']);
-  var _arenas = dart.privateName(arena, "_arenas");
-  var _debugLogDiagnostic = dart.privateName(arena, "_debugLogDiagnostic");
-  var _tryToResolveArena = dart.privateName(arena, "_tryToResolveArena");
-  var _resolveInFavorOf = dart.privateName(arena, "_resolveInFavorOf");
-  var _resolveByDefault = dart.privateName(arena, "_resolveByDefault");
-  arena.GestureArenaManager = class GestureArenaManager extends core.Object {
-    add(pointer, member) {
-      if (pointer == null) dart.nullFailed(I[0], 107, 29, "pointer");
-      if (member == null) dart.nullFailed(I[0], 107, 57, "member");
-      let state = this[_arenas][$putIfAbsent](pointer, dart.fn(() => {
-        if (!dart.test(this[_debugLogDiagnostic](pointer, "★ Opening new gesture arena."))) dart.assertFailed(null, I[0], 109, 14, "_debugLogDiagnostic(pointer, '★ Opening new gesture arena.')");
-        return new arena._GestureArena.new();
-      }, T.VoidTo_GestureArena()));
-      state.add(member);
-      if (!dart.test(this[_debugLogDiagnostic](pointer, "Adding: " + dart.str(member)))) dart.assertFailed(null, I[0], 113, 12, "_debugLogDiagnostic(pointer, 'Adding: $member')");
-      return new arena.GestureArenaEntry.__(this, pointer, member);
+    set onDown(value) {
+      this[onDown] = value;
     }
-    close(pointer) {
-      if (pointer == null) dart.nullFailed(I[0], 120, 18, "pointer");
-      let state = this[_arenas][$_get](pointer);
-      if (state == null) return;
-      state.isOpen = false;
-      if (!dart.test(this[_debugLogDiagnostic](pointer, "Closing", state))) dart.assertFailed(null, I[0], 125, 12, "_debugLogDiagnostic(pointer, 'Closing', state)");
-      this[_tryToResolveArena](pointer, state);
+    get onStart() {
+      return this[onStart];
     }
-    sweep(pointer) {
-      if (pointer == null) dart.nullFailed(I[0], 142, 18, "pointer");
-      let state = this[_arenas][$_get](pointer);
-      if (state == null) return;
-      if (!!dart.test(state.isOpen)) dart.assertFailed(null, I[0], 146, 12, "!state.isOpen");
-      if (dart.test(state.isHeld)) {
-        state.hasPendingSweep = true;
-        if (!dart.test(this[_debugLogDiagnostic](pointer, "Delaying sweep", state))) dart.assertFailed(null, I[0], 149, 14, "_debugLogDiagnostic(pointer, 'Delaying sweep', state)");
-        return;
-      }
-      if (!dart.test(this[_debugLogDiagnostic](pointer, "Sweeping", state))) dart.assertFailed(null, I[0], 152, 12, "_debugLogDiagnostic(pointer, 'Sweeping', state)");
-      this[_arenas][$remove](pointer);
-      if (dart.test(state.members[$isNotEmpty])) {
-        if (!dart.test(this[_debugLogDiagnostic](pointer, "Winner: " + dart.str(state.members[$first])))) dart.assertFailed(null, I[0], 156, 14, "_debugLogDiagnostic(pointer, 'Winner: ${state.members.first}')");
-        state.members[$first].acceptGesture(pointer);
-        for (let i = 1; i < dart.notNull(state.members[$length]); i = i + 1)
-          state.members[$_get](i).rejectGesture(pointer);
-      }
+    set onStart(value) {
+      this[onStart] = value;
     }
-    hold(pointer) {
-      if (pointer == null) dart.nullFailed(I[0], 176, 17, "pointer");
-      let state = this[_arenas][$_get](pointer);
-      if (state == null) return;
-      state.isHeld = true;
-      if (!dart.test(this[_debugLogDiagnostic](pointer, "Holding", state))) dart.assertFailed(null, I[0], 181, 12, "_debugLogDiagnostic(pointer, 'Holding', state)");
+    get onUpdate() {
+      return this[onUpdate];
     }
-    release(pointer) {
-      if (pointer == null) dart.nullFailed(I[0], 193, 20, "pointer");
-      let state = this[_arenas][$_get](pointer);
-      if (state == null) return;
-      state.isHeld = false;
-      if (!dart.test(this[_debugLogDiagnostic](pointer, "Releasing", state))) dart.assertFailed(null, I[0], 198, 12, "_debugLogDiagnostic(pointer, 'Releasing', state)");
-      if (dart.test(state.hasPendingSweep)) this.sweep(pointer);
+    set onUpdate(value) {
+      this[onUpdate] = value;
     }
-    [_resolve](pointer, member, disposition) {
+    get onEnd() {
+      return this[onEnd];
+    }
+    set onEnd(value) {
+      this[onEnd] = value;
+    }
+    get onCancel() {
+      return this[onCancel];
+    }
+    set onCancel(value) {
+      this[onCancel] = value;
+    }
+    get minFlingDistance() {
+      return this[minFlingDistance];
+    }
+    set minFlingDistance(value) {
+      this[minFlingDistance] = value;
+    }
+    get minFlingVelocity() {
+      return this[minFlingVelocity];
+    }
+    set minFlingVelocity(value) {
+      this[minFlingVelocity] = value;
+    }
+    get maxFlingVelocity() {
+      return this[maxFlingVelocity];
+    }
+    set maxFlingVelocity(value) {
+      this[maxFlingVelocity] = value;
+    }
+    get velocityTrackerBuilder() {
+      return this[velocityTrackerBuilder$];
+    }
+    set velocityTrackerBuilder(value) {
+      this[velocityTrackerBuilder$] = value;
+    }
+    static _defaultBuilder(event) {
+      if (event == null) dart.nullFailed(I[0], 75, 55, "event");
+      return new velocity_tracker.VelocityTracker.withKind(event.kind);
+    }
+    get [_initialPosition]() {
       let t0;
-      if (pointer == null) dart.nullFailed(I[0], 206, 21, "pointer");
-      if (member == null) dart.nullFailed(I[0], 206, 49, "member");
-      if (disposition == null) dart.nullFailed(I[0], 206, 76, "disposition");
-      let state = this[_arenas][$_get](pointer);
-      if (state == null) return;
-      if (!dart.test(this[_debugLogDiagnostic](pointer, (disposition == arena.GestureDisposition.accepted ? "Accepting" : "Rejecting") + ": " + dart.str(member)))) dart.assertFailed(null, I[0], 210, 12, "_debugLogDiagnostic(pointer, '${ disposition == GestureDisposition.accepted ? \"Accepting\" : \"Rejecting\" }: $member')");
-      if (!dart.test(state.members[$contains](member))) dart.assertFailed(null, I[0], 211, 12, "state.members.contains(member)");
-      if (disposition == arena.GestureDisposition.rejected) {
-        state.members[$remove](member);
-        member.rejectGesture(pointer);
-        if (!dart.test(state.isOpen)) this[_tryToResolveArena](pointer, state);
+      return dart.test(this[__DragGestureRecognizer__initialPosition_isSet]) ? (t0 = this[__DragGestureRecognizer__initialPosition], t0) : dart.throw(new _internal.LateError.fieldNI("_initialPosition"));
+    }
+    set [_initialPosition](t0) {
+      if (t0 == null) dart.nullFailed(I[0], 204, 19, "null");
+      this[__DragGestureRecognizer__initialPosition_isSet] = true;
+      this[__DragGestureRecognizer__initialPosition] = t0;
+    }
+    get [_pendingDragOffset]() {
+      let t1;
+      return dart.test(this[__DragGestureRecognizer__pendingDragOffset_isSet]) ? (t1 = this[__DragGestureRecognizer__pendingDragOffset], t1) : dart.throw(new _internal.LateError.fieldNI("_pendingDragOffset"));
+    }
+    set [_pendingDragOffset](t1) {
+      if (t1 == null) dart.nullFailed(I[0], 205, 19, "null");
+      this[__DragGestureRecognizer__pendingDragOffset_isSet] = true;
+      this[__DragGestureRecognizer__pendingDragOffset] = t1;
+    }
+    get [_globalDistanceMoved]() {
+      let t2;
+      return dart.test(this[__DragGestureRecognizer__globalDistanceMoved_isSet]) ? (t2 = this[__DragGestureRecognizer__globalDistanceMoved], t2) : dart.throw(new _internal.LateError.fieldNI("_globalDistanceMoved"));
+    }
+    set [_globalDistanceMoved](t2) {
+      if (t2 == null) dart.nullFailed(I[0], 216, 15, "null");
+      this[__DragGestureRecognizer__globalDistanceMoved_isSet] = true;
+      this[__DragGestureRecognizer__globalDistanceMoved] = t2;
+    }
+    isPointerAllowed(event) {
+      if (event == null) dart.nullFailed(I[0], 232, 38, "event");
+      if (this[_initialButtons] == null) {
+        switch (event.buttons) {
+          case 1:
+          {
+            if (this.onDown == null && this.onStart == null && this.onUpdate == null && this.onEnd == null && this.onCancel == null) return false;
+            break;
+          }
+          default:
+          {
+            return false;
+          }
+        }
       } else {
-        if (!(disposition == arena.GestureDisposition.accepted)) dart.assertFailed(null, I[0], 218, 14, "disposition == GestureDisposition.accepted");
-        if (dart.test(state.isOpen)) {
-          t0 = state;
-          t0.eagerWinner == null ? t0.eagerWinner = member : null;
+        if (event.buttons != this[_initialButtons]) {
+          return false;
+        }
+      }
+      return super.isPointerAllowed(events.PointerDownEvent.as(event));
+    }
+    addAllowedPointer(event) {
+      let t3;
+      if (event == null) dart.nullFailed(I[0], 256, 39, "event");
+      this.startTrackingPointer(event.pointer, event.transform);
+      this[_velocityTrackers][$_set](event.pointer, (t3 = event, this.velocityTrackerBuilder(t3)));
+      if (this[_state] == monodrag._DragState.ready) {
+        this[_state] = monodrag._DragState.possible;
+        this[_initialPosition] = new recognizer.OffsetPair.new({global: event.position, local: event.localPosition});
+        this[_initialButtons] = event.buttons;
+        this[_pendingDragOffset] = recognizer.OffsetPair.zero;
+        this[_globalDistanceMoved] = 0.0;
+        this[_lastPendingEventTimestamp] = event.timeStamp;
+        this[_lastTransform] = event.transform;
+        this[_checkDown]();
+      } else if (this[_state] == monodrag._DragState.accepted) {
+        this.resolve(arena.GestureDisposition.accepted);
+      }
+    }
+    handleEvent(event) {
+      let t3;
+      if (event == null) dart.nullFailed(I[0], 274, 33, "event");
+      if (!(this[_state] != monodrag._DragState.ready)) dart.assertFailed(null, I[0], 275, 12, "_state != _DragState.ready");
+      if (!dart.test(event.synthesized) && (events.PointerDownEvent.is(event) || events.PointerMoveEvent.is(event))) {
+        let tracker = dart.nullCheck(this[_velocityTrackers][$_get](event.pointer));
+        if (!(tracker !== null)) dart.assertFailed(null, I[0], 279, 14, "tracker != null");
+        tracker.addPosition(event.timeStamp, event.localPosition);
+      }
+      if (events.PointerMoveEvent.is(event)) {
+        if (event.buttons != this[_initialButtons]) {
+          this[_giveUpPointer](event.pointer);
+          return;
+        }
+        if (this[_state] == monodrag._DragState.accepted) {
+          this[_checkUpdate]({sourceTimeStamp: event.timeStamp, delta: this[_getDeltaForDetails](event.localDelta), primaryDelta: this[_getPrimaryValueFromOffset](event.localDelta), globalPosition: event.position, localPosition: event.localPosition});
         } else {
-          if (!dart.test(this[_debugLogDiagnostic](pointer, "Self-declared winner: " + dart.str(member)))) dart.assertFailed(null, I[0], 222, 16, "_debugLogDiagnostic(pointer, 'Self-declared winner: $member')");
-          this[_resolveInFavorOf](pointer, state, member);
+          this[_pendingDragOffset] = this[_pendingDragOffset]['+'](new recognizer.OffsetPair.new({local: event.localDelta, global: event.delta}));
+          this[_lastPendingEventTimestamp] = event.timeStamp;
+          this[_lastTransform] = event.transform;
+          let movedLocally = this[_getDeltaForDetails](event.localDelta);
+          let localToGlobalTransform = event.transform == null ? null : vector_math_64.Matrix4.tryInvert(dart.nullCheck(event.transform));
+          this[_globalDistanceMoved] = dart.notNull(this[_globalDistanceMoved]) + dart.notNull(events.PointerEvent.transformDeltaViaPositions({transform: localToGlobalTransform, untransformedDelta: movedLocally, untransformedEndPosition: event.localPosition}).distance) * (t3 = this[_getPrimaryValueFromOffset](movedLocally), t3 == null ? 1.0 : t3)[$sign];
+          if (dart.test(this[_hasSufficientGlobalDistanceToAccept](event.kind))) this.resolve(arena.GestureDisposition.accepted);
+        }
+      }
+      if (events.PointerUpEvent.is(event) || events.PointerCancelEvent.is(event)) {
+        this[_giveUpPointer](event.pointer, {reject: events.PointerCancelEvent.is(event) || this[_state] == monodrag._DragState.possible});
+      }
+    }
+    acceptGesture(pointer) {
+      if (pointer == null) dart.nullFailed(I[0], 320, 26, "pointer");
+      if (this[_state] != monodrag._DragState.accepted) {
+        this[_state] = monodrag._DragState.accepted;
+        let delta = this[_pendingDragOffset];
+        let timestamp = dart.nullCheck(this[_lastPendingEventTimestamp]);
+        let transform = this[_lastTransform];
+        let localUpdateDelta = null;
+        switch (this.dragStartBehavior) {
+          case C[4] || CT.C4:
+          {
+            this[_initialPosition] = this[_initialPosition]['+'](delta);
+            localUpdateDelta = ui.Offset.zero;
+            break;
+          }
+          case C[6] || CT.C6:
+          {
+            localUpdateDelta = this[_getDeltaForDetails](delta.local);
+            break;
+          }
+          default:
+          {
+            dart.throw(new _internal.ReachabilityError.new("`null` encountered as case in a switch expression with a non-nullable enum type."));
+          }
+        }
+        this[_pendingDragOffset] = recognizer.OffsetPair.zero;
+        this[_lastPendingEventTimestamp] = null;
+        this[_lastTransform] = null;
+        this[_checkStart](timestamp, pointer);
+        if (!dart.equals(localUpdateDelta, ui.Offset.zero) && this.onUpdate != null) {
+          let localToGlobal = transform != null ? vector_math_64.Matrix4.tryInvert(transform) : null;
+          let correctedLocalPosition = this[_initialPosition].local['+'](localUpdateDelta);
+          let globalUpdateDelta = events.PointerEvent.transformDeltaViaPositions({untransformedEndPosition: correctedLocalPosition, untransformedDelta: localUpdateDelta, transform: localToGlobal});
+          let updateDelta = new recognizer.OffsetPair.new({local: localUpdateDelta, global: globalUpdateDelta});
+          let correctedPosition = this[_initialPosition]['+'](updateDelta);
+          this[_checkUpdate]({sourceTimeStamp: timestamp, delta: localUpdateDelta, primaryDelta: this[_getPrimaryValueFromOffset](localUpdateDelta), globalPosition: correctedPosition.global, localPosition: correctedPosition.local});
         }
       }
     }
-    [_tryToResolveArena](pointer, state) {
-      if (pointer == null) dart.nullFailed(I[0], 228, 31, "pointer");
-      if (state == null) dart.nullFailed(I[0], 228, 54, "state");
-      if (!dart.equals(this[_arenas][$_get](pointer), state)) dart.assertFailed(null, I[0], 229, 12, "_arenas[pointer] == state");
-      if (!!dart.test(state.isOpen)) dart.assertFailed(null, I[0], 230, 12, "!state.isOpen");
-      if (state.members[$length] === 1) {
-        async.scheduleMicrotask(dart.fn(() => this[_resolveByDefault](pointer, state), T.VoidTovoid()));
-      } else if (dart.test(state.members[$isEmpty])) {
-        this[_arenas][$remove](pointer);
-        if (!dart.test(this[_debugLogDiagnostic](pointer, "Arena empty."))) dart.assertFailed(null, I[0], 235, 14, "_debugLogDiagnostic(pointer, 'Arena empty.')");
-      } else if (state.eagerWinner != null) {
-        if (!dart.test(this[_debugLogDiagnostic](pointer, "Eager winner: " + dart.str(state.eagerWinner)))) dart.assertFailed(null, I[0], 237, 14, "_debugLogDiagnostic(pointer, 'Eager winner: ${state.eagerWinner}')");
-        this[_resolveInFavorOf](pointer, state, dart.nullCheck(state.eagerWinner));
-      }
+    rejectGesture(pointer) {
+      if (pointer == null) dart.nullFailed(I[0], 362, 26, "pointer");
+      this[_giveUpPointer](pointer);
     }
-    [_resolveByDefault](pointer, state) {
-      if (pointer == null) dart.nullFailed(I[0], 242, 30, "pointer");
-      if (state == null) dart.nullFailed(I[0], 242, 53, "state");
-      if (!dart.test(this[_arenas][$containsKey](pointer))) return;
-      if (!dart.equals(this[_arenas][$_get](pointer), state)) dart.assertFailed(null, I[0], 245, 12, "_arenas[pointer] == state");
-      if (!!dart.test(state.isOpen)) dart.assertFailed(null, I[0], 246, 12, "!state.isOpen");
-      let members = state.members;
-      if (!(members[$length] === 1)) dart.assertFailed(null, I[0], 248, 12, "members.length == 1");
-      this[_arenas][$remove](pointer);
-      if (!dart.test(this[_debugLogDiagnostic](pointer, "Default winner: " + dart.str(state.members[$first])))) dart.assertFailed(null, I[0], 250, 12, "_debugLogDiagnostic(pointer, 'Default winner: ${state.members.first}')");
-      state.members[$first].acceptGesture(pointer);
-    }
-    [_resolveInFavorOf](pointer, state, member) {
-      if (pointer == null) dart.nullFailed(I[0], 254, 30, "pointer");
-      if (state == null) dart.nullFailed(I[0], 254, 53, "state");
-      if (member == null) dart.nullFailed(I[0], 254, 79, "member");
-      if (!dart.equals(state, this[_arenas][$_get](pointer))) dart.assertFailed(null, I[0], 255, 12, "state == _arenas[pointer]");
-      if (!(state != null)) dart.assertFailed(null, I[0], 256, 12, "state != null");
-      if (!(state.eagerWinner == null || dart.equals(state.eagerWinner, member))) dart.assertFailed(null, I[0], 257, 12, "state.eagerWinner == null || state.eagerWinner == member");
-      if (!!dart.test(state.isOpen)) dart.assertFailed(null, I[0], 258, 12, "!state.isOpen");
-      this[_arenas][$remove](pointer);
-      for (let rejectedMember of state.members) {
-        if (!dart.equals(rejectedMember, member)) rejectedMember.rejectGesture(pointer);
-      }
-      member.acceptGesture(pointer);
-    }
-    [_debugLogDiagnostic](pointer, message, state = null) {
-      if (pointer == null) dart.nullFailed(I[0], 267, 32, "pointer");
-      if (message == null) dart.nullFailed(I[0], 267, 48, "message");
-      if (!dart.test(dart.fn(() => {
-        if (dart.test(debug.debugPrintGestureArenaDiagnostics)) {
-          let count = state != null ? state.members[$length] : null;
-          let s = count !== 1 ? "s" : "";
-          print.debugPrint("Gesture arena " + dart.toString(pointer)[$padRight](4) + " ❙ " + dart.str(message) + (count != null ? " with " + dart.str(count) + " member" + s + "." : ""));
+    didStopTrackingLastPointer(pointer) {
+      if (pointer == null) dart.nullFailed(I[0], 367, 39, "pointer");
+      if (!(this[_state] != monodrag._DragState.ready)) dart.assertFailed(null, I[0], 368, 12, "_state != _DragState.ready");
+      switch (this[_state]) {
+        case C[0] || CT.C0:
+        {
+          break;
         }
-        return true;
-      }, T.VoidTobool())())) dart.assertFailed(null, I[0], 268, 12, "() {\r\n      if (debugPrintGestureArenaDiagnostics) {\r\n        final int? count = state != null ? state.members.length : null;\r\n        final String s = count != 1 ? 's' : '';\r\n        debugPrint('Gesture arena ${pointer.toString().padRight(4)} ❙ $message${ count != null ? \" with $count member$s.\" : \"\"}');\r\n      }\r\n      return true;\r\n    }()");
-      return true;
+        case C[1] || CT.C1:
+        {
+          this.resolve(arena.GestureDisposition.rejected);
+          this[_checkCancel]();
+          break;
+        }
+        case C[2] || CT.C2:
+        {
+          this[_checkEnd](pointer);
+          break;
+        }
+        default:
+        {
+          dart.throw(new _internal.ReachabilityError.new("`null` encountered as case in a switch expression with a non-nullable enum type."));
+        }
+      }
+      this[_velocityTrackers][$clear]();
+      this[_initialButtons] = null;
+      this[_state] = monodrag._DragState.ready;
+    }
+    [_giveUpPointer](pointer, opts) {
+      if (pointer == null) dart.nullFailed(I[0], 387, 27, "pointer");
+      let reject = opts && 'reject' in opts ? opts.reject : true;
+      if (reject == null) dart.nullFailed(I[0], 387, 42, "reject");
+      this.stopTrackingPointer(pointer);
+      if (dart.test(reject)) this.resolvePointer(pointer, arena.GestureDisposition.rejected);
+    }
+    [_checkDown]() {
+      if (!(this[_initialButtons] === 1)) dart.assertFailed(null, I[0], 394, 12, "_initialButtons == kPrimaryButton");
+      let details = new drag_details.DragDownDetails.new({globalPosition: this[_initialPosition].global, localPosition: this[_initialPosition].local});
+      if (this.onDown != null) this.invokeCallback(dart.void, "onDown", dart.fn(() => dart.nullCheck(this.onDown)(details), T.VoidTovoid()));
+    }
+    [_checkStart](timestamp, pointer) {
+      if (timestamp == null) dart.nullFailed(I[0], 403, 29, "timestamp");
+      if (pointer == null) dart.nullFailed(I[0], 403, 44, "pointer");
+      if (!(this[_initialButtons] === 1)) dart.assertFailed(null, I[0], 404, 12, "_initialButtons == kPrimaryButton");
+      let details = new drag_details.DragStartDetails.new({sourceTimeStamp: timestamp, globalPosition: this[_initialPosition].global, localPosition: this[_initialPosition].local, kind: this.getKindForPointer(pointer)});
+      if (this.onStart != null) this.invokeCallback(dart.void, "onStart", dart.fn(() => dart.nullCheck(this.onStart)(details), T.VoidTovoid()));
+    }
+    [_checkUpdate](opts) {
+      let sourceTimeStamp = opts && 'sourceTimeStamp' in opts ? opts.sourceTimeStamp : null;
+      let delta = opts && 'delta' in opts ? opts.delta : null;
+      if (delta == null) dart.nullFailed(I[0], 417, 21, "delta");
+      let primaryDelta = opts && 'primaryDelta' in opts ? opts.primaryDelta : null;
+      let globalPosition = opts && 'globalPosition' in opts ? opts.globalPosition : null;
+      if (globalPosition == null) dart.nullFailed(I[0], 419, 21, "globalPosition");
+      let localPosition = opts && 'localPosition' in opts ? opts.localPosition : null;
+      if (!(this[_initialButtons] === 1)) dart.assertFailed(null, I[0], 422, 12, "_initialButtons == kPrimaryButton");
+      let details = new drag_details.DragUpdateDetails.new({sourceTimeStamp: sourceTimeStamp, delta: delta, primaryDelta: primaryDelta, globalPosition: globalPosition, localPosition: localPosition});
+      if (this.onUpdate != null) this.invokeCallback(dart.void, "onUpdate", dart.fn(() => dart.nullCheck(this.onUpdate)(details), T.VoidTovoid()));
+    }
+    [_checkEnd](pointer) {
+      let t3, t3$;
+      if (pointer == null) dart.nullFailed(I[0], 434, 22, "pointer");
+      if (!(this[_initialButtons] === 1)) dart.assertFailed(null, I[0], 435, 12, "_initialButtons == kPrimaryButton");
+      if (this.onEnd == null) return;
+      let tracker = dart.nullCheck(this[_velocityTrackers][$_get](pointer));
+      if (!(tracker !== null)) dart.assertFailed(null, I[0], 440, 12, "tracker != null");
+      let details = null;
+      let debugReport = null;
+      let estimate = tracker.getVelocityEstimate();
+      if (estimate != null && dart.test(this.isFlingGesture(estimate, tracker.kind))) {
+        let velocity = new velocity_tracker.Velocity.new({pixelsPerSecond: estimate.pixelsPerSecond}).clampMagnitude((t3 = this.minFlingVelocity, t3 == null ? 50 : t3), (t3$ = this.maxFlingVelocity, t3$ == null ? 8000 : t3$));
+        details = new drag_details.DragEndDetails.new({velocity: velocity, primaryVelocity: this[_getPrimaryValueFromOffset](velocity.pixelsPerSecond)});
+        debugReport = dart.fn(() => dart.str(estimate) + "; fling at " + dart.str(velocity) + ".", T.VoidToString());
+      } else {
+        details = new drag_details.DragEndDetails.new({velocity: velocity_tracker.Velocity.zero, primaryVelocity: 0.0});
+        debugReport = dart.fn(() => {
+          if (estimate == null) return "Could not estimate velocity.";
+          return dart.str(estimate) + "; judged to not be a fling.";
+        }, T.VoidToString());
+      }
+      this.invokeCallback(dart.void, "onEnd", dart.fn(() => dart.nullCheck(this.onEnd)(details), T.VoidTovoid()), {debugReport: debugReport});
+    }
+    [_checkCancel]() {
+      if (!(this[_initialButtons] === 1)) dart.assertFailed(null, I[0], 471, 12, "_initialButtons == kPrimaryButton");
+      if (this.onCancel != null) this.invokeCallback(dart.void, "onCancel", dart.nullCheck(this.onCancel));
+    }
+    dispose() {
+      this[_velocityTrackers][$clear]();
+      super.dispose();
+    }
+    debugFillProperties(properties) {
+      if (properties == null) dart.nullFailed(I[0], 482, 56, "properties");
+      super.debugFillProperties(properties);
+      properties.add(new (T.EnumPropertyOfDragStartBehavior()).new("start behavior", this.dragStartBehavior));
     }
   };
-  (arena.GestureArenaManager.new = function() {
-    this[_arenas] = new (T.IdentityMapOfint$_GestureArena()).new();
+  (monodrag.DragGestureRecognizer.new = function(opts) {
+    let debugOwner = opts && 'debugOwner' in opts ? opts.debugOwner : null;
+    let kind = opts && 'kind' in opts ? opts.kind : null;
+    let dragStartBehavior = opts && 'dragStartBehavior' in opts ? opts.dragStartBehavior : C[4] || CT.C4;
+    if (dragStartBehavior == null) dart.nullFailed(I[0], 70, 10, "dragStartBehavior");
+    let velocityTrackerBuilder = opts && 'velocityTrackerBuilder' in opts ? opts.velocityTrackerBuilder : C[5] || CT.C5;
+    if (velocityTrackerBuilder == null) dart.nullFailed(I[0], 71, 10, "velocityTrackerBuilder");
+    this[onDown] = null;
+    this[onStart] = null;
+    this[onUpdate] = null;
+    this[onEnd] = null;
+    this[onCancel] = null;
+    this[minFlingDistance] = null;
+    this[minFlingVelocity] = null;
+    this[maxFlingVelocity] = null;
+    this[_state] = monodrag._DragState.ready;
+    this[__DragGestureRecognizer__initialPosition] = null;
+    this[__DragGestureRecognizer__initialPosition_isSet] = false;
+    this[__DragGestureRecognizer__pendingDragOffset] = null;
+    this[__DragGestureRecognizer__pendingDragOffset_isSet] = false;
+    this[_lastPendingEventTimestamp] = null;
+    this[_initialButtons] = null;
+    this[_lastTransform] = null;
+    this[__DragGestureRecognizer__globalDistanceMoved] = null;
+    this[__DragGestureRecognizer__globalDistanceMoved_isSet] = false;
+    this[_velocityTrackers] = new (T.IdentityMapOfint$VelocityTracker()).new();
+    this[dragStartBehavior$] = dragStartBehavior;
+    this[velocityTrackerBuilder$] = velocityTrackerBuilder;
+    if (!(dragStartBehavior != null)) dart.assertFailed(null, I[0], 72, 15, "dragStartBehavior != null");
+    monodrag.DragGestureRecognizer.__proto__.new.call(this, {debugOwner: debugOwner, kind: kind});
     ;
-  }).prototype = arena.GestureArenaManager.prototype;
-  dart.addTypeTests(arena.GestureArenaManager);
-  dart.addTypeCaches(arena.GestureArenaManager);
-  dart.setMethodSignature(arena.GestureArenaManager, () => ({
-    __proto__: dart.getMethods(arena.GestureArenaManager.__proto__),
-    add: dart.fnType(arena.GestureArenaEntry, [core.int, arena.GestureArenaMember]),
-    close: dart.fnType(dart.void, [core.int]),
-    sweep: dart.fnType(dart.void, [core.int]),
-    hold: dart.fnType(dart.void, [core.int]),
-    release: dart.fnType(dart.void, [core.int]),
-    [_resolve]: dart.fnType(dart.void, [core.int, arena.GestureArenaMember, arena.GestureDisposition]),
-    [_tryToResolveArena]: dart.fnType(dart.void, [core.int, arena._GestureArena]),
-    [_resolveByDefault]: dart.fnType(dart.void, [core.int, arena._GestureArena]),
-    [_resolveInFavorOf]: dart.fnType(dart.void, [core.int, arena._GestureArena, arena.GestureArenaMember]),
-    [_debugLogDiagnostic]: dart.fnType(core.bool, [core.int, core.String], [dart.nullable(arena._GestureArena)])
+  }).prototype = monodrag.DragGestureRecognizer.prototype;
+  dart.addTypeTests(monodrag.DragGestureRecognizer);
+  dart.addTypeCaches(monodrag.DragGestureRecognizer);
+  dart.setMethodSignature(monodrag.DragGestureRecognizer, () => ({
+    __proto__: dart.getMethods(monodrag.DragGestureRecognizer.__proto__),
+    isPointerAllowed: dart.fnType(core.bool, [events.PointerEvent]),
+    addAllowedPointer: dart.fnType(dart.void, [events.PointerEvent]),
+    handleEvent: dart.fnType(dart.void, [events.PointerEvent]),
+    didStopTrackingLastPointer: dart.fnType(dart.void, [core.int]),
+    [_giveUpPointer]: dart.fnType(dart.void, [core.int], {reject: core.bool}, {}),
+    [_checkDown]: dart.fnType(dart.void, []),
+    [_checkStart]: dart.fnType(dart.void, [core.Duration, core.int]),
+    [_checkUpdate]: dart.fnType(dart.void, [], {localPosition: dart.nullable(ui.Offset), primaryDelta: dart.nullable(core.double), sourceTimeStamp: dart.nullable(core.Duration)}, {delta: ui.Offset, globalPosition: ui.Offset}),
+    [_checkEnd]: dart.fnType(dart.void, [core.int]),
+    [_checkCancel]: dart.fnType(dart.void, [])
   }));
-  dart.setLibraryUri(arena.GestureArenaManager, I[1]);
-  dart.setFieldSignature(arena.GestureArenaManager, () => ({
-    __proto__: dart.getFields(arena.GestureArenaManager.__proto__),
-    [_arenas]: dart.finalFieldType(core.Map$(core.int, arena._GestureArena))
+  dart.setGetterSignature(monodrag.DragGestureRecognizer, () => ({
+    __proto__: dart.getGetters(monodrag.DragGestureRecognizer.__proto__),
+    [_initialPosition]: recognizer.OffsetPair,
+    [_pendingDragOffset]: recognizer.OffsetPair,
+    [_globalDistanceMoved]: core.double
   }));
-  dart.trackLibraries("packages/flutter/src/gestures/arena.dart", {
-    "package:flutter/src/gestures/arena.dart": arena
+  dart.setSetterSignature(monodrag.DragGestureRecognizer, () => ({
+    __proto__: dart.getSetters(monodrag.DragGestureRecognizer.__proto__),
+    [_initialPosition]: recognizer.OffsetPair,
+    [_pendingDragOffset]: recognizer.OffsetPair,
+    [_globalDistanceMoved]: core.double
+  }));
+  dart.setLibraryUri(monodrag.DragGestureRecognizer, I[1]);
+  dart.setFieldSignature(monodrag.DragGestureRecognizer, () => ({
+    __proto__: dart.getFields(monodrag.DragGestureRecognizer.__proto__),
+    dragStartBehavior: dart.fieldType(recognizer.DragStartBehavior),
+    onDown: dart.fieldType(dart.nullable(dart.fnType(dart.void, [drag_details.DragDownDetails]))),
+    onStart: dart.fieldType(dart.nullable(dart.fnType(dart.void, [drag_details.DragStartDetails]))),
+    onUpdate: dart.fieldType(dart.nullable(dart.fnType(dart.void, [drag_details.DragUpdateDetails]))),
+    onEnd: dart.fieldType(dart.nullable(dart.fnType(dart.void, [drag_details.DragEndDetails]))),
+    onCancel: dart.fieldType(dart.nullable(dart.fnType(dart.void, []))),
+    minFlingDistance: dart.fieldType(dart.nullable(core.double)),
+    minFlingVelocity: dart.fieldType(dart.nullable(core.double)),
+    maxFlingVelocity: dart.fieldType(dart.nullable(core.double)),
+    velocityTrackerBuilder: dart.fieldType(dart.fnType(velocity_tracker.VelocityTracker, [events.PointerEvent])),
+    [_state]: dart.fieldType(monodrag._DragState),
+    [__DragGestureRecognizer__initialPosition]: dart.fieldType(dart.nullable(recognizer.OffsetPair)),
+    [__DragGestureRecognizer__initialPosition_isSet]: dart.fieldType(core.bool),
+    [__DragGestureRecognizer__pendingDragOffset]: dart.fieldType(dart.nullable(recognizer.OffsetPair)),
+    [__DragGestureRecognizer__pendingDragOffset_isSet]: dart.fieldType(core.bool),
+    [_lastPendingEventTimestamp]: dart.fieldType(dart.nullable(core.Duration)),
+    [_initialButtons]: dart.fieldType(dart.nullable(core.int)),
+    [_lastTransform]: dart.fieldType(dart.nullable(vector_math_64.Matrix4)),
+    [__DragGestureRecognizer__globalDistanceMoved]: dart.fieldType(dart.nullable(core.double)),
+    [__DragGestureRecognizer__globalDistanceMoved_isSet]: dart.fieldType(core.bool),
+    [_velocityTrackers]: dart.finalFieldType(core.Map$(core.int, velocity_tracker.VelocityTracker))
+  }));
+  monodrag.VerticalDragGestureRecognizer = class VerticalDragGestureRecognizer extends monodrag.DragGestureRecognizer {
+    isFlingGesture(estimate, kind) {
+      let t3, t3$;
+      if (estimate == null) dart.nullFailed(I[0], 508, 40, "estimate");
+      if (kind == null) dart.nullFailed(I[0], 508, 68, "kind");
+      let minVelocity = (t3 = this.minFlingVelocity, t3 == null ? 50 : t3);
+      let minDistance = (t3$ = this.minFlingDistance, t3$ == null ? events.computeHitSlop(kind) : t3$);
+      return estimate.pixelsPerSecond.dy[$abs]() > dart.notNull(minVelocity) && estimate.offset.dy[$abs]() > dart.notNull(minDistance);
+    }
+    [_hasSufficientGlobalDistanceToAccept](pointerDeviceKind) {
+      if (pointerDeviceKind == null) dart.nullFailed(I[0], 515, 63, "pointerDeviceKind");
+      return this[_globalDistanceMoved][$abs]() > dart.notNull(events.computeHitSlop(pointerDeviceKind));
+    }
+    [_getDeltaForDetails](delta) {
+      if (delta == null) dart.nullFailed(I[0], 520, 37, "delta");
+      return new ui.Offset.new(0.0, delta.dy);
+    }
+    [_getPrimaryValueFromOffset](value) {
+      if (value == null) dart.nullFailed(I[0], 523, 44, "value");
+      return value.dy;
+    }
+    get debugDescription() {
+      return "vertical drag";
+    }
+  };
+  (monodrag.VerticalDragGestureRecognizer.new = function(opts) {
+    let debugOwner = opts && 'debugOwner' in opts ? opts.debugOwner : null;
+    let kind = opts && 'kind' in opts ? opts.kind : null;
+    monodrag.VerticalDragGestureRecognizer.__proto__.new.call(this, {debugOwner: debugOwner, kind: kind});
+    ;
+  }).prototype = monodrag.VerticalDragGestureRecognizer.prototype;
+  dart.addTypeTests(monodrag.VerticalDragGestureRecognizer);
+  dart.addTypeCaches(monodrag.VerticalDragGestureRecognizer);
+  dart.setMethodSignature(monodrag.VerticalDragGestureRecognizer, () => ({
+    __proto__: dart.getMethods(monodrag.VerticalDragGestureRecognizer.__proto__),
+    isFlingGesture: dart.fnType(core.bool, [velocity_tracker.VelocityEstimate, ui.PointerDeviceKind]),
+    [_hasSufficientGlobalDistanceToAccept]: dart.fnType(core.bool, [ui.PointerDeviceKind]),
+    [_getDeltaForDetails]: dart.fnType(ui.Offset, [ui.Offset]),
+    [_getPrimaryValueFromOffset]: dart.fnType(core.double, [ui.Offset])
+  }));
+  dart.setGetterSignature(monodrag.VerticalDragGestureRecognizer, () => ({
+    __proto__: dart.getGetters(monodrag.VerticalDragGestureRecognizer.__proto__),
+    debugDescription: core.String
+  }));
+  dart.setLibraryUri(monodrag.VerticalDragGestureRecognizer, I[1]);
+  monodrag.HorizontalDragGestureRecognizer = class HorizontalDragGestureRecognizer extends monodrag.DragGestureRecognizer {
+    isFlingGesture(estimate, kind) {
+      let t3, t3$;
+      if (estimate == null) dart.nullFailed(I[0], 549, 40, "estimate");
+      if (kind == null) dart.nullFailed(I[0], 549, 68, "kind");
+      let minVelocity = (t3 = this.minFlingVelocity, t3 == null ? 50 : t3);
+      let minDistance = (t3$ = this.minFlingDistance, t3$ == null ? events.computeHitSlop(kind) : t3$);
+      return estimate.pixelsPerSecond.dx[$abs]() > dart.notNull(minVelocity) && estimate.offset.dx[$abs]() > dart.notNull(minDistance);
+    }
+    [_hasSufficientGlobalDistanceToAccept](pointerDeviceKind) {
+      if (pointerDeviceKind == null) dart.nullFailed(I[0], 556, 63, "pointerDeviceKind");
+      return this[_globalDistanceMoved][$abs]() > dart.notNull(events.computeHitSlop(pointerDeviceKind));
+    }
+    [_getDeltaForDetails](delta) {
+      if (delta == null) dart.nullFailed(I[0], 561, 37, "delta");
+      return new ui.Offset.new(delta.dx, 0.0);
+    }
+    [_getPrimaryValueFromOffset](value) {
+      if (value == null) dart.nullFailed(I[0], 564, 44, "value");
+      return value.dx;
+    }
+    get debugDescription() {
+      return "horizontal drag";
+    }
+  };
+  (monodrag.HorizontalDragGestureRecognizer.new = function(opts) {
+    let debugOwner = opts && 'debugOwner' in opts ? opts.debugOwner : null;
+    let kind = opts && 'kind' in opts ? opts.kind : null;
+    monodrag.HorizontalDragGestureRecognizer.__proto__.new.call(this, {debugOwner: debugOwner, kind: kind});
+    ;
+  }).prototype = monodrag.HorizontalDragGestureRecognizer.prototype;
+  dart.addTypeTests(monodrag.HorizontalDragGestureRecognizer);
+  dart.addTypeCaches(monodrag.HorizontalDragGestureRecognizer);
+  dart.setMethodSignature(monodrag.HorizontalDragGestureRecognizer, () => ({
+    __proto__: dart.getMethods(monodrag.HorizontalDragGestureRecognizer.__proto__),
+    isFlingGesture: dart.fnType(core.bool, [velocity_tracker.VelocityEstimate, ui.PointerDeviceKind]),
+    [_hasSufficientGlobalDistanceToAccept]: dart.fnType(core.bool, [ui.PointerDeviceKind]),
+    [_getDeltaForDetails]: dart.fnType(ui.Offset, [ui.Offset]),
+    [_getPrimaryValueFromOffset]: dart.fnType(core.double, [ui.Offset])
+  }));
+  dart.setGetterSignature(monodrag.HorizontalDragGestureRecognizer, () => ({
+    __proto__: dart.getGetters(monodrag.HorizontalDragGestureRecognizer.__proto__),
+    debugDescription: core.String
+  }));
+  dart.setLibraryUri(monodrag.HorizontalDragGestureRecognizer, I[1]);
+  monodrag.PanGestureRecognizer = class PanGestureRecognizer extends monodrag.DragGestureRecognizer {
+    isFlingGesture(estimate, kind) {
+      let t3, t3$;
+      if (estimate == null) dart.nullFailed(I[0], 584, 40, "estimate");
+      if (kind == null) dart.nullFailed(I[0], 584, 68, "kind");
+      let minVelocity = (t3 = this.minFlingVelocity, t3 == null ? 50 : t3);
+      let minDistance = (t3$ = this.minFlingDistance, t3$ == null ? events.computeHitSlop(kind) : t3$);
+      return dart.notNull(estimate.pixelsPerSecond.distanceSquared) > dart.notNull(minVelocity) * dart.notNull(minVelocity) && dart.notNull(estimate.offset.distanceSquared) > dart.notNull(minDistance) * dart.notNull(minDistance);
+    }
+    [_hasSufficientGlobalDistanceToAccept](pointerDeviceKind) {
+      if (pointerDeviceKind == null) dart.nullFailed(I[0], 592, 63, "pointerDeviceKind");
+      return this[_globalDistanceMoved][$abs]() > dart.notNull(events.computePanSlop(pointerDeviceKind));
+    }
+    [_getDeltaForDetails](delta) {
+      if (delta == null) dart.nullFailed(I[0], 597, 37, "delta");
+      return delta;
+    }
+    [_getPrimaryValueFromOffset](value) {
+      if (value == null) dart.nullFailed(I[0], 600, 45, "value");
+      return null;
+    }
+    get debugDescription() {
+      return "pan";
+    }
+  };
+  (monodrag.PanGestureRecognizer.new = function(opts) {
+    let debugOwner = opts && 'debugOwner' in opts ? opts.debugOwner : null;
+    monodrag.PanGestureRecognizer.__proto__.new.call(this, {debugOwner: debugOwner});
+    ;
+  }).prototype = monodrag.PanGestureRecognizer.prototype;
+  dart.addTypeTests(monodrag.PanGestureRecognizer);
+  dart.addTypeCaches(monodrag.PanGestureRecognizer);
+  dart.setMethodSignature(monodrag.PanGestureRecognizer, () => ({
+    __proto__: dart.getMethods(monodrag.PanGestureRecognizer.__proto__),
+    isFlingGesture: dart.fnType(core.bool, [velocity_tracker.VelocityEstimate, ui.PointerDeviceKind]),
+    [_hasSufficientGlobalDistanceToAccept]: dart.fnType(core.bool, [ui.PointerDeviceKind]),
+    [_getDeltaForDetails]: dart.fnType(ui.Offset, [ui.Offset]),
+    [_getPrimaryValueFromOffset]: dart.fnType(dart.nullable(core.double), [ui.Offset])
+  }));
+  dart.setGetterSignature(monodrag.PanGestureRecognizer, () => ({
+    __proto__: dart.getGetters(monodrag.PanGestureRecognizer.__proto__),
+    debugDescription: core.String
+  }));
+  dart.setLibraryUri(monodrag.PanGestureRecognizer, I[1]);
+  dart.trackLibraries("packages/flutter/src/gestures/monodrag.dart", {
+    "package:flutter/src/gestures/monodrag.dart": monodrag
   }, {
-  }, '{"version":3,"sourceRoot":"","sources":["arena.dart"],"names":[],"mappings":"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","file":"../../../../../../packages/flutter/src/gestures/arena.dart.lib.js"}');
+  }, '{"version":3,"sourceRoot":"","sources":["monodrag.dart"],"names":[],"mappings":"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","file":"../../../../../../packages/flutter/src/gestures/monodrag.dart.lib.js"}');
   // Exports:
   return {
-    src__gestures__arena: arena
+    src__gestures__monodrag: monodrag
   };
 }));
 
-//# sourceMappingURL=arena.dart.lib.js.map
+//# sourceMappingURL=monodrag.dart.lib.js.map

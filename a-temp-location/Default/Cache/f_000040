@@ -1,22 +1,66 @@
-define(['dart_sdk', 'packages/flutter/src/painting/borders.dart', 'packages/flutter/src/painting/edge_insets.dart', 'packages/flutter/src/painting/circle_border.dart', 'packages/flutter/src/painting/rounded_rectangle_border.dart', 'packages/flutter/src/painting/border_radius.dart', 'packages/flutter/src/foundation/object.dart'], (function load__packages__flutter__src__painting__stadium_border_dart(dart_sdk, packages__flutter__src__painting__borders$46dart, packages__flutter__src__painting__edge_insets$46dart, packages__flutter__src__painting__circle_border$46dart, packages__flutter__src__painting__rounded_rectangle_border$46dart, packages__flutter__src__painting__border_radius$46dart, packages__flutter__src__foundation__object$46dart) {
+define(['dart_sdk', 'packages/pedantic/pedantic.dart', 'packages/http/src/byte_stream.dart', 'packages/http/src/exception.dart', 'packages/http/src/utils.dart', 'packages/http_parser/src/media_type.dart'], (function load__packages__http__src__browser_client_dart(dart_sdk, packages__pedantic__pedantic$46dart, packages__http__src__byte_stream$46dart, packages__http__src__exception$46dart, packages__http__src__utils$46dart, packages__http_parser__src__media_type$46dart) {
   'use strict';
   const core = dart_sdk.core;
-  const ui = dart_sdk.ui;
-  const _internal = dart_sdk._internal;
+  const collection = dart_sdk.collection;
+  const html = dart_sdk.html;
+  const async = dart_sdk.async;
+  const typed_data = dart_sdk.typed_data;
+  const convert = dart_sdk.convert;
+  const _native_typed_data = dart_sdk._native_typed_data;
+  const _js_helper = dart_sdk._js_helper;
   const dart = dart_sdk.dart;
   const dartx = dart_sdk.dartx;
-  const borders = packages__flutter__src__painting__borders$46dart.src__painting__borders;
-  const edge_insets = packages__flutter__src__painting__edge_insets$46dart.src__painting__edge_insets;
-  const circle_border = packages__flutter__src__painting__circle_border$46dart.src__painting__circle_border;
-  const rounded_rectangle_border = packages__flutter__src__painting__rounded_rectangle_border$46dart.src__painting__rounded_rectangle_border;
-  const border_radius = packages__flutter__src__painting__border_radius$46dart.src__painting__border_radius;
-  const object = packages__flutter__src__foundation__object$46dart.src__foundation__object;
-  var stadium_border = Object.create(dart.library);
-  var $runtimeType = dartx.runtimeType;
-  var $toStringAsFixed = dartx.toStringAsFixed;
+  const pedantic = packages__pedantic__pedantic$46dart.pedantic;
+  const byte_stream = packages__http__src__byte_stream$46dart.src__byte_stream;
+  const exception = packages__http__src__exception$46dart.src__exception;
+  const utils = packages__http__src__utils$46dart.src__utils;
+  const media_type = packages__http_parser__src__media_type$46dart.src__media_type;
+  var browser_client = Object.create(dart.library);
+  var response$ = Object.create(dart.library);
+  var request$ = Object.create(dart.library);
+  var base_response = Object.create(dart.library);
+  var streamed_response = Object.create(dart.library);
+  var base_request = Object.create(dart.library);
+  var base_client = Object.create(dart.library);
+  var client$ = Object.create(dart.library);
+  var $forEach = dartx.forEach;
+  var $onLoad = dartx.onLoad;
+  var $response = dartx.response;
+  var $result = dartx.result;
+  var $length = dartx.length;
+  var $responseHeaders = dartx.responseHeaders;
+  var $onError = dartx.onError;
+  var $toString = dartx.toString;
+  var $addAll = dartx.addAll;
+  var $cast = dartx.cast;
+  var $_get = dartx._get;
+  var $containsKey = dartx.containsKey;
+  var $_set = dartx._set;
+  var $toLowerCase = dartx.toLowerCase;
+  var $hashCode = dartx.hashCode;
   dart._checkModuleNullSafetyMode(false);
   var T = {
-    _: () => T
+    HttpRequestL: () => (T.HttpRequestL = dart.constFn(dart.legacy(html.HttpRequest)))(),
+    LinkedHashSetOfHttpRequestL: () => (T.LinkedHashSetOfHttpRequestL = dart.constFn(collection.LinkedHashSet$(T.HttpRequestL())))(),
+    StreamedResponseL: () => (T.StreamedResponseL = dart.constFn(dart.legacy(streamed_response.StreamedResponse)))(),
+    CompleterOfStreamedResponseL: () => (T.CompleterOfStreamedResponseL = dart.constFn(async.Completer$(T.StreamedResponseL())))(),
+    BlobL: () => (T.BlobL = dart.constFn(dart.legacy(html.Blob)))(),
+    Uint8ListL: () => (T.Uint8ListL = dart.constFn(dart.legacy(typed_data.Uint8List)))(),
+    ProgressEventL: () => (T.ProgressEventL = dart.constFn(dart.legacy(html.ProgressEvent)))(),
+    ProgressEventLToNull: () => (T.ProgressEventLToNull = dart.constFn(dart.fnType(core.Null, [T.ProgressEventL()])))(),
+    StringL: () => (T.StringL = dart.constFn(dart.legacy(core.String)))(),
+    ListL: () => (T.ListL = dart.constFn(dart.legacy(core.List)))(),
+    intL: () => (T.intL = dart.constFn(dart.legacy(core.int)))(),
+    MapL: () => (T.MapL = dart.constFn(dart.legacy(core.Map)))(),
+    ResponseL: () => (T.ResponseL = dart.constFn(dart.legacy(response$.Response)))(),
+    IdentityMapOfStringL$StringL: () => (T.IdentityMapOfStringL$StringL = dart.constFn(_js_helper.IdentityMap$(T.StringL(), T.StringL())))(),
+    LinkedHashMapOfStringL$StringL: () => (T.LinkedHashMapOfStringL$StringL = dart.constFn(collection.LinkedHashMap$(T.StringL(), T.StringL())))(),
+    boolL: () => (T.boolL = dart.constFn(dart.legacy(core.bool)))(),
+    StringLAndStringLToboolL: () => (T.StringLAndStringLToboolL = dart.constFn(dart.fnType(T.boolL(), [T.StringL(), T.StringL()])))(),
+    StringLTointL: () => (T.StringLTointL = dart.constFn(dart.fnType(T.intL(), [T.StringL()])))(),
+    ListOfintL: () => (T.ListOfintL = dart.constFn(core.List$(T.intL())))(),
+    ListLOfintL: () => (T.ListLOfintL = dart.constFn(dart.legacy(T.ListOfintL())))(),
+    UriL: () => (T.UriL = dart.constFn(dart.legacy(core.Uri)))()
   };
   var T$Eval = Object.assign({
     _: () => T$Eval
@@ -31,518 +75,644 @@ define(['dart_sdk', 'packages/flutter/src/painting/borders.dart', 'packages/flut
     _: () => (C, CT)
   });
   dart.defineLazy(CT, {
-    get C1() {
-      return C[1] = dart.const({
-        __proto__: borders.BorderStyle.prototype,
-        [_name]: "BorderStyle.none",
-        index: 0
-      });
-    },
-    get C2() {
-      return C[2] = dart.const({
-        __proto__: ui.Color.prototype,
-        [Color_value]: 4278190080.0
-      });
-    },
     get C0() {
-      return C[0] = dart.const({
-        __proto__: borders.BorderSide.prototype,
-        [BorderSide_style]: C[1] || CT.C1,
-        [BorderSide_width]: 0,
-        [BorderSide_color]: C[2] || CT.C2
-      });
-    },
-    get C3() {
-      return C[3] = dart.const({
-        __proto__: borders.BorderStyle.prototype,
-        [_name]: "BorderStyle.solid",
-        index: 1
-      });
-    },
-    get C5() {
-      return C[5] = dart.const({
-        __proto__: ui.Radius.prototype,
-        [Radius_y]: 0,
-        [Radius_x]: 0
-      });
-    },
-    get C4() {
-      return C[4] = dart.const({
-        __proto__: border_radius.BorderRadius.prototype,
-        [BorderRadius_bottomRight]: C[5] || CT.C5,
-        [BorderRadius_bottomLeft]: C[5] || CT.C5,
-        [BorderRadius_topRight]: C[5] || CT.C5,
-        [BorderRadius_topLeft]: C[5] || CT.C5
-      });
+      return C[0] = dart.constMap(T.StringL(), T.StringL(), []);
     }
   }, false);
-  var C = Array(6).fill(void 0);
+  var C = [void 0];
   var I = [
-    "file:///C:/flutter/packages/flutter/lib/src/painting/stadium_border.dart",
-    "package:flutter/src/painting/stadium_border.dart"
+    "package:http/src/base_client.dart",
+    "package:http/src/browser_client.dart",
+    "package:http/src/base_response.dart",
+    "package:http/src/response.dart",
+    "package:http/src/base_request.dart",
+    "package:http/src/request.dart",
+    "package:http/src/streamed_response.dart",
+    "package:http/src/client.dart"
   ];
-  var _name = dart.privateName(borders, "_name");
-  var BorderSide_style = dart.privateName(borders, "BorderSide.style");
-  var BorderSide_width = dart.privateName(borders, "BorderSide.width");
-  var Color_value = dart.privateName(ui, "Color.value");
-  var BorderSide_color = dart.privateName(borders, "BorderSide.color");
-  stadium_border.StadiumBorder = class StadiumBorder extends borders.OutlinedBorder {
-    get dimensions() {
-      return new edge_insets.EdgeInsets.all(this.side.width);
+  var withCredentials = dart.privateName(browser_client, "BrowserClient.withCredentials");
+  var _xhrs = dart.privateName(browser_client, "_xhrs");
+  var _sendUnstreamed = dart.privateName(base_client, "_sendUnstreamed");
+  var _checkResponseSuccess = dart.privateName(base_client, "_checkResponseSuccess");
+  base_client.BaseClient = class BaseClient extends core.Object {
+    head(url, opts) {
+      let headers = opts && 'headers' in opts ? opts.headers : null;
+      return this[_sendUnstreamed]("HEAD", url, headers);
     }
-    scale(t) {
-      if (t == null) dart.nullFailed(I[0], 40, 28, "t");
-      return new stadium_border.StadiumBorder.new({side: this.side.scale(t)});
+    get(url, opts) {
+      let headers = opts && 'headers' in opts ? opts.headers : null;
+      return this[_sendUnstreamed]("GET", url, headers);
     }
-    lerpFrom(a, t) {
-      if (t == null) dart.nullFailed(I[0], 43, 48, "t");
-      if (!(t != null)) dart.assertFailed(null, I[0], 44, 12, "t != null");
-      if (stadium_border.StadiumBorder.is(a)) return new stadium_border.StadiumBorder.new({side: borders.BorderSide.lerp(a.side, this.side, t)});
-      if (circle_border.CircleBorder.is(a)) {
-        return new stadium_border._StadiumToCircleBorder.new({side: borders.BorderSide.lerp(a.side, this.side, t), circleness: 1.0 - dart.notNull(t)});
-      }
-      if (rounded_rectangle_border.RoundedRectangleBorder.is(a)) {
-        return new stadium_border._StadiumToRoundedRectangleBorder.new({side: borders.BorderSide.lerp(a.side, this.side, t), borderRadius: border_radius.BorderRadius.as(a.borderRadius), rectness: 1.0 - dart.notNull(t)});
-      }
-      return super.lerpFrom(a, t);
+    post(url, opts) {
+      let headers = opts && 'headers' in opts ? opts.headers : null;
+      let body = opts && 'body' in opts ? opts.body : null;
+      let encoding = opts && 'encoding' in opts ? opts.encoding : null;
+      return this[_sendUnstreamed]("POST", url, headers, body, encoding);
     }
-    lerpTo(b, t) {
-      if (t == null) dart.nullFailed(I[0], 64, 46, "t");
-      if (!(t != null)) dart.assertFailed(null, I[0], 65, 12, "t != null");
-      if (stadium_border.StadiumBorder.is(b)) return new stadium_border.StadiumBorder.new({side: borders.BorderSide.lerp(this.side, b.side, t)});
-      if (circle_border.CircleBorder.is(b)) {
-        return new stadium_border._StadiumToCircleBorder.new({side: borders.BorderSide.lerp(this.side, b.side, t), circleness: t});
-      }
-      if (rounded_rectangle_border.RoundedRectangleBorder.is(b)) {
-        return new stadium_border._StadiumToRoundedRectangleBorder.new({side: borders.BorderSide.lerp(this.side, b.side, t), borderRadius: border_radius.BorderRadius.as(b.borderRadius), rectness: t});
-      }
-      return super.lerpTo(b, t);
+    put(url, opts) {
+      let headers = opts && 'headers' in opts ? opts.headers : null;
+      let body = opts && 'body' in opts ? opts.body : null;
+      let encoding = opts && 'encoding' in opts ? opts.encoding : null;
+      return this[_sendUnstreamed]("PUT", url, headers, body, encoding);
     }
-    copyWith(opts) {
-      let t0;
-      let side = opts && 'side' in opts ? opts.side : null;
-      return new stadium_border.StadiumBorder.new({side: (t0 = side, t0 == null ? this.side : t0)});
+    patch(url, opts) {
+      let headers = opts && 'headers' in opts ? opts.headers : null;
+      let body = opts && 'body' in opts ? opts.body : null;
+      let encoding = opts && 'encoding' in opts ? opts.encoding : null;
+      return this[_sendUnstreamed]("PATCH", url, headers, body, encoding);
     }
-    getInnerPath(rect, opts) {
-      let t0;
-      if (rect == null) dart.nullFailed(I[0], 90, 26, "rect");
-      let textDirection = opts && 'textDirection' in opts ? opts.textDirection : null;
-      let radius = new ui.Radius.circular(dart.notNull(rect.shortestSide) / 2.0);
-      t0 = ui.Path.new();
-      return (() => {
-        t0.addRRect(new ui.RRect.fromRectAndRadius(rect, radius).deflate(this.side.width));
-        return t0;
-      })();
+    delete(url, opts) {
+      let headers = opts && 'headers' in opts ? opts.headers : null;
+      return this[_sendUnstreamed]("DELETE", url, headers);
     }
-    getOuterPath(rect, opts) {
-      let t0;
-      if (rect == null) dart.nullFailed(I[0], 97, 26, "rect");
-      let textDirection = opts && 'textDirection' in opts ? opts.textDirection : null;
-      let radius = new ui.Radius.circular(dart.notNull(rect.shortestSide) / 2.0);
-      t0 = ui.Path.new();
-      return (() => {
-        t0.addRRect(new ui.RRect.fromRectAndRadius(rect, radius));
-        return t0;
-      })();
+    read(url, opts) {
+      let headers = opts && 'headers' in opts ? opts.headers : null;
+      return async.async(T.StringL(), (function* read() {
+        let response = (yield this.get(url, {headers: headers}));
+        this[_checkResponseSuccess](url, response);
+        return response.body;
+      }).bind(this));
     }
-    paint(canvas, rect, opts) {
-      if (canvas == null) dart.nullFailed(I[0], 104, 21, "canvas");
-      if (rect == null) dart.nullFailed(I[0], 104, 34, "rect");
-      let textDirection = opts && 'textDirection' in opts ? opts.textDirection : null;
-      switch (this.side.style) {
-        case C[1] || CT.C1:
-        {
-          break;
-        }
-        case C[3] || CT.C3:
-        {
-          let radius = new ui.Radius.circular(dart.notNull(rect.shortestSide) / 2.0);
-          canvas.drawRRect(new ui.RRect.fromRectAndRadius(rect, radius).deflate(dart.notNull(this.side.width) / 2.0), this.side.toPaint());
-          break;
-        }
-        default:
-        {
-          dart.throw(new _internal.ReachabilityError.new("`null` encountered as case in a switch expression with a non-nullable enum type."));
-        }
-      }
+    readBytes(url, opts) {
+      let headers = opts && 'headers' in opts ? opts.headers : null;
+      return async.async(T.Uint8ListL(), (function* readBytes() {
+        let response = (yield this.get(url, {headers: headers}));
+        this[_checkResponseSuccess](url, response);
+        return response.bodyBytes;
+      }).bind(this));
     }
-    _equals(other) {
-      if (other == null) return false;
-      if (!dart.equals(dart.runtimeType(other), this[$runtimeType])) return false;
-      return stadium_border.StadiumBorder.is(other) && dart.equals(other.side, this.side);
-    }
-    get hashCode() {
-      return dart.hashCode(this.side);
-    }
-    toString() {
-      return dart.str(object.objectRuntimeType(this, "StadiumBorder")) + "(" + dart.str(this.side) + ")";
-    }
-  };
-  (stadium_border.StadiumBorder.new = function(opts) {
-    let side = opts && 'side' in opts ? opts.side : C[0] || CT.C0;
-    if (side == null) dart.nullFailed(I[0], 32, 36, "side");
-    if (!(side != null)) dart.assertFailed(null, I[0], 32, 71, "side != null");
-    stadium_border.StadiumBorder.__proto__.new.call(this, {side: side});
-    ;
-  }).prototype = stadium_border.StadiumBorder.prototype;
-  dart.addTypeTests(stadium_border.StadiumBorder);
-  dart.addTypeCaches(stadium_border.StadiumBorder);
-  dart.setMethodSignature(stadium_border.StadiumBorder, () => ({
-    __proto__: dart.getMethods(stadium_border.StadiumBorder.__proto__),
-    scale: dart.fnType(borders.ShapeBorder, [core.double]),
-    copyWith: dart.fnType(stadium_border.StadiumBorder, [], {side: dart.nullable(borders.BorderSide)}, {}),
-    getInnerPath: dart.fnType(ui.Path, [ui.Rect], {textDirection: dart.nullable(ui.TextDirection)}, {}),
-    getOuterPath: dart.fnType(ui.Path, [ui.Rect], {textDirection: dart.nullable(ui.TextDirection)}, {}),
-    paint: dart.fnType(dart.void, [ui.Canvas, ui.Rect], {textDirection: dart.nullable(ui.TextDirection)}, {})
-  }));
-  dart.setGetterSignature(stadium_border.StadiumBorder, () => ({
-    __proto__: dart.getGetters(stadium_border.StadiumBorder.__proto__),
-    dimensions: edge_insets.EdgeInsetsGeometry
-  }));
-  dart.setLibraryUri(stadium_border.StadiumBorder, I[1]);
-  dart.defineExtensionMethods(stadium_border.StadiumBorder, ['_equals', 'toString']);
-  dart.defineExtensionAccessors(stadium_border.StadiumBorder, ['hashCode']);
-  var circleness$ = dart.privateName(stadium_border, "_StadiumToCircleBorder.circleness");
-  var _adjustRect = dart.privateName(stadium_border, "_adjustRect");
-  var _adjustBorderRadius = dart.privateName(stadium_border, "_adjustBorderRadius");
-  stadium_border._StadiumToCircleBorder = class _StadiumToCircleBorder extends borders.OutlinedBorder {
-    get circleness() {
-      return this[circleness$];
-    }
-    set circleness(value) {
-      super.circleness = value;
-    }
-    get dimensions() {
-      return new edge_insets.EdgeInsets.all(this.side.width);
-    }
-    scale(t) {
-      if (t == null) dart.nullFailed(I[0], 151, 28, "t");
-      return new stadium_border._StadiumToCircleBorder.new({side: this.side.scale(t), circleness: t});
-    }
-    lerpFrom(a, t) {
-      if (t == null) dart.nullFailed(I[0], 159, 48, "t");
-      if (!(t != null)) dart.assertFailed(null, I[0], 160, 12, "t != null");
-      if (stadium_border.StadiumBorder.is(a)) {
-        return new stadium_border._StadiumToCircleBorder.new({side: borders.BorderSide.lerp(a.side, this.side, t), circleness: dart.notNull(this.circleness) * dart.notNull(t)});
-      }
-      if (circle_border.CircleBorder.is(a)) {
-        return new stadium_border._StadiumToCircleBorder.new({side: borders.BorderSide.lerp(a.side, this.side, t), circleness: dart.notNull(this.circleness) + (1.0 - dart.notNull(this.circleness)) * (1.0 - dart.notNull(t))});
-      }
-      if (stadium_border._StadiumToCircleBorder.is(a)) {
-        return new stadium_border._StadiumToCircleBorder.new({side: borders.BorderSide.lerp(a.side, this.side, t), circleness: dart.nullCheck(ui.lerpDouble(a.circleness, this.circleness, t))});
-      }
-      return super.lerpFrom(a, t);
-    }
-    lerpTo(b, t) {
-      if (t == null) dart.nullFailed(I[0], 183, 46, "t");
-      if (!(t != null)) dart.assertFailed(null, I[0], 184, 12, "t != null");
-      if (stadium_border.StadiumBorder.is(b)) {
-        return new stadium_border._StadiumToCircleBorder.new({side: borders.BorderSide.lerp(this.side, b.side, t), circleness: dart.notNull(this.circleness) * (1.0 - dart.notNull(t))});
-      }
-      if (circle_border.CircleBorder.is(b)) {
-        return new stadium_border._StadiumToCircleBorder.new({side: borders.BorderSide.lerp(this.side, b.side, t), circleness: dart.notNull(this.circleness) + (1.0 - dart.notNull(this.circleness)) * dart.notNull(t)});
-      }
-      if (stadium_border._StadiumToCircleBorder.is(b)) {
-        return new stadium_border._StadiumToCircleBorder.new({side: borders.BorderSide.lerp(this.side, b.side, t), circleness: dart.nullCheck(ui.lerpDouble(this.circleness, b.circleness, t))});
-      }
-      return super.lerpTo(b, t);
-    }
-    [_adjustRect](rect) {
-      if (rect == null) dart.nullFailed(I[0], 206, 25, "rect");
-      if (this.circleness === 0.0 || rect.width == rect.height) return rect;
-      if (dart.notNull(rect.width) < dart.notNull(rect.height)) {
-        let delta = dart.notNull(this.circleness) * (dart.notNull(rect.height) - dart.notNull(rect.width)) / 2.0;
-        return new ui.Rect.fromLTRB(rect.left, dart.notNull(rect.top) + delta, rect.right, dart.notNull(rect.bottom) - delta);
-      } else {
-        let delta = dart.notNull(this.circleness) * (dart.notNull(rect.width) - dart.notNull(rect.height)) / 2.0;
-        return new ui.Rect.fromLTRB(dart.notNull(rect.left) + delta, rect.top, dart.notNull(rect.right) - delta, rect.bottom);
-      }
-    }
-    [_adjustBorderRadius](rect) {
-      if (rect == null) dart.nullFailed(I[0], 228, 41, "rect");
-      return new border_radius.BorderRadius.circular(dart.notNull(rect.shortestSide) / 2.0);
-    }
-    getInnerPath(rect, opts) {
-      let t0;
-      if (rect == null) dart.nullFailed(I[0], 233, 26, "rect");
-      let textDirection = opts && 'textDirection' in opts ? opts.textDirection : null;
-      t0 = ui.Path.new();
-      return (() => {
-        t0.addRRect(this[_adjustBorderRadius](rect).toRRect(this[_adjustRect](rect)).deflate(this.side.width));
-        return t0;
-      })();
-    }
-    getOuterPath(rect, opts) {
-      let t0;
-      if (rect == null) dart.nullFailed(I[0], 239, 26, "rect");
-      let textDirection = opts && 'textDirection' in opts ? opts.textDirection : null;
-      t0 = ui.Path.new();
-      return (() => {
-        t0.addRRect(this[_adjustBorderRadius](rect).toRRect(this[_adjustRect](rect)));
-        return t0;
-      })();
-    }
-    copyWith(opts) {
-      let t0, t0$;
-      let side = opts && 'side' in opts ? opts.side : null;
-      let circleness = opts && 'circleness' in opts ? opts.circleness : null;
-      return new stadium_border._StadiumToCircleBorder.new({side: (t0 = side, t0 == null ? this.side : t0), circleness: (t0$ = circleness, t0$ == null ? this.circleness : t0$)});
-    }
-    paint(canvas, rect, opts) {
-      let t0;
-      if (canvas == null) dart.nullFailed(I[0], 253, 21, "canvas");
-      if (rect == null) dart.nullFailed(I[0], 253, 34, "rect");
-      let textDirection = opts && 'textDirection' in opts ? opts.textDirection : null;
-      switch (this.side.style) {
-        case C[1] || CT.C1:
-        {
-          break;
-        }
-        case C[3] || CT.C3:
-        {
-          let width = this.side.width;
-          if (width === 0.0) {
-            canvas.drawRRect(this[_adjustBorderRadius](rect).toRRect(this[_adjustRect](rect)), this.side.toPaint());
+    [_sendUnstreamed](method, url, headers, body = null, encoding = null) {
+      return async.async(T.ResponseL(), (function* _sendUnstreamed() {
+        let request = new request$.Request.new(method, base_client._fromUriOrString(url));
+        if (headers != null) request.headers[$addAll](headers);
+        if (encoding != null) request.encoding = encoding;
+        if (body != null) {
+          if (T.StringL().is(body)) {
+            request.body = body;
+          } else if (T.ListL().is(body)) {
+            request.bodyBytes = body[$cast](T.intL());
+          } else if (T.MapL().is(body)) {
+            request.bodyFields = body[$cast](T.StringL(), T.StringL());
           } else {
-            let outer = this[_adjustBorderRadius](rect).toRRect(this[_adjustRect](rect));
-            let inner = outer.deflate(width);
-            let paint = (t0 = ui.Paint.new(), (() => {
-              t0.color = this.side.color;
-              return t0;
-            })());
-            canvas.drawDRRect(outer, inner, paint);
+            dart.throw(new core.ArgumentError.new("Invalid request body \"" + dart.str(body) + "\"."));
           }
-          break;
         }
-        default:
-        {
-          dart.throw(new _internal.ReachabilityError.new("`null` encountered as case in a switch expression with a non-nullable enum type."));
-        }
+        return response$.Response.fromStream(yield this.send(request));
+      }).bind(this));
+    }
+    [_checkResponseSuccess](url, response) {
+      if (dart.notNull(response.statusCode) < 400) return;
+      let message = "Request to " + dart.str(url) + " failed with status " + dart.str(response.statusCode);
+      if (response.reasonPhrase != null) {
+        message = message + ": " + dart.str(response.reasonPhrase);
       }
+      dart.throw(new exception.ClientException.new(message + ".", base_client._fromUriOrString(url)));
     }
-    _equals(other) {
-      if (other == null) return false;
-      if (!dart.equals(dart.runtimeType(other), this[$runtimeType])) return false;
-      return stadium_border._StadiumToCircleBorder.is(other) && dart.equals(other.side, this.side) && other.circleness == this.circleness;
-    }
-    get hashCode() {
-      return ui.hashValues(this.side, this.circleness);
-    }
-    toString() {
-      return "StadiumBorder(" + dart.str(this.side) + ", " + (dart.notNull(this.circleness) * 100)[$toStringAsFixed](1) + "% " + "of the way to being a CircleBorder)";
+    close() {
     }
   };
-  (stadium_border._StadiumToCircleBorder.new = function(opts) {
-    let side = opts && 'side' in opts ? opts.side : C[0] || CT.C0;
-    if (side == null) dart.nullFailed(I[0], 137, 16, "side");
-    let circleness = opts && 'circleness' in opts ? opts.circleness : 0;
-    if (circleness == null) dart.nullFailed(I[0], 138, 10, "circleness");
-    this[circleness$] = circleness;
-    if (!(side != null)) dart.assertFailed(null, I[0], 139, 15, "side != null");
-    if (!(circleness != null)) dart.assertFailed(null, I[0], 140, 15, "circleness != null");
-    stadium_border._StadiumToCircleBorder.__proto__.new.call(this, {side: side});
+  (base_client.BaseClient.new = function() {
     ;
-  }).prototype = stadium_border._StadiumToCircleBorder.prototype;
-  dart.addTypeTests(stadium_border._StadiumToCircleBorder);
-  dart.addTypeCaches(stadium_border._StadiumToCircleBorder);
-  dart.setMethodSignature(stadium_border._StadiumToCircleBorder, () => ({
-    __proto__: dart.getMethods(stadium_border._StadiumToCircleBorder.__proto__),
-    scale: dart.fnType(borders.ShapeBorder, [core.double]),
-    [_adjustRect]: dart.fnType(ui.Rect, [ui.Rect]),
-    [_adjustBorderRadius]: dart.fnType(border_radius.BorderRadius, [ui.Rect]),
-    getInnerPath: dart.fnType(ui.Path, [ui.Rect], {textDirection: dart.nullable(ui.TextDirection)}, {}),
-    getOuterPath: dart.fnType(ui.Path, [ui.Rect], {textDirection: dart.nullable(ui.TextDirection)}, {}),
-    copyWith: dart.fnType(stadium_border._StadiumToCircleBorder, [], {circleness: dart.nullable(core.double), side: dart.nullable(borders.BorderSide)}, {}),
-    paint: dart.fnType(dart.void, [ui.Canvas, ui.Rect], {textDirection: dart.nullable(ui.TextDirection)}, {})
+  }).prototype = base_client.BaseClient.prototype;
+  dart.addTypeTests(base_client.BaseClient);
+  dart.addTypeCaches(base_client.BaseClient);
+  base_client.BaseClient[dart.implements] = () => [client$.Client];
+  dart.setMethodSignature(base_client.BaseClient, () => ({
+    __proto__: dart.getMethods(base_client.BaseClient.__proto__),
+    head: dart.fnType(dart.legacy(async.Future$(dart.legacy(response$.Response))), [dart.dynamic], {headers: dart.legacy(core.Map$(dart.legacy(core.String), dart.legacy(core.String)))}, {}),
+    get: dart.fnType(dart.legacy(async.Future$(dart.legacy(response$.Response))), [dart.dynamic], {headers: dart.legacy(core.Map$(dart.legacy(core.String), dart.legacy(core.String)))}, {}),
+    post: dart.fnType(dart.legacy(async.Future$(dart.legacy(response$.Response))), [dart.dynamic], {body: dart.dynamic, encoding: dart.legacy(convert.Encoding), headers: dart.legacy(core.Map$(dart.legacy(core.String), dart.legacy(core.String)))}, {}),
+    put: dart.fnType(dart.legacy(async.Future$(dart.legacy(response$.Response))), [dart.dynamic], {body: dart.dynamic, encoding: dart.legacy(convert.Encoding), headers: dart.legacy(core.Map$(dart.legacy(core.String), dart.legacy(core.String)))}, {}),
+    patch: dart.fnType(dart.legacy(async.Future$(dart.legacy(response$.Response))), [dart.dynamic], {body: dart.dynamic, encoding: dart.legacy(convert.Encoding), headers: dart.legacy(core.Map$(dart.legacy(core.String), dart.legacy(core.String)))}, {}),
+    delete: dart.fnType(dart.legacy(async.Future$(dart.legacy(response$.Response))), [dart.dynamic], {headers: dart.legacy(core.Map$(dart.legacy(core.String), dart.legacy(core.String)))}, {}),
+    read: dart.fnType(dart.legacy(async.Future$(dart.legacy(core.String))), [dart.dynamic], {headers: dart.legacy(core.Map$(dart.legacy(core.String), dart.legacy(core.String)))}, {}),
+    readBytes: dart.fnType(dart.legacy(async.Future$(dart.legacy(typed_data.Uint8List))), [dart.dynamic], {headers: dart.legacy(core.Map$(dart.legacy(core.String), dart.legacy(core.String)))}, {}),
+    [_sendUnstreamed]: dart.fnType(dart.legacy(async.Future$(dart.legacy(response$.Response))), [dart.legacy(core.String), dart.dynamic, dart.legacy(core.Map$(dart.legacy(core.String), dart.legacy(core.String)))], [dart.dynamic, dart.legacy(convert.Encoding)]),
+    [_checkResponseSuccess]: dart.fnType(dart.void, [dart.dynamic, dart.legacy(response$.Response)]),
+    close: dart.fnType(dart.void, [])
   }));
-  dart.setGetterSignature(stadium_border._StadiumToCircleBorder, () => ({
-    __proto__: dart.getGetters(stadium_border._StadiumToCircleBorder.__proto__),
-    dimensions: edge_insets.EdgeInsetsGeometry
-  }));
-  dart.setLibraryUri(stadium_border._StadiumToCircleBorder, I[1]);
-  dart.setFieldSignature(stadium_border._StadiumToCircleBorder, () => ({
-    __proto__: dart.getFields(stadium_border._StadiumToCircleBorder.__proto__),
-    circleness: dart.finalFieldType(core.double)
-  }));
-  dart.defineExtensionMethods(stadium_border._StadiumToCircleBorder, ['_equals', 'toString']);
-  dart.defineExtensionAccessors(stadium_border._StadiumToCircleBorder, ['hashCode']);
-  var borderRadius$ = dart.privateName(stadium_border, "_StadiumToRoundedRectangleBorder.borderRadius");
-  var rectness$ = dart.privateName(stadium_border, "_StadiumToRoundedRectangleBorder.rectness");
-  var Radius_y = dart.privateName(ui, "Radius.y");
-  var Radius_x = dart.privateName(ui, "Radius.x");
-  var BorderRadius_bottomRight = dart.privateName(border_radius, "BorderRadius.bottomRight");
-  var BorderRadius_bottomLeft = dart.privateName(border_radius, "BorderRadius.bottomLeft");
-  var BorderRadius_topRight = dart.privateName(border_radius, "BorderRadius.topRight");
-  var BorderRadius_topLeft = dart.privateName(border_radius, "BorderRadius.topLeft");
-  stadium_border._StadiumToRoundedRectangleBorder = class _StadiumToRoundedRectangleBorder extends borders.OutlinedBorder {
-    get borderRadius() {
-      return this[borderRadius$];
+  dart.setLibraryUri(base_client.BaseClient, I[0]);
+  browser_client.BrowserClient = class BrowserClient extends base_client.BaseClient {
+    get withCredentials() {
+      return this[withCredentials];
     }
-    set borderRadius(value) {
-      super.borderRadius = value;
+    set withCredentials(value) {
+      this[withCredentials] = value;
     }
-    get rectness() {
-      return this[rectness$];
-    }
-    set rectness(value) {
-      super.rectness = value;
-    }
-    get dimensions() {
-      return new edge_insets.EdgeInsets.all(this.side.width);
-    }
-    scale(t) {
-      if (t == null) dart.nullFailed(I[0], 311, 28, "t");
-      return new stadium_border._StadiumToRoundedRectangleBorder.new({side: this.side.scale(t), borderRadius: this.borderRadius['*'](t), rectness: t});
-    }
-    lerpFrom(a, t) {
-      if (t == null) dart.nullFailed(I[0], 320, 48, "t");
-      if (!(t != null)) dart.assertFailed(null, I[0], 321, 12, "t != null");
-      if (stadium_border.StadiumBorder.is(a)) {
-        return new stadium_border._StadiumToRoundedRectangleBorder.new({side: borders.BorderSide.lerp(a.side, this.side, t), borderRadius: this.borderRadius, rectness: dart.notNull(this.rectness) * dart.notNull(t)});
-      }
-      if (rounded_rectangle_border.RoundedRectangleBorder.is(a)) {
-        return new stadium_border._StadiumToRoundedRectangleBorder.new({side: borders.BorderSide.lerp(a.side, this.side, t), borderRadius: this.borderRadius, rectness: dart.notNull(this.rectness) + (1.0 - dart.notNull(this.rectness)) * (1.0 - dart.notNull(t))});
-      }
-      if (stadium_border._StadiumToRoundedRectangleBorder.is(a)) {
-        return new stadium_border._StadiumToRoundedRectangleBorder.new({side: borders.BorderSide.lerp(a.side, this.side, t), borderRadius: dart.nullCheck(border_radius.BorderRadius.lerp(a.borderRadius, this.borderRadius, t)), rectness: dart.nullCheck(ui.lerpDouble(a.rectness, this.rectness, t))});
-      }
-      return super.lerpFrom(a, t);
-    }
-    lerpTo(b, t) {
-      if (t == null) dart.nullFailed(I[0], 347, 46, "t");
-      if (!(t != null)) dart.assertFailed(null, I[0], 348, 12, "t != null");
-      if (stadium_border.StadiumBorder.is(b)) {
-        return new stadium_border._StadiumToRoundedRectangleBorder.new({side: borders.BorderSide.lerp(this.side, b.side, t), borderRadius: this.borderRadius, rectness: dart.notNull(this.rectness) * (1.0 - dart.notNull(t))});
-      }
-      if (rounded_rectangle_border.RoundedRectangleBorder.is(b)) {
-        return new stadium_border._StadiumToRoundedRectangleBorder.new({side: borders.BorderSide.lerp(this.side, b.side, t), borderRadius: this.borderRadius, rectness: dart.notNull(this.rectness) + (1.0 - dart.notNull(this.rectness)) * dart.notNull(t)});
-      }
-      if (stadium_border._StadiumToRoundedRectangleBorder.is(b)) {
-        return new stadium_border._StadiumToRoundedRectangleBorder.new({side: borders.BorderSide.lerp(this.side, b.side, t), borderRadius: dart.nullCheck(border_radius.BorderRadius.lerp(this.borderRadius, b.borderRadius, t)), rectness: dart.nullCheck(ui.lerpDouble(this.rectness, b.rectness, t))});
-      }
-      return super.lerpTo(b, t);
-    }
-    [_adjustBorderRadius](rect) {
-      if (rect == null) dart.nullFailed(I[0], 373, 41, "rect");
-      return dart.nullCheck(border_radius.BorderRadius.lerp(this.borderRadius, new border_radius.BorderRadius.all(new ui.Radius.circular(dart.notNull(rect.shortestSide) / 2.0)), 1.0 - dart.notNull(this.rectness)));
-    }
-    getInnerPath(rect, opts) {
-      let t0;
-      if (rect == null) dart.nullFailed(I[0], 382, 26, "rect");
-      let textDirection = opts && 'textDirection' in opts ? opts.textDirection : null;
-      t0 = ui.Path.new();
-      return (() => {
-        t0.addRRect(this[_adjustBorderRadius](rect).toRRect(rect).deflate(this.side.width));
-        return t0;
-      })();
-    }
-    getOuterPath(rect, opts) {
-      let t0;
-      if (rect == null) dart.nullFailed(I[0], 388, 26, "rect");
-      let textDirection = opts && 'textDirection' in opts ? opts.textDirection : null;
-      t0 = ui.Path.new();
-      return (() => {
-        t0.addRRect(this[_adjustBorderRadius](rect).toRRect(rect));
-        return t0;
-      })();
-    }
-    copyWith(opts) {
-      let t0, t0$, t0$0;
-      let side = opts && 'side' in opts ? opts.side : null;
-      let borderRadius = opts && 'borderRadius' in opts ? opts.borderRadius : null;
-      let rectness = opts && 'rectness' in opts ? opts.rectness : null;
-      return new stadium_border._StadiumToRoundedRectangleBorder.new({side: (t0 = side, t0 == null ? this.side : t0), borderRadius: (t0$ = borderRadius, t0$ == null ? this.borderRadius : t0$), rectness: (t0$0 = rectness, t0$0 == null ? this.rectness : t0$0)});
-    }
-    paint(canvas, rect, opts) {
-      let t0;
-      if (canvas == null) dart.nullFailed(I[0], 403, 21, "canvas");
-      if (rect == null) dart.nullFailed(I[0], 403, 34, "rect");
-      let textDirection = opts && 'textDirection' in opts ? opts.textDirection : null;
-      switch (this.side.style) {
-        case C[1] || CT.C1:
-        {
-          break;
+    send(request) {
+      return async.async(T.StreamedResponseL(), (function* send() {
+        let t0;
+        let bytes = (yield request.finalize().toBytes());
+        let xhr = html.HttpRequest.new();
+        this[_xhrs].add(xhr);
+        t0 = xhr;
+        (() => {
+          t0.open(request.method, dart.str(request.url), {async: true});
+          t0.responseType = "blob";
+          t0.withCredentials = this.withCredentials;
+          return t0;
+        })();
+        request.headers[$forEach](dart.bind(xhr, 'setRequestHeader'));
+        let completer = T.CompleterOfStreamedResponseL().new();
+        pedantic.unawaited(xhr[$onLoad].first.then(dart.void, dart.fn(_ => {
+          let t0;
+          let blob = (t0 = T.BlobL().as(xhr[$response]), t0 == null ? html.Blob.new([]) : t0);
+          let reader = html.FileReader.new();
+          reader[$onLoad].first.then(core.Null, dart.fn(_ => {
+            let body = T.Uint8ListL().as(reader[$result]);
+            completer.complete(new streamed_response.StreamedResponse.new(byte_stream.ByteStream.fromBytes(body), xhr.status, {contentLength: body[$length], request: request, headers: xhr[$responseHeaders], reasonPhrase: xhr.statusText}));
+          }, T.ProgressEventLToNull()));
+          reader[$onError].first.then(core.Null, dart.fn(error => {
+            completer.completeError(new exception.ClientException.new(dart.toString(error), request.url), core.StackTrace.current);
+          }, T.ProgressEventLToNull()));
+          reader.readAsArrayBuffer(blob);
+        }, T.ProgressEventLToNull())));
+        pedantic.unawaited(xhr[$onError].first.then(dart.void, dart.fn(_ => {
+          completer.completeError(new exception.ClientException.new("XMLHttpRequest error.", request.url), core.StackTrace.current);
+        }, T.ProgressEventLToNull())));
+        xhr.send(bytes);
+        try {
+          return yield completer.future;
+        } finally {
+          this[_xhrs].remove(xhr);
         }
-        case C[3] || CT.C3:
-        {
-          let width = this.side.width;
-          if (width === 0.0) {
-            canvas.drawRRect(this[_adjustBorderRadius](rect).toRRect(rect), this.side.toPaint());
-          } else {
-            let outer = this[_adjustBorderRadius](rect).toRRect(rect);
-            let inner = outer.deflate(width);
-            let paint = (t0 = ui.Paint.new(), (() => {
-              t0.color = this.side.color;
-              return t0;
-            })());
-            canvas.drawDRRect(outer, inner, paint);
-          }
-          break;
-        }
-        default:
-        {
-          dart.throw(new _internal.ReachabilityError.new("`null` encountered as case in a switch expression with a non-nullable enum type."));
-        }
+      }).bind(this));
+    }
+    close() {
+      for (let xhr of this[_xhrs]) {
+        xhr.abort();
       }
-    }
-    _equals(other) {
-      if (other == null) return false;
-      if (!dart.equals(dart.runtimeType(other), this[$runtimeType])) return false;
-      return stadium_border._StadiumToRoundedRectangleBorder.is(other) && dart.equals(other.side, this.side) && dart.equals(other.borderRadius, this.borderRadius) && other.rectness == this.rectness;
-    }
-    get hashCode() {
-      return ui.hashValues(this.side, this.borderRadius, this.rectness);
-    }
-    toString() {
-      return "StadiumBorder(" + dart.str(this.side) + ", " + dart.str(this.borderRadius) + ", " + (dart.notNull(this.rectness) * 100)[$toStringAsFixed](1) + "% of the way to being a " + "RoundedRectangleBorder)";
     }
   };
-  (stadium_border._StadiumToRoundedRectangleBorder.new = function(opts) {
-    let side = opts && 'side' in opts ? opts.side : C[0] || CT.C0;
-    if (side == null) dart.nullFailed(I[0], 293, 16, "side");
-    let borderRadius = opts && 'borderRadius' in opts ? opts.borderRadius : C[4] || CT.C4;
-    if (borderRadius == null) dart.nullFailed(I[0], 294, 10, "borderRadius");
-    let rectness = opts && 'rectness' in opts ? opts.rectness : 0;
-    if (rectness == null) dart.nullFailed(I[0], 295, 10, "rectness");
-    this[borderRadius$] = borderRadius;
-    this[rectness$] = rectness;
-    if (!(side != null)) dart.assertFailed(null, I[0], 296, 15, "side != null");
-    if (!(borderRadius != null)) dart.assertFailed(null, I[0], 297, 15, "borderRadius != null");
-    if (!(rectness != null)) dart.assertFailed(null, I[0], 298, 15, "rectness != null");
-    stadium_border._StadiumToRoundedRectangleBorder.__proto__.new.call(this, {side: side});
+  (browser_client.BrowserClient.new = function() {
+    this[_xhrs] = T.LinkedHashSetOfHttpRequestL().new();
+    this[withCredentials] = false;
     ;
-  }).prototype = stadium_border._StadiumToRoundedRectangleBorder.prototype;
-  dart.addTypeTests(stadium_border._StadiumToRoundedRectangleBorder);
-  dart.addTypeCaches(stadium_border._StadiumToRoundedRectangleBorder);
-  dart.setMethodSignature(stadium_border._StadiumToRoundedRectangleBorder, () => ({
-    __proto__: dart.getMethods(stadium_border._StadiumToRoundedRectangleBorder.__proto__),
-    scale: dart.fnType(borders.ShapeBorder, [core.double]),
-    [_adjustBorderRadius]: dart.fnType(border_radius.BorderRadius, [ui.Rect]),
-    getInnerPath: dart.fnType(ui.Path, [ui.Rect], {textDirection: dart.nullable(ui.TextDirection)}, {}),
-    getOuterPath: dart.fnType(ui.Path, [ui.Rect], {textDirection: dart.nullable(ui.TextDirection)}, {}),
-    copyWith: dart.fnType(stadium_border._StadiumToRoundedRectangleBorder, [], {borderRadius: dart.nullable(border_radius.BorderRadius), rectness: dart.nullable(core.double), side: dart.nullable(borders.BorderSide)}, {}),
-    paint: dart.fnType(dart.void, [ui.Canvas, ui.Rect], {textDirection: dart.nullable(ui.TextDirection)}, {})
+  }).prototype = browser_client.BrowserClient.prototype;
+  dart.addTypeTests(browser_client.BrowserClient);
+  dart.addTypeCaches(browser_client.BrowserClient);
+  dart.setMethodSignature(browser_client.BrowserClient, () => ({
+    __proto__: dart.getMethods(browser_client.BrowserClient.__proto__),
+    send: dart.fnType(dart.legacy(async.Future$(dart.legacy(streamed_response.StreamedResponse))), [dart.legacy(base_request.BaseRequest)])
   }));
-  dart.setGetterSignature(stadium_border._StadiumToRoundedRectangleBorder, () => ({
-    __proto__: dart.getGetters(stadium_border._StadiumToRoundedRectangleBorder.__proto__),
-    dimensions: edge_insets.EdgeInsetsGeometry
+  dart.setLibraryUri(browser_client.BrowserClient, I[1]);
+  dart.setFieldSignature(browser_client.BrowserClient, () => ({
+    __proto__: dart.getFields(browser_client.BrowserClient.__proto__),
+    [_xhrs]: dart.finalFieldType(dart.legacy(core.Set$(dart.legacy(html.HttpRequest)))),
+    withCredentials: dart.fieldType(dart.legacy(core.bool))
   }));
-  dart.setLibraryUri(stadium_border._StadiumToRoundedRectangleBorder, I[1]);
-  dart.setFieldSignature(stadium_border._StadiumToRoundedRectangleBorder, () => ({
-    __proto__: dart.getFields(stadium_border._StadiumToRoundedRectangleBorder.__proto__),
-    borderRadius: dart.finalFieldType(border_radius.BorderRadius),
-    rectness: dart.finalFieldType(core.double)
+  browser_client.createClient = function createClient() {
+    return new browser_client.BrowserClient.new();
+  };
+  var bodyBytes$ = dart.privateName(response$, "Response.bodyBytes");
+  var request$0 = dart.privateName(base_response, "BaseResponse.request");
+  var statusCode$ = dart.privateName(base_response, "BaseResponse.statusCode");
+  var reasonPhrase$ = dart.privateName(base_response, "BaseResponse.reasonPhrase");
+  var contentLength$ = dart.privateName(base_response, "BaseResponse.contentLength");
+  var headers$ = dart.privateName(base_response, "BaseResponse.headers");
+  var isRedirect$ = dart.privateName(base_response, "BaseResponse.isRedirect");
+  var persistentConnection$ = dart.privateName(base_response, "BaseResponse.persistentConnection");
+  base_response.BaseResponse = class BaseResponse extends core.Object {
+    get request() {
+      return this[request$0];
+    }
+    set request(value) {
+      super.request = value;
+    }
+    get statusCode() {
+      return this[statusCode$];
+    }
+    set statusCode(value) {
+      super.statusCode = value;
+    }
+    get reasonPhrase() {
+      return this[reasonPhrase$];
+    }
+    set reasonPhrase(value) {
+      super.reasonPhrase = value;
+    }
+    get contentLength() {
+      return this[contentLength$];
+    }
+    set contentLength(value) {
+      super.contentLength = value;
+    }
+    get headers() {
+      return this[headers$];
+    }
+    set headers(value) {
+      super.headers = value;
+    }
+    get isRedirect() {
+      return this[isRedirect$];
+    }
+    set isRedirect(value) {
+      super.isRedirect = value;
+    }
+    get persistentConnection() {
+      return this[persistentConnection$];
+    }
+    set persistentConnection(value) {
+      super.persistentConnection = value;
+    }
+  };
+  (base_response.BaseResponse.new = function(statusCode, opts) {
+    let contentLength = opts && 'contentLength' in opts ? opts.contentLength : null;
+    let request = opts && 'request' in opts ? opts.request : null;
+    let headers = opts && 'headers' in opts ? opts.headers : C[0] || CT.C0;
+    let isRedirect = opts && 'isRedirect' in opts ? opts.isRedirect : false;
+    let persistentConnection = opts && 'persistentConnection' in opts ? opts.persistentConnection : true;
+    let reasonPhrase = opts && 'reasonPhrase' in opts ? opts.reasonPhrase : null;
+    this[statusCode$] = statusCode;
+    this[contentLength$] = contentLength;
+    this[request$0] = request;
+    this[headers$] = headers;
+    this[isRedirect$] = isRedirect;
+    this[persistentConnection$] = persistentConnection;
+    this[reasonPhrase$] = reasonPhrase;
+    if (dart.notNull(this.statusCode) < 100) {
+      dart.throw(new core.ArgumentError.new("Invalid status code " + dart.str(this.statusCode) + "."));
+    } else if (this.contentLength != null && dart.notNull(this.contentLength) < 0) {
+      dart.throw(new core.ArgumentError.new("Invalid content length " + dart.str(this.contentLength) + "."));
+    }
+  }).prototype = base_response.BaseResponse.prototype;
+  dart.addTypeTests(base_response.BaseResponse);
+  dart.addTypeCaches(base_response.BaseResponse);
+  dart.setLibraryUri(base_response.BaseResponse, I[2]);
+  dart.setFieldSignature(base_response.BaseResponse, () => ({
+    __proto__: dart.getFields(base_response.BaseResponse.__proto__),
+    request: dart.finalFieldType(dart.legacy(base_request.BaseRequest)),
+    statusCode: dart.finalFieldType(dart.legacy(core.int)),
+    reasonPhrase: dart.finalFieldType(dart.legacy(core.String)),
+    contentLength: dart.finalFieldType(dart.legacy(core.int)),
+    headers: dart.finalFieldType(dart.legacy(core.Map$(dart.legacy(core.String), dart.legacy(core.String)))),
+    isRedirect: dart.finalFieldType(dart.legacy(core.bool)),
+    persistentConnection: dart.finalFieldType(dart.legacy(core.bool))
   }));
-  dart.defineExtensionMethods(stadium_border._StadiumToRoundedRectangleBorder, ['_equals', 'toString']);
-  dart.defineExtensionAccessors(stadium_border._StadiumToRoundedRectangleBorder, ['hashCode']);
-  dart.trackLibraries("packages/flutter/src/painting/stadium_border.dart", {
-    "package:flutter/src/painting/stadium_border.dart": stadium_border
+  response$.Response = class Response extends base_response.BaseResponse {
+    get bodyBytes() {
+      return this[bodyBytes$];
+    }
+    set bodyBytes(value) {
+      super.bodyBytes = value;
+    }
+    get body() {
+      return response$._encodingForHeaders(this.headers).decode(this.bodyBytes);
+    }
+    static fromStream(response) {
+      return async.async(T.ResponseL(), function* fromStream() {
+        let body = (yield response.stream.toBytes());
+        return new response$.Response.bytes(body, response.statusCode, {request: response.request, headers: response.headers, isRedirect: response.isRedirect, persistentConnection: response.persistentConnection, reasonPhrase: response.reasonPhrase});
+      });
+    }
+  };
+  (response$.Response.new = function(body, statusCode, opts) {
+    let request = opts && 'request' in opts ? opts.request : null;
+    let headers = opts && 'headers' in opts ? opts.headers : C[0] || CT.C0;
+    let isRedirect = opts && 'isRedirect' in opts ? opts.isRedirect : false;
+    let persistentConnection = opts && 'persistentConnection' in opts ? opts.persistentConnection : true;
+    let reasonPhrase = opts && 'reasonPhrase' in opts ? opts.reasonPhrase : null;
+    response$.Response.bytes.call(this, response$._encodingForHeaders(headers).encode(body), statusCode, {request: request, headers: headers, isRedirect: isRedirect, persistentConnection: persistentConnection, reasonPhrase: reasonPhrase});
+  }).prototype = response$.Response.prototype;
+  (response$.Response.bytes = function(bodyBytes, statusCode, opts) {
+    let request = opts && 'request' in opts ? opts.request : null;
+    let headers = opts && 'headers' in opts ? opts.headers : C[0] || CT.C0;
+    let isRedirect = opts && 'isRedirect' in opts ? opts.isRedirect : false;
+    let persistentConnection = opts && 'persistentConnection' in opts ? opts.persistentConnection : true;
+    let reasonPhrase = opts && 'reasonPhrase' in opts ? opts.reasonPhrase : null;
+    this[bodyBytes$] = utils.toUint8List(bodyBytes);
+    response$.Response.__proto__.new.call(this, statusCode, {contentLength: bodyBytes[$length], request: request, headers: headers, isRedirect: isRedirect, persistentConnection: persistentConnection, reasonPhrase: reasonPhrase});
+    ;
+  }).prototype = response$.Response.prototype;
+  dart.addTypeTests(response$.Response);
+  dart.addTypeCaches(response$.Response);
+  dart.setGetterSignature(response$.Response, () => ({
+    __proto__: dart.getGetters(response$.Response.__proto__),
+    body: dart.legacy(core.String)
+  }));
+  dart.setLibraryUri(response$.Response, I[3]);
+  dart.setFieldSignature(response$.Response, () => ({
+    __proto__: dart.getFields(response$.Response.__proto__),
+    bodyBytes: dart.finalFieldType(dart.legacy(typed_data.Uint8List))
+  }));
+  response$._encodingForHeaders = function _encodingForHeaders(headers) {
+    return utils.encodingForCharset(response$._contentTypeForHeaders(headers).parameters[$_get]("charset"));
+  };
+  response$._contentTypeForHeaders = function _contentTypeForHeaders(headers) {
+    let contentType = headers[$_get]("content-type");
+    if (contentType != null) return media_type.MediaType.parse(contentType);
+    return new media_type.MediaType.new("application", "octet-stream");
+  };
+  var _defaultEncoding = dart.privateName(request$, "_defaultEncoding");
+  var _bodyBytes = dart.privateName(request$, "_bodyBytes");
+  var _contentType = dart.privateName(request$, "_contentType");
+  var _checkFinalized = dart.privateName(request$, "_checkFinalized");
+  var method$ = dart.privateName(base_request, "BaseRequest.method");
+  var url$ = dart.privateName(base_request, "BaseRequest.url");
+  var headers = dart.privateName(base_request, "BaseRequest.headers");
+  var _contentLength = dart.privateName(base_request, "_contentLength");
+  var _persistentConnection = dart.privateName(base_request, "_persistentConnection");
+  var _followRedirects = dart.privateName(base_request, "_followRedirects");
+  var _maxRedirects = dart.privateName(base_request, "_maxRedirects");
+  var _finalized = dart.privateName(base_request, "_finalized");
+  var _checkFinalized$ = dart.privateName(base_request, "_checkFinalized");
+  base_request.BaseRequest = class BaseRequest extends core.Object {
+    get method() {
+      return this[method$];
+    }
+    set method(value) {
+      super.method = value;
+    }
+    get url() {
+      return this[url$];
+    }
+    set url(value) {
+      super.url = value;
+    }
+    get headers() {
+      return this[headers];
+    }
+    set headers(value) {
+      super.headers = value;
+    }
+    get contentLength() {
+      return this[_contentLength];
+    }
+    set contentLength(value) {
+      if (value != null && dart.notNull(value) < 0) {
+        dart.throw(new core.ArgumentError.new("Invalid content length " + dart.str(value) + "."));
+      }
+      this[_checkFinalized$]();
+      this[_contentLength] = value;
+    }
+    get persistentConnection() {
+      return this[_persistentConnection];
+    }
+    set persistentConnection(value) {
+      this[_checkFinalized$]();
+      this[_persistentConnection] = value;
+    }
+    get followRedirects() {
+      return this[_followRedirects];
+    }
+    set followRedirects(value) {
+      this[_checkFinalized$]();
+      this[_followRedirects] = value;
+    }
+    get maxRedirects() {
+      return this[_maxRedirects];
+    }
+    set maxRedirects(value) {
+      this[_checkFinalized$]();
+      this[_maxRedirects] = value;
+    }
+    get finalized() {
+      return this[_finalized];
+    }
+    finalize() {
+      if (dart.test(this.finalized)) dart.throw(new core.StateError.new("Can't finalize a finalized Request."));
+      this[_finalized] = true;
+      return null;
+    }
+    send() {
+      return async.async(T.StreamedResponseL(), (function* send() {
+        let client = client$.Client.new();
+        try {
+          let response = (yield client.send(this));
+          let stream = utils.onDone(T.ListLOfintL(), response.stream, dart.bind(client, 'close'));
+          return new streamed_response.StreamedResponse.new(new byte_stream.ByteStream.new(stream), response.statusCode, {contentLength: response.contentLength, request: response.request, headers: response.headers, isRedirect: response.isRedirect, persistentConnection: response.persistentConnection, reasonPhrase: response.reasonPhrase});
+        } catch (e) {
+          let _ = dart.getThrown(e);
+          client.close();
+          dart.rethrow(e);
+        }
+      }).bind(this));
+    }
+    [_checkFinalized$]() {
+      if (!dart.test(this.finalized)) return;
+      dart.throw(new core.StateError.new("Can't modify a finalized Request."));
+    }
+    toString() {
+      return dart.str(this.method) + " " + dart.str(this.url);
+    }
+  };
+  (base_request.BaseRequest.new = function(method, url) {
+    this[_contentLength] = null;
+    this[_persistentConnection] = true;
+    this[_followRedirects] = true;
+    this[_maxRedirects] = 5;
+    this[_finalized] = false;
+    this[method$] = method;
+    this[url$] = url;
+    this[headers] = T.LinkedHashMapOfStringL$StringL().new({equals: dart.fn((key1, key2) => key1[$toLowerCase]() === key2[$toLowerCase](), T.StringLAndStringLToboolL()), hashCode: dart.fn(key => key[$toLowerCase]()[$hashCode], T.StringLTointL())});
+    ;
+  }).prototype = base_request.BaseRequest.prototype;
+  dart.addTypeTests(base_request.BaseRequest);
+  dart.addTypeCaches(base_request.BaseRequest);
+  dart.setMethodSignature(base_request.BaseRequest, () => ({
+    __proto__: dart.getMethods(base_request.BaseRequest.__proto__),
+    finalize: dart.fnType(dart.legacy(byte_stream.ByteStream), []),
+    send: dart.fnType(dart.legacy(async.Future$(dart.legacy(streamed_response.StreamedResponse))), []),
+    [_checkFinalized$]: dart.fnType(dart.void, []),
+    toString: dart.fnType(dart.legacy(core.String), []),
+    [$toString]: dart.fnType(dart.legacy(core.String), [])
+  }));
+  dart.setGetterSignature(base_request.BaseRequest, () => ({
+    __proto__: dart.getGetters(base_request.BaseRequest.__proto__),
+    contentLength: dart.legacy(core.int),
+    persistentConnection: dart.legacy(core.bool),
+    followRedirects: dart.legacy(core.bool),
+    maxRedirects: dart.legacy(core.int),
+    finalized: dart.legacy(core.bool)
+  }));
+  dart.setSetterSignature(base_request.BaseRequest, () => ({
+    __proto__: dart.getSetters(base_request.BaseRequest.__proto__),
+    contentLength: dart.legacy(core.int),
+    persistentConnection: dart.legacy(core.bool),
+    followRedirects: dart.legacy(core.bool),
+    maxRedirects: dart.legacy(core.int)
+  }));
+  dart.setLibraryUri(base_request.BaseRequest, I[4]);
+  dart.setFieldSignature(base_request.BaseRequest, () => ({
+    __proto__: dart.getFields(base_request.BaseRequest.__proto__),
+    method: dart.finalFieldType(dart.legacy(core.String)),
+    url: dart.finalFieldType(dart.legacy(core.Uri)),
+    [_contentLength]: dart.fieldType(dart.legacy(core.int)),
+    [_persistentConnection]: dart.fieldType(dart.legacy(core.bool)),
+    [_followRedirects]: dart.fieldType(dart.legacy(core.bool)),
+    [_maxRedirects]: dart.fieldType(dart.legacy(core.int)),
+    headers: dart.finalFieldType(dart.legacy(core.Map$(dart.legacy(core.String), dart.legacy(core.String)))),
+    [_finalized]: dart.fieldType(dart.legacy(core.bool))
+  }));
+  dart.defineExtensionMethods(base_request.BaseRequest, ['toString']);
+  request$.Request = class Request extends base_request.BaseRequest {
+    get contentLength() {
+      return this.bodyBytes[$length];
+    }
+    set contentLength(value) {
+      dart.throw(new core.UnsupportedError.new("Cannot set the contentLength property of " + "non-streaming Request objects."));
+    }
+    get encoding() {
+      if (this[_contentType] == null || !dart.test(this[_contentType].parameters[$containsKey]("charset"))) {
+        return this[_defaultEncoding];
+      }
+      return utils.requiredEncodingForCharset(this[_contentType].parameters[$_get]("charset"));
+    }
+    set encoding(value) {
+      this[_checkFinalized]();
+      this[_defaultEncoding] = value;
+      let contentType = this[_contentType];
+      if (contentType == null) return;
+      this[_contentType] = contentType.change({parameters: new (T.IdentityMapOfStringL$StringL()).from(["charset", value.name])});
+    }
+    get bodyBytes() {
+      return this[_bodyBytes];
+    }
+    set bodyBytes(value) {
+      this[_checkFinalized]();
+      this[_bodyBytes] = utils.toUint8List(value);
+    }
+    get body() {
+      return this.encoding.decode(this.bodyBytes);
+    }
+    set body(value) {
+      this.bodyBytes = this.encoding.encode(value);
+      let contentType = this[_contentType];
+      if (contentType == null) {
+        this[_contentType] = new media_type.MediaType.new("text", "plain", new (T.IdentityMapOfStringL$StringL()).from(["charset", this.encoding.name]));
+      } else if (!dart.test(contentType.parameters[$containsKey]("charset"))) {
+        this[_contentType] = contentType.change({parameters: new (T.IdentityMapOfStringL$StringL()).from(["charset", this.encoding.name])});
+      }
+    }
+    get bodyFields() {
+      let contentType = this[_contentType];
+      if (contentType == null || contentType.mimeType !== "application/x-www-form-urlencoded") {
+        dart.throw(new core.StateError.new("Cannot access the body fields of a Request without " + "content-type \"application/x-www-form-urlencoded\"."));
+      }
+      return core.Uri.splitQueryString(this.body, {encoding: this.encoding});
+    }
+    set bodyFields(fields) {
+      let contentType = this[_contentType];
+      if (contentType == null) {
+        this[_contentType] = new media_type.MediaType.new("application", "x-www-form-urlencoded");
+      } else if (contentType.mimeType !== "application/x-www-form-urlencoded") {
+        dart.throw(new core.StateError.new("Cannot set the body fields of a Request with " + "content-type \"" + dart.str(contentType.mimeType) + "\"."));
+      }
+      this.body = utils.mapToQuery(fields, {encoding: this.encoding});
+    }
+    finalize() {
+      super.finalize();
+      return byte_stream.ByteStream.fromBytes(this.bodyBytes);
+    }
+    get [_contentType]() {
+      let contentType = this.headers[$_get]("content-type");
+      if (contentType == null) return null;
+      return media_type.MediaType.parse(contentType);
+    }
+    set [_contentType](value) {
+      this.headers[$_set]("content-type", dart.toString(value));
+    }
+    [_checkFinalized]() {
+      if (!dart.test(this.finalized)) return;
+      dart.throw(new core.StateError.new("Can't modify a finalized Request."));
+    }
+  };
+  (request$.Request.new = function(method, url) {
+    this[_defaultEncoding] = convert.utf8;
+    this[_bodyBytes] = _native_typed_data.NativeUint8List.new(0);
+    request$.Request.__proto__.new.call(this, method, url);
+    ;
+  }).prototype = request$.Request.prototype;
+  dart.addTypeTests(request$.Request);
+  dart.addTypeCaches(request$.Request);
+  dart.setMethodSignature(request$.Request, () => ({
+    __proto__: dart.getMethods(request$.Request.__proto__),
+    [_checkFinalized]: dart.fnType(dart.void, [])
+  }));
+  dart.setGetterSignature(request$.Request, () => ({
+    __proto__: dart.getGetters(request$.Request.__proto__),
+    encoding: dart.legacy(convert.Encoding),
+    bodyBytes: dart.legacy(typed_data.Uint8List),
+    body: dart.legacy(core.String),
+    bodyFields: dart.legacy(core.Map$(dart.legacy(core.String), dart.legacy(core.String))),
+    [_contentType]: dart.legacy(media_type.MediaType)
+  }));
+  dart.setSetterSignature(request$.Request, () => ({
+    __proto__: dart.getSetters(request$.Request.__proto__),
+    encoding: dart.legacy(convert.Encoding),
+    bodyBytes: dart.legacy(core.List$(dart.legacy(core.int))),
+    body: dart.legacy(core.String),
+    bodyFields: dart.legacy(core.Map$(dart.legacy(core.String), dart.legacy(core.String))),
+    [_contentType]: dart.legacy(media_type.MediaType)
+  }));
+  dart.setLibraryUri(request$.Request, I[5]);
+  dart.setFieldSignature(request$.Request, () => ({
+    __proto__: dart.getFields(request$.Request.__proto__),
+    [_defaultEncoding]: dart.fieldType(dart.legacy(convert.Encoding)),
+    [_bodyBytes]: dart.fieldType(dart.legacy(typed_data.Uint8List))
+  }));
+  var stream$ = dart.privateName(streamed_response, "StreamedResponse.stream");
+  streamed_response.StreamedResponse = class StreamedResponse extends base_response.BaseResponse {
+    get stream() {
+      return this[stream$];
+    }
+    set stream(value) {
+      super.stream = value;
+    }
+  };
+  (streamed_response.StreamedResponse.new = function(stream, statusCode, opts) {
+    let contentLength = opts && 'contentLength' in opts ? opts.contentLength : null;
+    let request = opts && 'request' in opts ? opts.request : null;
+    let headers = opts && 'headers' in opts ? opts.headers : C[0] || CT.C0;
+    let isRedirect = opts && 'isRedirect' in opts ? opts.isRedirect : false;
+    let persistentConnection = opts && 'persistentConnection' in opts ? opts.persistentConnection : true;
+    let reasonPhrase = opts && 'reasonPhrase' in opts ? opts.reasonPhrase : null;
+    this[stream$] = utils.toByteStream(stream);
+    streamed_response.StreamedResponse.__proto__.new.call(this, statusCode, {contentLength: contentLength, request: request, headers: headers, isRedirect: isRedirect, persistentConnection: persistentConnection, reasonPhrase: reasonPhrase});
+    ;
+  }).prototype = streamed_response.StreamedResponse.prototype;
+  dart.addTypeTests(streamed_response.StreamedResponse);
+  dart.addTypeCaches(streamed_response.StreamedResponse);
+  dart.setLibraryUri(streamed_response.StreamedResponse, I[6]);
+  dart.setFieldSignature(streamed_response.StreamedResponse, () => ({
+    __proto__: dart.getFields(streamed_response.StreamedResponse.__proto__),
+    stream: dart.finalFieldType(dart.legacy(byte_stream.ByteStream))
+  }));
+  base_client._fromUriOrString = function _fromUriOrString(uri) {
+    return T.StringL().is(uri) ? core.Uri.parse(uri) : T.UriL().as(uri);
+  };
+  client$.Client = class Client extends core.Object {
+    static new() {
+      return browser_client.createClient();
+    }
+  };
+  (client$.Client[dart.mixinNew] = function() {
+  }).prototype = client$.Client.prototype;
+  dart.addTypeTests(client$.Client);
+  dart.addTypeCaches(client$.Client);
+  dart.setLibraryUri(client$.Client, I[7]);
+  dart.trackLibraries("packages/http/src/browser_client.dart", {
+    "package:http/src/browser_client.dart": browser_client,
+    "package:http/src/response.dart": response$,
+    "package:http/src/request.dart": request$,
+    "package:http/src/base_response.dart": base_response,
+    "package:http/src/streamed_response.dart": streamed_response,
+    "package:http/src/base_request.dart": base_request,
+    "package:http/src/base_client.dart": base_client,
+    "package:http/src/client.dart": client$
   }, {
-  }, '{"version":3,"sourceRoot":"","sources":["stadium_border.dart"],"names":[],"mappings":"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","file":"../../../../../../packages/flutter/src/painting/stadium_border.dart.lib.js"}');
+  }, '{"version":3,"sourceRoot":"","sources":["base_client.dart","browser_client.dart","base_response.dart","response.dart","base_request.dart","request.dart","streamed_response.dart","client.dart"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;SAqBwB;UAA0B;AAC5C,mCAAgB,QAAQ,GAAG,EAAE,OAAO;IAAC;QAGpB;UAA0B;AAC3C,mCAAgB,OAAO,GAAG,EAAE,OAAO;IAAC;SAGlB;UACO;UAAS;UAAe;AACjD,mCAAgB,QAAQ,GAAG,EAAE,OAAO,EAAE,IAAI,EAAE,QAAQ;IAAC;QAGpC;UACQ;UAAS;UAAe;AACjD,mCAAgB,OAAO,GAAG,EAAE,OAAO,EAAE,IAAI,EAAE,QAAQ;IAAC;UAGjC;UACM;UAAS;UAAe;AACjD,mCAAgB,SAAS,GAAG,EAAE,OAAO,EAAE,IAAI,EAAE,QAAQ;IAAC;WAGlC;UAA0B;AAC9C,mCAAgB,UAAU,GAAG,EAAE,OAAO;IAAC;SAEvB;UAA0B;AAA3B;AACX,wBAAW,MAAM,SAAI,GAAG,YAAW,OAAO;AACZ,QAApC,4BAAsB,GAAG,EAAE,QAAQ;AACnC,cAAO,AAAS,SAAD;MACjB;;cAG4B;UAA0B;AAA3B;AACnB,wBAAW,MAAM,SAAI,GAAG,YAAW,OAAO;AACZ,QAApC,4BAAsB,GAAG,EAAE,QAAQ;AACnC,cAAO,AAAS,SAAD;MACjB;;sBAcW,QAAQ,KAAyB,SACvC,aAAe;AAFY;AAG1B,sBAAU,yBAAQ,MAAM,EAAE,6BAAiB,GAAG;AAElD,YAAI,AAAQ,OAAD,UAAU,AAAQ,AAAQ,AAAe,OAAxB,kBAAgB,OAAO;AACnD,YAAI,AAAS,QAAD,UAAU,AAAQ,AAAmB,OAApB,YAAY,QAAQ;AACjD,YAAI,AAAK,IAAD;AACN,cAAS,eAAL,IAAI;AACa,YAAnB,AAAQ,OAAD,QAAQ,IAAI;gBACd,KAAS,aAAL,IAAI;AACuB,YAApC,AAAQ,OAAD,aAAa,AAAK,IAAD;gBACnB,KAAS,YAAL,IAAI;AACmC,YAAhD,AAAQ,OAAD,cAAc,AAAK,IAAD;;AAE2B,YAApD,WAAM,2BAAc,AAA+B,qCAAP,IAAI;;;AAIpD,cAAgB,+BAAW,MAAM,UAAK,OAAO;MAC/C;;4BAG2B,KAAc;AACvC,UAAwB,aAApB,AAAS,QAAD,eAAc,KAAK;AAC3B,oBAAU,AAA2D,yBAA9C,GAAG,sCAAsB,AAAS,QAAD;AAC5D,UAAI,AAAS,AAAa,QAAd;AACoC,QAA9C,UAAY,AAAkC,OAA3B,mBAAI,AAAS,QAAD;;AAEwB,MAAzD,WAAM,kCAAkB,AAAS,OAAF,QAAI,6BAAiB,GAAG;IACzD;;IAGc;;;;EAChB;;;;;;;;;;;;;;;;;;;;IClEO;;;;;;SAIqC;AAAb;;AACvB,qBAAQ,MAAM,AAAQ,AAAW,OAAZ;AACrB,kBAAM;AACI,QAAd,AAAM,gBAAI,GAAG;AAIwB,aAHrC,GAAG;QAAH;AACI,kBAAK,AAAQ,OAAD,SAAyB,SAAb,AAAQ,OAAD,eAAe;AAC9C,4BAAe;AACf,+BAAkB;;;AACuB,QAA7C,AAAQ,AAAQ,OAAT,mBAAqB,UAAJ,GAAG;AAEvB,wBAAY;AAuBb,QAtBH,mBAAU,AAAI,AAAO,AAAM,GAAd,gCAAmB,QAAC;;AAG3B,sBAA4B,KAAR,aAAb,AAAI,GAAD,cAAU,aAAW,cAAK;AACpC,uBAAS;AAUX,UARF,AAAO,AAAO,AAAM,MAAd,gCAAmB,QAAC;AACpB,uBAAqB,kBAAd,AAAO,MAAD;AAMiB,YALlC,AAAU,SAAD,UAAU,2CACJ,iCAAU,IAAI,GAAG,AAAI,GAAD,yBAChB,AAAK,IAAD,oBACV,OAAO,WACP,AAAI,GAAD,kCACE,AAAI,GAAD;;AAMrB,UAHF,AAAO,AAAQ,AAAM,MAAf,iCAAoB,QAAC;AAE8C,YADvE,AAAU,SAAD,eACL,kCAAsB,cAAN,KAAK,GAAa,AAAQ,OAAD,OAAkB;;AAGnC,UAA9B,AAAO,MAAD,mBAAmB,IAAI;;AAS5B,QANH,mBAAU,AAAI,AAAQ,AAAM,GAAf,iCAAoB,QAAC;AAKT,UAFvB,AAAU,SAAD,eACL,kCAAgB,yBAAyB,AAAQ,OAAD,OACrC;;AAGF,QAAf,AAAI,GAAD,MAAM,KAAK;AAEd;AACE,gBAAO,OAAM,AAAU,SAAD;;AAEL,UAAjB,AAAM,mBAAO,GAAG;;MAEpB;;;AAOE,eAAS,MAAO;AACH,QAAX,AAAI,GAAD;;IAEP;;;IAtEM,cAAqB;IAMtB,wBAAkB;;EAiEzB;;;;;;;;;;;;;;AArF6B;EAAe;;;;;;;;;;ICPxB;;;;;;IAGR;;;;;;IAGG;;;;;;IAKH;;;;;;IAKgB;;;;;;IAEf;;;;;;IAGA;;;;;;;6CAEO;QACR;QACD;QACA;QACA;QACA;QACA;IANS;IACR;IACD;IACA;IACA;IACA;IACA;AACP,QAAe,aAAX,mBAAa;AACwC,MAAvD,WAAM,2BAAc,AAAkC,kCAAZ,mBAAU;UAC/C,KAAI,AAAc,8BAAyB,aAAd,sBAAgB;AACW,MAA7D,WAAM,2BAAc,AAAwC,qCAAf,sBAAa;;EAE9D;;;;;;;;;;;;;;;IC7BgB;;;;;;;AAUG,YAAA,AAA6B,+BAAT,qBAAgB;IAAU;sBAkCb;AAAlB;AAC1B,oBAAO,MAAM,AAAS,AAAO,QAAR;AAC3B,cAAgB,8BAAM,IAAI,EAAE,AAAS,QAAD,uBACvB,AAAS,QAAD,mBACR,AAAS,QAAD,sBACL,AAAS,QAAD,mCACE,AAAS,QAAD,qCAChB,AAAS,QAAD;MAC5B;;;qCAvCgB,MAAU;QACT;QACO;QACf;QACA;QACE;wCACM,AAA6B,8BAAT,OAAO,SAAS,IAAI,GAAG,UAAU,YACnD,OAAO,WACP,OAAO,cACJ,UAAU,wBACA,oBAAoB,gBAC5B,YAAY;EAAC;uCAGZ,WAAe;QACvB;QACO;QACf;QACA;QACE;IACK,mBAAE,kBAAY,SAAS;AACjC,gDAAM,UAAU,kBACG,AAAU,SAAD,oBACf,OAAO,WACP,OAAO,cACJ,UAAU,wBACA,oBAAoB,gBAC5B,YAAY;;EAAC;;;;;;;;;;;;+DAmBU;AAC7C,oCAAmB,AAAgC,AAAU,iCAAnB,OAAO,oBAAa;EAAW;qEAKxB;AAC/C,sBAAc,AAAO,OAAA,QAAC;AAC1B,QAAI,AAAY,WAAD,UAAU,MAAiB,4BAAM,WAAW;AAC3D,UAAO,8BAAU,eAAe;EAClC;;;;;;;;;;;;;;;IChEe;;;;;;IAGH;;;;;;IAsDgB;;;;;;;AAhDD;IAAc;sBAGjB;AACpB,UAAI,AAAM,KAAD,YAAkB,aAAN,KAAK,IAAG;AAC0B,QAArD,WAAM,2BAAc,AAAgC,qCAAP,KAAK;;AAEnC,MAAjB;AACsB,MAAtB,uBAAiB,KAAK;IACxB;;AAKiC;IAAqB;6BAGxB;AACX,MAAjB;AAC6B,MAA7B,8BAAwB,KAAK;IAC/B;;AAK4B;IAAgB;wBAGnB;AACN,MAAjB;AACwB,MAAxB,yBAAmB,KAAK;IAC1B;;AAMwB;IAAa;qBAGhB;AACF,MAAjB;AACqB,MAArB,sBAAgB,KAAK;IACvB;;AAQsB;IAAU;;AAoB9B,oBAAI,iBAAW,AAAuD,WAAjD,wBAAW;AACf,MAAjB,mBAAa;AACb,YAAO;IACT;;AAQ6B;AACvB,qBAAS;AAEb;AACM,0BAAW,MAAM,AAAO,MAAD,MAAM;AAC7B,uBAAS,8BAAO,AAAS,QAAD,SAAgB,UAAP,MAAM;AAC3C,gBAAO,4CAAiB,+BAAW,MAAM,GAAG,AAAS,QAAD,6BACjC,AAAS,QAAD,yBACd,AAAS,QAAD,mBACR,AAAS,QAAD,sBACL,AAAS,QAAD,mCACE,AAAS,QAAD,qCAChB,AAAS,QAAD;;cACnB;AACO,UAAd,AAAO,MAAD;AACC,UAAP;;MAEJ;;;AAIE,qBAAK,iBAAW;AACqC,MAArD,WAAM,wBAAW;IACnB;;AAGqB,YAAc,UAAZ,eAAM,eAAE;IAAI;;2CAtDlB,QAAa;IArD1B;IAcC,8BAAwB;IAWxB,yBAAmB;IAYpB,sBAAgB;IAcf,mBAAa;IAED;IAAa;IAChB,gBAAE,gDACE,SAAC,MAAM,SAAS,AAAK,AAAc,IAAf,qBAAkB,AAAK,IAAD,2DACxC,QAAC,OAAQ,AAAI,AAAc,GAAf;;EAAwB;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;ACpE/B,YAAA,AAAU;IAAM;sBAGnB;AAEiB,MADrC,WAAM,8BAAgB,AAAC,8CACnB;IACN;;AAwBE,UAAI,AAAa,yCACZ,AAAa,AAAW,4CAAY;AACvC,cAAO;;AAET,YAAO,kCAA2B,AAAa,AAAU,qCAAC;IAC5D;iBAEsB;AACH,MAAjB;AACwB,MAAxB,yBAAmB,KAAK;AACpB,wBAAc;AAClB,UAAI,AAAY,WAAD,UAAU;AAC6C,MAAtE,qBAAe,AAAY,WAAD,qBAAoB,6CAAC,WAAW,AAAM,KAAD;IACjE;;AAQ2B;IAAU;kBAGb;AACL,MAAjB;AAC+B,MAA/B,mBAAa,kBAAY,KAAK;IAChC;;AAUmB,YAAA,AAAS,sBAAO;IAAU;aAE7B;AACoB,MAAlC,iBAAY,AAAS,qBAAO,KAAK;AAC7B,wBAAc;AAClB,UAAI,AAAY,WAAD;AACwD,QAArE,qBAAe,6BAAU,QAAQ,SAAS,6CAAC,WAAW,AAAS;YAC1D,gBAAK,AAAY,AAAW,WAAZ,0BAAwB;AAC4B,QAAzE,qBAAe,AAAY,WAAD,qBAAoB,6CAAC,WAAW,AAAS;;IAEvE;;AAmBM,wBAAc;AAClB,UAAI,AAAY,WAAD,YACX,AAAY,AAAS,WAAV,cAAa;AAE8B,QADxD,WAAM,wBAAU,AAAC,wDACb;;AAGN,YAAW,2BAAiB,sBAAgB;IAC9C;mBAEmC;AAC7B,wBAAc;AAClB,UAAI,AAAY,WAAD;AACmD,QAAhE,qBAAe,6BAAU,eAAe;YACnC,KAAI,AAAY,AAAS,WAAV,cAAa;AAEa,QAD9C,WAAM,wBAAU,AAAC,kDACb,6BAAiB,AAAY,WAAD,aAAU;;AAGC,MAA7C,YAAO,iBAAW,MAAM,aAAY;IACtC;;AAWkB,MAAV;AACN,YAAkB,kCAAU;IAC9B;;AAIM,wBAAc,AAAO,oBAAC;AAC1B,UAAI,AAAY,WAAD,UAAU,MAAO;AAChC,YAAiB,4BAAM,WAAW;IACpC;uBAE2B;AACiB,MAA1C,AAAO,oBAAC,gBAAwB,cAAN,KAAK;IACjC;;AAIE,qBAAK,iBAAW;AACqC,MAArD,WAAM,wBAAW;IACnB;;mCA5Be,QAAY;IACJ,yBAAE;IACR,mBAAE,uCAAU;AACvB,8CAAM,MAAM,EAAE,GAAG;;EAAC;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;IC7HP;;;;;;;qDAKkB,QAAY;QACtC;QACO;QACQ;QACf;QACA;QACE;IACE,gBAAE,mBAAa,MAAM;AAC5B,gEAAM,UAAU,kBACG,aAAa,WACnB,OAAO,WACP,OAAO,cACJ,UAAU,wBACA,oBAAoB,gBAC5B,YAAY;;EAAC;;;;;;;;2DNuElB;AAAQ,UAAI,gBAAJ,GAAG,IAAiB,eAAM,GAAG,IAAQ,YAAJ,GAAG;EAAO;;;AOzElD;IAAc","file":"../../../../../../../packages/http/src/browser_client.dart.lib.js"}');
   // Exports:
   return {
-    src__painting__stadium_border: stadium_border
+    src__browser_client: browser_client,
+    src__response: response$,
+    src__request: request$,
+    src__base_response: base_response,
+    src__streamed_response: streamed_response,
+    src__base_request: base_request,
+    src__base_client: base_client,
+    src__client: client$
   };
 }));
 
-//# sourceMappingURL=stadium_border.dart.lib.js.map
+//# sourceMappingURL=browser_client.dart.lib.js.map

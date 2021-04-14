@@ -7,11 +7,11 @@ import 'package:placeholder_website/ui/housekeeping/models/floors_model.dart';
 import 'package:placeholder_website/ui/housekeeping/pojo/room.dart';
 
 class RoomListTile extends StatefulWidget {
-  RoomListTile({@required this.keyy,@required this.roomIndex, @required this.model});
+  RoomListTile({@required this.roomIndex, @required this.model});
 
   final FloorsModel model;
   final int roomIndex;
-  final GlobalKey<ScaffoldMessengerState> keyy;
+  //final GlobalKey<ScaffoldMessengerState> keyy;
 
   @override
   _RoomListTileState createState() => _RoomListTileState();
@@ -40,13 +40,13 @@ class _RoomListTileState extends State<RoomListTile> {
         TextButton(
           child: Text("Prekini"),
           onPressed: () {
-            Navigator.of(context).pop();
+            Navigator.of(context,rootNavigator: true).pop();
           },
         ),
         TextButton(
           child: Text("Potvrdi"),
           onPressed: () {
-            Navigator.of(context).pop();
+            Navigator.of(context,rootNavigator: true).pop();
             _updateUI('D');
           },
         ),
@@ -56,7 +56,7 @@ class _RoomListTileState extends State<RoomListTile> {
     showDialog(
 
       context: context,
-      builder: (_) {
+      builder: (context) {
         return alert;
       },
     );
@@ -76,20 +76,20 @@ class _RoomListTileState extends State<RoomListTile> {
       });
       if (status != 'N') {
 
-        widget.keyy.currentState.showSnackBar(SnackBar(
-          content: const Text(
-            'Undo action?',
-            textAlign: TextAlign.center,
-          ),
-          duration: const Duration(seconds: 5),
-          action: SnackBarAction(
-            label: 'UNDO',
-            textColor: Colors.orange,
-            onPressed: () {
-              _updateRoomStatusUI('N');
-            },
-          ),
-        ));
+        // widget.keyy.currentState.showSnackBar(SnackBar(
+        //   content: const Text(
+        //     'Undo action?',
+        //     textAlign: TextAlign.center,
+        //   ),
+        //   duration: const Duration(seconds: 5),
+        //   action: SnackBarAction(
+        //     label: 'UNDO',
+        //     textColor: Colors.orange,
+        //     onPressed: () {
+        //       _updateRoomStatusUI('N');
+        //     },
+        //   ),
+        // ));
 
         // ScaffoldMessenger.of(context).showSnackBar(SnackBar(
         //   content: const Text(
@@ -127,6 +127,8 @@ class _RoomListTileState extends State<RoomListTile> {
           label: 'UNDO',
           textColor: Colors.orange,
           onPressed: () {
+           // widget.keyy.currentState.hideCurrentSnackBar();
+            //ScaffoldMessenger.of(context).hideCurrentSnackBar();
             _updateUI('N');
           },
         ),
