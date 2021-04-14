@@ -7,10 +7,11 @@ import 'package:placeholder_website/ui/housekeeping/models/floors_model.dart';
 import 'package:placeholder_website/ui/housekeeping/pojo/room.dart';
 
 class RoomListTile extends StatefulWidget {
-  RoomListTile({@required this.roomIndex, @required this.model});
+  RoomListTile({@required this.keyy,@required this.roomIndex, @required this.model});
 
   final FloorsModel model;
   final int roomIndex;
+  final GlobalKey<ScaffoldMessengerState> keyy;
 
   @override
   _RoomListTileState createState() => _RoomListTileState();
@@ -53,8 +54,9 @@ class _RoomListTileState extends State<RoomListTile> {
     );
 
     showDialog(
+
       context: context,
-      builder: (BuildContext context) {
+      builder: (_) {
         return alert;
       },
     );
@@ -73,7 +75,8 @@ class _RoomListTileState extends State<RoomListTile> {
             .isClean = status == "D" ? true : false;
       });
       if (status != 'N') {
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+
+        widget.keyy.currentState.showSnackBar(SnackBar(
           content: const Text(
             'Undo action?',
             textAlign: TextAlign.center,
@@ -87,6 +90,21 @@ class _RoomListTileState extends State<RoomListTile> {
             },
           ),
         ));
+
+        // ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        //   content: const Text(
+        //     'Undo action?',
+        //     textAlign: TextAlign.center,
+        //   ),
+        //   duration: const Duration(seconds: 5),
+        //   action: SnackBarAction(
+        //     label: 'UNDO',
+        //     textColor: Colors.orange,
+        //     onPressed: () {
+        //       _updateRoomStatusUI('N');
+        //     },
+        //   ),
+        // ));
       }
     }
   }

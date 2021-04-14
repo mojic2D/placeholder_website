@@ -98,18 +98,29 @@ class HomePage extends StatelessWidget {
                       ),
                     ),
                   ),
-                  Stack(children: <Widget>[
-                    Center(
-                      child: RoomList(),
-                    ),
-                  ]),
+
+                      Container(
+                        width:420,
+                        height:675,
+                        child: Navigator(
+
+                          onGenerateRoute: (RouteSettings settings){
+                            return new MaterialPageRoute(
+                              builder: (context){
+                                return RoomList();
+                              }
+                            );
+                          },),
+                      ),
+
+
                 ],
               ),
             ),
           ],
         ),
-      ),
-    );
+      ),);
+
   }
 
   _border() {
