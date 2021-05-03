@@ -27,7 +27,7 @@ class DesktopNavbar extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
             Text(
-              "RetroPortal Studio",
+              "Drago BoSS [  ]",
               style: TextStyle(
                   fontWeight: FontWeight.bold,
                   color: Colors.white,
@@ -36,33 +36,27 @@ class DesktopNavbar extends StatelessWidget {
             Row(
               children: <Widget>[
                 Text(
-                  "Home",
+                  "Projekti",
                   style: TextStyle(color: Colors.white),
                 ),
                 SizedBox(
                   width: 30,
                 ),
                 Text(
-                  "About Us",
+                  "Contact me",
                   style: TextStyle(color: Colors.white),
                 ),
                 SizedBox(
                   width: 30,
                 ),
-                Text(
-                  "Portfolio",
-                  style: TextStyle(color: Colors.white),
-                ),
-                SizedBox(
-                  width: 30,
-                ),
+
                 MaterialButton(
                   color: Colors.pink,
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.all(Radius.circular(20.0))),
                   onPressed: () {},
                   child: Text(
-                    "Get Started",
+                    "Da se desi",
                     style: TextStyle(color: Colors.white),
                   ),
                 )

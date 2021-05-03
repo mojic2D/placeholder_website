@@ -8,12 +8,14 @@ class HousekeepingSimulator extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    //Size size=MediaQuery.of(context).size;
     return Stack(children: [
       Container(
         decoration: BoxDecoration(
           color: Colors.black,
           borderRadius: BorderRadius.circular(30.0),
         ),
+        //width: size.width>800?420:210,
         width: 420,
         height: 675,
       ),
