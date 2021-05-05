@@ -15,8 +15,9 @@ class ProjectsView extends StatelessWidget {
       viewWidth=size.width;
     }
 
+    //double leftPadding=size.width>800?20:0.1;
     return Padding(
-      padding: const EdgeInsets.only(left: 20),
+      padding: EdgeInsets.only(left: size.width>800?20:0.1),
       child: Container(
         height: size.height * 0.8,
         width: viewWidth ,
