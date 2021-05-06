@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 class ProjectsTechIcon extends StatelessWidget {
-  const ProjectsTechIcon({@required this.imgUrl,Key key}) : super(key: key);
+  const ProjectsTechIcon({@required this.icon,Key key}) : super(key: key);
 
-  final String imgUrl;
+  final Widget icon;
 
   @override
   Widget build(BuildContext context) {
@@ -16,11 +16,7 @@ class ProjectsTechIcon extends StatelessWidget {
         ),
         child: ClipRRect(
           borderRadius:  BorderRadius.all(Radius.circular(50)),
-          child: Image.network(
-            imgUrl,
-            width: 25,
-            height: 25,
-          ),
+          child: Container(width:25,height: 25,child: icon),
         ),
       ),
     );

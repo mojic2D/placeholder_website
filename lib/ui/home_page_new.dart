@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:placeholder_website/bloc/main_bloc.dart';
+import 'package:placeholder_website/model/projects_model.dart';
 import 'package:placeholder_website/ui/navbar.dart';
 import 'package:placeholder_website/ui/projects_page/projects_page.dart';
+import 'package:provider/provider.dart';
 
 class HomePageNew extends StatelessWidget {
   @override
@@ -19,13 +22,19 @@ class HomePageNew extends StatelessWidget {
                 Color.fromRGBO(36, 11, 54, 1.0)
               ]),
         ),
-        child: SingleChildScrollView(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              Navbar(),
-              ProjectsPage(),
-            ],
+        child: Provider<MainBloc>(
+          create: (_)=>MainBloc(),
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Navbar(),
+                ChangeNotifierProvider<ProjectsModel>(
+                  create: (context)=>Provider.of<MainBloc>(context,listen: false).model,
+                  child: ProjectsPage(),
+                ),
+              ],
+            ),
           ),
         ),
       ),
