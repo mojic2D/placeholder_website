@@ -69,7 +69,7 @@ class FloorsBloc {
   Future<Response> _readRegRoom() async {
     //var url = 'http://25.110.41.176/housekeeping/soba.php';//srecko
     var url = 'http://25.107.64.34/housekeeping/soba.php';//kuca
-    return await http.get(url);
+    return await http.get(Uri.parse(url));
   }
 
   String json='[{"floor":"1","room":"101","isClean":"N"},{"floor":"1","room":"102","isClean":"D"},{"floor":"2","room":"201","isClean":"D"},{"floor":"2","room":"202","isClean":"D"},{"floor":"3","room":"301","isClean":"D"},{"floor":"3","room":"302","isClean":"D"},{"floor":"4","room":"401","isClean":"D"},{"floor":"4","room":"402","isClean":"D"}]';

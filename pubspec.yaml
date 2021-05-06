@@ -24,7 +24,7 @@ dependencies:
   flutter:
     sdk: flutter
 
-  http: ^0.12.1
+  http: ^0.13.3
   fluttericon: ^2.0.0
   provider: ^5.0.0
 
