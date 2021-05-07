@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:fluttericon/octicons_icons.dart';
 import 'package:placeholder_website/bloc/main_bloc.dart';
 import 'package:provider/provider.dart';
 

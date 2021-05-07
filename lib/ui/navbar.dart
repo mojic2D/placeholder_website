@@ -1,6 +1,13 @@
 import 'package:flutter/material.dart';
 
 class Navbar extends StatelessWidget {
+
+  static const String ime='Dragoljub Mojić';
+  static const String projekti='Projekti';
+  static const String kontakt='Kontaktiraj me';
+  static const String dasedesi='dasedesi';
+
+
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(
@@ -27,7 +34,7 @@ class DesktopNavbar extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
             Text(
-              "Drago BoSS [  ]",
+              '${Navbar.ime}',
               style: TextStyle(
                   fontWeight: FontWeight.bold,
                   color: Colors.white,
@@ -36,14 +43,14 @@ class DesktopNavbar extends StatelessWidget {
             Row(
               children: <Widget>[
                 Text(
-                  "Projekti",
+                  "${Navbar.projekti}",
                   style: TextStyle(color: Colors.white),
                 ),
                 SizedBox(
                   width: 30,
                 ),
                 Text(
-                  "Contact me",
+                  "${Navbar.kontakt}",
                   style: TextStyle(color: Colors.white),
                 ),
                 SizedBox(
@@ -56,7 +63,7 @@ class DesktopNavbar extends StatelessWidget {
                       borderRadius: BorderRadius.all(Radius.circular(20.0))),
                   onPressed: () {},
                   child: Text(
-                    "Da se desi",
+                    "${Navbar.dasedesi}",
                     style: TextStyle(color: Colors.white),
                   ),
                 )
@@ -77,7 +84,7 @@ class MobileNavbar extends StatelessWidget {
       child: Container(
         child: Column(children: <Widget>[
           Text(
-            "RetroPortal Studio",
+            "${Navbar.ime}",
             style: TextStyle(
                 fontWeight: FontWeight.bold, color: Colors.white, fontSize: 30),
           ),
@@ -87,21 +94,21 @@ class MobileNavbar extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Text(
-                  "Home",
+                  "${Navbar.projekti}",
                   style: TextStyle(color: Colors.white),
                 ),
                 SizedBox(
                   width: 30,
                 ),
                 Text(
-                  "About Us",
+                  "${Navbar.kontakt}",
                   style: TextStyle(color: Colors.white),
                 ),
                 SizedBox(
                   width: 30,
                 ),
                 Text(
-                  "Portfolio",
+                  "${Navbar.dasedesi}",
                   style: TextStyle(color: Colors.white),
                 ),
               ],

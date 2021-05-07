@@ -1,9 +1,5 @@
-import 'dart:js';
-
 import 'package:flutter/material.dart';
 import 'package:placeholder_website/ui/housekeeping/housekeeping_list_tile.dart';
-import 'package:placeholder_website/ui/projects_page/ProjectListTileVertical.dart';
-import 'package:placeholder_website/ui/projects_page/projects_tech_icon.dart';
 import 'package:placeholder_website/ui/summoner_viewer/summoner_viewer_list_tile.dart';
 
 class ProjectsList extends StatelessWidget {
@@ -13,6 +9,7 @@ class ProjectsList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     Size size = MediaQuery.of(context).size;
     if (horizontal) {
       return _buildHorizontalList();
