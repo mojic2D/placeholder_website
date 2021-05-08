@@ -5,6 +5,7 @@ import 'package:placeholder_website/ui/projects_page/projects_view.dart';
 class ProjectsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    print('builda se');
     return LayoutBuilder(
       builder: (context, constraints) {
         if (constraints.maxWidth > 800) {

@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:placeholder_website/bloc/main_bloc.dart';
+import 'package:provider/provider.dart';
 
 class Navbar extends StatelessWidget {
-
-  static const String ime='Dragoljub Mojić';
-  static const String projekti='Projekti';
-  static const String kontakt='Kontaktiraj me';
-  static const String dasedesi='dasedesi';
-
+  static const String ime = 'Dragoljub Mojić';
+  static const String projekti = 'Projekti';
+  static const String kontakt = 'Kontaktiraj me';
+  static const String dasedesi = 'Download CV';
 
   @override
   Widget build(BuildContext context) {
@@ -42,21 +42,40 @@ class DesktopNavbar extends StatelessWidget {
             ),
             Row(
               children: <Widget>[
-                Text(
-                  "${Navbar.projekti}",
-                  style: TextStyle(color: Colors.white),
+                ElevatedButton(
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all<Color>(Color.fromRGBO(0, 0, 0, 0.0)),
+                  ),
+                  onPressed: () {
+                    Provider.of<MainBloc>(context, listen: false)
+                        .model
+                        .setCurrentView('PROJECTS');
+                  },
+                  child: Text(
+                    "${Navbar.projekti}",
+                    style: TextStyle(color: Colors.white),
+                  ),
                 ),
                 SizedBox(
                   width: 30,
                 ),
-                Text(
-                  "${Navbar.kontakt}",
-                  style: TextStyle(color: Colors.white),
+                ElevatedButton(
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all<Color>(Color.fromRGBO(0, 0, 0, 0.0)),
+                  ),
+                  onPressed: () {
+                    Provider.of<MainBloc>(context, listen: false)
+                        .model
+                        .setCurrentView('CONTACT');
+                  },
+                  child: Text(
+                    "${Navbar.kontakt}",
+                    style: TextStyle(color: Colors.white),
+                  ),
                 ),
                 SizedBox(
                   width: 30,
                 ),
-
                 MaterialButton(
                   color: Colors.pink,
                   shape: RoundedRectangleBorder(
@@ -93,24 +112,50 @@ class MobileNavbar extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Text(
-                  "${Navbar.projekti}",
-                  style: TextStyle(color: Colors.white),
+                ElevatedButton(
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all<Color>(Color.fromRGBO(0, 0, 0, 0.0)),
+                  ),
+                  onPressed: () {
+                    Provider.of<MainBloc>(context, listen: false)
+                        .model
+                        .setCurrentView('PROJECTS');
+                  },
+                  child: Text(
+                    "${Navbar.projekti}",
+                    style: TextStyle(color: Colors.white),
+                  ),
                 ),
                 SizedBox(
                   width: 30,
                 ),
-                Text(
-                  "${Navbar.kontakt}",
-                  style: TextStyle(color: Colors.white),
+                ElevatedButton(
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all<Color>(Color.fromRGBO(0, 0, 0, 0.0)),
+                  ),
+                  onPressed: () {
+                    Provider.of<MainBloc>(context, listen: false)
+                        .model
+                        .setCurrentView('CONTACT');
+                  },
+                  child: Text(
+                    "${Navbar.kontakt}",
+                    style: TextStyle(color: Colors.white),
+                  ),
                 ),
                 SizedBox(
                   width: 30,
                 ),
-                Text(
-                  "${Navbar.dasedesi}",
-                  style: TextStyle(color: Colors.white),
-                ),
+                MaterialButton(
+                  color: Colors.pink,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(20.0))),
+                  onPressed: () {},
+                  child: Text(
+                    "${Navbar.dasedesi}",
+                    style: TextStyle(color: Colors.white),
+                  ),
+                )
               ],
             ),
           )

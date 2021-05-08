@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:placeholder_website/ui/my_flutter_app_icons.dart';
-import 'package:placeholder_website/ui/projects_page/ProjectListTileVertical.dart';
+import 'package:placeholder_website/ui/projects_page/project_list_tile_vertical.dart';
 import 'package:placeholder_website/ui/projects_page/projects_tech_icon.dart';
 
 class HousekeepingListTile extends ProjectListTileVertical {

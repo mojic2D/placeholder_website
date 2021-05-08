@@ -44,7 +44,7 @@ class ProjectListTileVertical extends StatelessWidget {
             ),
           ),
           Container(
-            height: 102,
+            height: 103,
             width: 200,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.only(
@@ -54,17 +54,23 @@ class ProjectListTileVertical extends StatelessWidget {
             ),
             child: Column(
               children: [
-                Text(
-                  'For platforms:',
-                  style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
+                Padding(
+                  padding: const EdgeInsets.all(1.0),
+                  child: Text(
+                    'For platforms:',
+                    style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
+                  ),
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: forPlatformsIcons,
                 ),
-                Text(
-                  'Powered by:',
-                  style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
+                Padding(
+                  padding: const EdgeInsets.all(1.0),
+                  child: Text(
+                    'Powered by:',
+                    style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
+                  ),
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,

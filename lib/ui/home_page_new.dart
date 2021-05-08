@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:placeholder_website/bloc/main_bloc.dart';
 import 'package:placeholder_website/model/projects_model.dart';
+import 'package:placeholder_website/ui/contact_page.dart';
 import 'package:placeholder_website/ui/navbar.dart';
 import 'package:placeholder_website/ui/projects_page/projects_page.dart';
 import 'package:provider/provider.dart';
@@ -31,7 +32,17 @@ class HomePageNew extends StatelessWidget {
                 Navbar(),
                 ChangeNotifierProvider<ProjectsModel>(
                   create: (context)=>Provider.of<MainBloc>(context,listen: false).model,
-                  child: ProjectsPage(),
+                  child: Consumer<ProjectsModel>(
+                    builder: (context, projectsModel, child){
+                      if(projectsModel.currentView=='PROJECTS'){
+                        return ProjectsPage();
+                      }
+                      if(projectsModel.currentView=='CONTACT'){
+                        return ContactPage();
+                      }
+                      return ProjectsPage();
+                    },
+                  ),
                 ),
               ],
             ),

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:placeholder_website/model/projects_model.dart';
 import 'package:placeholder_website/ui/housekeeping/housekeeping_simulator.dart';
 import 'package:placeholder_website/ui/housekeeping/housekeeping_project_view.dart';
+import 'package:placeholder_website/ui/jset_swap/jset_swap_list_tile_horizontal.dart';
+import 'package:placeholder_website/ui/jset_swap/jset_swap_project_view.dart';
 import 'package:placeholder_website/ui/summoner_viewer/summoner_viewer_project_view.dart';
 import 'package:provider/provider.dart';
 
@@ -36,6 +38,9 @@ class ProjectsView extends StatelessWidget {
               }
               if(projectsModel.currentProject=='SUMMONER VIEWER'){
                 return SummonerViewerProjectView();
+              }
+              if(projectsModel.currentProject=='PROPERTIES SWAPPER'){
+                return JSetSwapProjectView();
               }
               return HousekeepingProjectView();
             },

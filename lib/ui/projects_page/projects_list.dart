@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:placeholder_website/ui/housekeeping/housekeeping_list_tile.dart';
+import 'package:placeholder_website/ui/housekeeping/housekeeping_list_tile_horizontal.dart';
+import 'package:placeholder_website/ui/jset_swap/jset_swap_list_tile_horizontal.dart';
+import 'package:placeholder_website/ui/jset_swap/jset_swap_list_tile_vertical.dart';
 import 'package:placeholder_website/ui/summoner_viewer/summoner_viewer_list_tile.dart';
+import 'package:placeholder_website/ui/summoner_viewer/summoner_viewer_list_tile_horizontal.dart';
 
 class ProjectsList extends StatelessWidget {
   ProjectsList({@required this.horizontal});
@@ -32,15 +36,9 @@ class ProjectsList extends StatelessWidget {
           child: ListView(
             scrollDirection: Axis.horizontal,
             children: [
-              _horizontalListButton('HOUSEKEEPING'),
-              SizedBox(
-                height: 7,
-              ),
-              _horizontalListButton('DRUGIPROJEKAT'),
-              SizedBox(
-                height: 7,
-              ),
-              _horizontalListButton('TRECI PROJEKAT'),
+              HousekeepingListTileHorizontal(),
+              SummonerViewerListTileHorizontal(),
+              JSetSwapListTileHorizontal(),
             ],
           ),
         ),
@@ -63,36 +61,11 @@ class ProjectsList extends StatelessWidget {
           children: [
             HousekeepingListTile(),
             SummonerViewerListTile(),
+            JSetSwapListTileVertical(),
           ],
         ),
       ),
     );
   }
 
-  Widget _horizontalListButton(String projectName) {
-    return Padding(
-      padding: EdgeInsets.all(4.0),
-      child: Container(
-        width: 150,
-        child: ElevatedButton(
-          onPressed: () {},
-          style: ButtonStyle(
-            foregroundColor: MaterialStateProperty.all<Color>(
-                Color.fromRGBO(195, 20, 50, 1.0)),
-            backgroundColor: MaterialStateProperty.all<Color>(Colors.white),
-            overlayColor: MaterialStateProperty.all<Color>(
-                Color.fromRGBO(36, 11, 54, 0.9)),
-            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-              RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(18.0),
-                side: BorderSide(
-                    color: Color.fromRGBO(195, 20, 50, 1.0), width: 2.2),
-              ),
-            ),
-          ),
-          child: Text('$projectName'),
-        ),
-      ),
-    );
-  }
 }
