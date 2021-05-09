@@ -51,9 +51,9 @@ class ProjectsList extends StatelessWidget {
       height: size.height * 0.8,
       width: 250,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20.0),
-        color: Color.fromRGBO(245, 245, 245, 1),
-        border: Border.all(width: 1.0, color: Colors.black),
+        border: Border(
+          bottom: BorderSide(width: 15,color: Colors.white),
+        ),
       ),
       child: Padding(
         padding: const EdgeInsets.all(3.0),

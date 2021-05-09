@@ -26,16 +26,6 @@ class ProjectsView extends StatelessWidget {
         height: size.height * 0.8,
         width: viewWidth,
         decoration: BoxDecoration(
-          // gradient: LinearGradient(
-          //   begin: Alignment.bottomCenter,
-          //   end: Alignment.topCenter,
-          //   colors: [
-          //     Color.fromRGBO(120, 120, 120, 0.5),
-          //     Color.fromRGBO(195, 20, 50, 0.5),
-          //   ],
-          // ),
-          //borderRadius: BorderRadius.circular(20.0),
-          //color: Color.fromRGBO(120, 120, 120, 1),
           border: Border(
             bottom: BorderSide(width: 15,color: Colors.white),
           ),

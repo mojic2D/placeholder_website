@@ -11,51 +11,46 @@ class HomePageNew extends StatelessWidget {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
-      body: Container(
-        height: size.height,
-        width: size.width,
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.centerLeft,
-            end: Alignment.centerRight,
-            colors: [
-              // Color.fromRGBO(195, 20, 50, 1.0),
-              // Color.fromRGBO(36, 11, 54, 1.0)
-              Color(0xFF41b3a3),
-              Color(0xFF85dcb),
-            ],
-          ),
-        ),
-        child: Provider<MainBloc>(
-          create: (_) => MainBloc(),
-          child: SingleChildScrollView(
-            child: ChangeNotifierProvider<ProjectsModel>(
-              create: (context) =>
-                  Provider.of<MainBloc>(context, listen: false).model,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Consumer<ProjectsModel>(
-                      builder: (context, projectsModel, child) {
-                    return Navbar();
-                  }),
-                  Consumer<ProjectsModel>(
-                    builder: (context, projectsModel, child) {
-                      if (projectsModel.currentView == 'PROJECTS') {
-                        return ProjectsPage();
-                      }
-                      if (projectsModel.currentView == 'CONTACT') {
-                        return ContactPage();
-                      }
-                      return ProjectsPage();
-                    },
-                  ),
-                ],
+      body: Provider<MainBloc>(
+        create: (_) => MainBloc(),
+        child: ChangeNotifierProvider<ProjectsModel>(
+          create: (context) =>
+              Provider.of<MainBloc>(context, listen: false).model,
+          child:
+              Consumer<ProjectsModel>(builder: (context, projectsModel, child) {
+            return Container(
+              height: size.height,
+              width: size.width,
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.bottomLeft,
+                  end: Alignment.centerRight,
+                  colors: projectsModel.colorSchemes,
+                ),
               ),
-            ),
-          ),
+              child: SingleChildScrollView(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Navbar(),
+                    _buildView(projectsModel),
+                  ],
+                ),
+              ),
+            );
+          }),
         ),
       ),
     );
+  }
+
+  _buildView(ProjectsModel model) {
+    if (model.currentView == 'PROJECTS') {
+      return ProjectsPage();
+    }
+    if (model.currentView == 'CONTACT') {
+      return ContactPage();
+    }
+    return ProjectsPage();
   }
 }
