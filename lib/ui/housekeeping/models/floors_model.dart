@@ -29,10 +29,6 @@ class FloorsModel{
       tempFloorList.add(Floor(number:'$i',roomList: tempRoomList ));
     }
 
-    for(Room r in tempFloorList[0].roomList){
-      print(r.isClean);
-    }
-
     return FloorsModel(selectedFloor: tempFloorList[0],floorList: tempFloorList);
   }
 

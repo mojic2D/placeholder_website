@@ -1,11 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:placeholder_website/languages/language.dart';
+import 'package:placeholder_website/languages/language_en.dart';
 
 class ProjectsModel with ChangeNotifier{
 
-  ProjectsModel({this.currentProject,this.currentView});
+  ProjectsModel({this.currentProject,this.currentView,this.currentLanguage}){
+    if(currentLanguage==null){
+      currentLanguage=LanguageEN();
+    }
+  }
 
   String currentProject;
   String currentView;
+  Language currentLanguage;
 
   void setCurrentProject(String projectName){
     currentProject=projectName;
@@ -13,10 +20,13 @@ class ProjectsModel with ChangeNotifier{
   }
 
   void setCurrentView(String viewName){
-    print('postavi view');
     currentView=viewName;
     notifyListeners();
-    print('currentView=$currentView');
+  }
+
+  void setCurrentLanguage(Language language){
+    currentLanguage=language;
+    notifyListeners();
   }
 
 }

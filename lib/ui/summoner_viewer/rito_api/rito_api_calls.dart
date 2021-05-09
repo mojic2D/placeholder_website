@@ -12,23 +12,13 @@ class RitoApiCalls {
   final String apiKey;
 
   Future<List<ChallengerPlayer>> getChallengerLadder()async{
-
-    print('getChallegnerLadder');
-
-    var url =
-        'https://euw1.api.riotgames.com/lol/league/v4/challengerleagues/by-queue/RANKED_SOLO_5x5?api_key=RGAPI-2a0d3fd9-fb81-4cc1-916a-ff0761b362f0';
-    print('konstrutkro!= $url');
-    Response rs=await get(Uri.parse(url));
-    print('body :${rs.body}');
     Response response= await getChallengerData();
     List<dynamic> challengerList=jsonDecode(response.body)['entries'];
     print(challengerList);
-    print('NESTO NESTO');
 
     List<ChallengerPlayer> challengerListOrdered=<ChallengerPlayer>[];
 
     for(var i=0;i<challengerList.length;i++){
-      print('cita lader $i');
       Map<String,dynamic> challengerPlayerInfo=challengerList[i];
       challengerListOrdered.add(
           ChallengerPlayer(summonerName: challengerPlayerInfo['summonerName'],
@@ -109,8 +99,7 @@ class RitoApiCalls {
 
   Future<Response> getChallengerData()async{
     var url =
-        'https://euw1.api.riotgames.com/lol/league/v4/challengerleagues/by-queue/RANKED_SOLO_5x5?api_key=$apiKey';
-    print('daj datu za!= $url');
+        'http://testiramo.dreamhosters.com/sv_api/test.php';
 
     return await http.get(Uri.parse(url));
   }

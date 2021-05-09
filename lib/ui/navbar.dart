@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:placeholder_website/bloc/main_bloc.dart';
+import 'package:placeholder_website/languages/language.dart';
+import 'package:placeholder_website/languages/language_en.dart';
+import 'package:placeholder_website/languages/language_srb.dart';
 import 'package:provider/provider.dart';
 
 class Navbar extends StatelessWidget {
-  static const String ime = 'Dragoljub Mojić';
-  static const String projekti = 'Projekti';
-  static const String kontakt = 'Kontaktiraj me';
-  static const String dasedesi = 'Download CV';
 
   @override
   Widget build(BuildContext context) {
+
     return LayoutBuilder(
       builder: (context, constraints) {
         if (constraints.maxWidth > 1200) {
@@ -27,6 +27,7 @@ class Navbar extends StatelessWidget {
 class DesktopNavbar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    Language lang=Provider.of<MainBloc>(context,listen:false).model.currentLanguage;
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 40),
       child: Container(
@@ -34,7 +35,7 @@ class DesktopNavbar extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
             Text(
-              '${Navbar.ime}',
+              '${lang.nameSurname}',
               style: TextStyle(
                   fontWeight: FontWeight.bold,
                   color: Colors.white,
@@ -42,6 +43,16 @@ class DesktopNavbar extends StatelessWidget {
             ),
             Row(
               children: <Widget>[
+                ElevatedButton.icon(onPressed: (){
+                  Provider.of<MainBloc>(context, listen: false)
+                      .model
+                      .setCurrentLanguage(LanguageEN());
+                }, icon: Icon(Icons.language), label: Text('EN')),
+                ElevatedButton.icon(onPressed: (){
+                  Provider.of<MainBloc>(context, listen: false)
+                      .model
+                      .setCurrentLanguage(LanguageSRB());
+                }, icon: Icon(Icons.language), label: Text('EN')),
                 ElevatedButton(
                   style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.all<Color>(Color.fromRGBO(0, 0, 0, 0.0)),
@@ -52,7 +63,7 @@ class DesktopNavbar extends StatelessWidget {
                         .setCurrentView('PROJECTS');
                   },
                   child: Text(
-                    "${Navbar.projekti}",
+                    "${lang.projectsLabel}",
                     style: TextStyle(color: Colors.white),
                   ),
                 ),
@@ -69,7 +80,7 @@ class DesktopNavbar extends StatelessWidget {
                         .setCurrentView('CONTACT');
                   },
                   child: Text(
-                    "${Navbar.kontakt}",
+                    "${lang.contactLabel}",
                     style: TextStyle(color: Colors.white),
                   ),
                 ),
@@ -82,7 +93,7 @@ class DesktopNavbar extends StatelessWidget {
                       borderRadius: BorderRadius.all(Radius.circular(20.0))),
                   onPressed: () {},
                   child: Text(
-                    "${Navbar.dasedesi}",
+                    "${lang.downloadCVLabel}",
                     style: TextStyle(color: Colors.white),
                   ),
                 )
@@ -98,12 +109,13 @@ class DesktopNavbar extends StatelessWidget {
 class MobileNavbar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    Language lang=Provider.of<MainBloc>(context,listen:false).model.currentLanguage;
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 40),
       child: Container(
         child: Column(children: <Widget>[
           Text(
-            "${Navbar.ime}",
+            "${lang.nameSurname}",
             style: TextStyle(
                 fontWeight: FontWeight.bold, color: Colors.white, fontSize: 30),
           ),
@@ -122,7 +134,7 @@ class MobileNavbar extends StatelessWidget {
                         .setCurrentView('PROJECTS');
                   },
                   child: Text(
-                    "${Navbar.projekti}",
+                    "${lang.projectsLabel}",
                     style: TextStyle(color: Colors.white),
                   ),
                 ),
@@ -139,7 +151,7 @@ class MobileNavbar extends StatelessWidget {
                         .setCurrentView('CONTACT');
                   },
                   child: Text(
-                    "${Navbar.kontakt}",
+                    "${lang.contactLabel}",
                     style: TextStyle(color: Colors.white),
                   ),
                 ),
@@ -152,7 +164,7 @@ class MobileNavbar extends StatelessWidget {
                       borderRadius: BorderRadius.all(Radius.circular(20.0))),
                   onPressed: () {},
                   child: Text(
-                    "${Navbar.dasedesi}",
+                    "${lang.downloadCVLabel}",
                     style: TextStyle(color: Colors.white),
                   ),
                 )

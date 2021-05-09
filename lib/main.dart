@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:placeholder_website/ui/home_page.dart';
 import 'package:placeholder_website/ui/home_page_new.dart';
 
-void main() {
+void main(){
   runApp(MyApp());
 }
 

@@ -26,9 +26,19 @@ class ProjectsView extends StatelessWidget {
         height: size.height * 0.8,
         width: viewWidth,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20.0),
-          color: Color.fromRGBO(245, 245, 245, 1),
-          border: Border.all(width: 1.0, color: Colors.black),
+          // gradient: LinearGradient(
+          //   begin: Alignment.bottomCenter,
+          //   end: Alignment.topCenter,
+          //   colors: [
+          //     Color.fromRGBO(120, 120, 120, 0.5),
+          //     Color.fromRGBO(195, 20, 50, 0.5),
+          //   ],
+          // ),
+          //borderRadius: BorderRadius.circular(20.0),
+          //color: Color.fromRGBO(120, 120, 120, 1),
+          border: Border(
+            bottom: BorderSide(width: 15,color: Colors.white),
+          ),
         ),
         child: SingleChildScrollView(
           child: Consumer<ProjectsModel>(
