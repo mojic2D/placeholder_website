@@ -23,7 +23,6 @@ class SingleMatchHistoryCard extends StatelessWidget {
       child: ClipRRect(
         borderRadius: BorderRadius.circular(10.0),
         child: Container(
-          width: Platform.isWindows || kIsWeb?350:null,
           color: matchHistoryData.win
               ? Colors.blue[100]
               : Color.fromRGBO(226, 182, 179, 1),
@@ -50,8 +49,8 @@ class SingleMatchHistoryCard extends StatelessWidget {
               ),
               ClipRRect(
                 borderRadius: BorderRadius.circular(20.0),
-                child: Image.asset(
-                  'assets/champion_tiles/${matchHistoryData.champion}_0.jpg',
+                child: Image.network(
+                  'http://testiramo.dreamhosters.com/sv_api/${matchHistoryData.champion}_0.jpg',
                   width: 50,
                   height: 50,
                 ),

@@ -16,21 +16,23 @@ class CupertinoScaffoldNav extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CupertinoTabScaffold(
-      tabBar: CupertinoTabBar(
-        items: [
-          _buildItem(TabItem.search),
-          _buildItem(TabItem.ladder),
-        ],
-        onTap: (index) => onSelectTab(TabItem.values[index]),
+    return ScaffoldMessenger(
+      child: CupertinoTabScaffold(
+        tabBar: CupertinoTabBar(
+          items: [
+            _buildItem(TabItem.search),
+            _buildItem(TabItem.ladder),
+          ],
+          onTap: (index) => onSelectTab(TabItem.values[index]),
+        ),
+        tabBuilder: (context, index) {
+          final item = TabItem.values[index];
+          return CupertinoTabView(
+            builder: (context) => widgetBuilders[item](context),
+            //builder: (context) => SearchPage.create(context),
+          );
+        },
       ),
-      tabBuilder: (context, index) {
-        final item = TabItem.values[index];
-        return CupertinoTabView(
-          builder: (context) => widgetBuilders[item](context),
-          //builder: (context) => SearchPage.create(context),
-        );
-      },
     );
   }
 

@@ -13,24 +13,6 @@ class SummonerDisplayPage extends StatelessWidget {
   SummonerDisplayPage({@required this.summoner});
   final Summoner summoner;
   _buildChildren() {
-    if (Platform.isWindows || kIsWeb) {
-      return Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
-            BaseSummonerInformationCard(summoner: summoner),
-            summoner.soloRank.tier == 'Unranked'
-                ? UnrankedRankedInformationCard(rankedType: 'Ranked Solo')
-                : SoloRankedInformationCard(summoner: summoner),
-            summoner.flexRank.tier == 'Unranked'
-                ? UnrankedRankedInformationCard(rankedType: 'Ranked Flex')
-                : FlexRankedInformationCard(summoner: summoner),
-          ]),
-          MatchHistoryCard(summoner: summoner),
-          SizedBox(height: 50),
-        ],
-      );
-    } else {
       return Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
@@ -45,7 +27,7 @@ class SummonerDisplayPage extends StatelessWidget {
           SizedBox(height: 50),
         ],
       );
-    }
+
   }
 
   @override

@@ -80,7 +80,7 @@ class SummonerSingleMatchHistory {
   }
 
   static Future<String> _championNameFromId(String championId)async{
-    String json= await rootBundle.loadString('assets/lolChampions.json');
+    String json= await rootBundle.loadString('assets/summoner_viewer/lolChampions.json');
     Map<String,dynamic> championIdData=await jsonDecode(json);
     return championIdData[championId];
   }

@@ -31,7 +31,6 @@ class SummonerInfoDisplayCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(10.0),
       ),
       child: Container(
-        width: Platform.isWindows || kIsWeb?350:null,
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Row(
@@ -40,7 +39,7 @@ class SummonerInfoDisplayCard extends StatelessWidget {
               Container(
                 width: 128,
                 child: Center(
-                  child: Image.asset(
+                  child: Image.network(
                     '$imageAsset',
                     height: this.imageHeight,
                     width: this.imageWidth,

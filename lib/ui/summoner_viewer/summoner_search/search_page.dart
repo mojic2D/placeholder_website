@@ -12,6 +12,8 @@ class SearchPage extends StatelessWidget {
   SearchPage({@required this.bloc});
 
   final SearchPageBloc bloc;
+  final GlobalKey<ScaffoldMessengerState> scaffoldMessengerKey =
+  GlobalKey<ScaffoldMessengerState>();
 
   static Widget create(BuildContext context) {
     final RitoApiCalls post = RitoApiCalls(apiKey:'RGAPI-2a0d3fd9-fb81-4cc1-916a-ff0761b362f0');
@@ -26,7 +28,7 @@ class SearchPage extends StatelessWidget {
 
   Future<void> _submit(BuildContext context)async{
     try {
-      Summoner summoner = await bloc.searchBySummonerName();
+      Summoner summoner = await bloc.searchBySummonerName(context);
       if(summoner!=null){
         Navigator.of(context).push(MaterialPageRoute<void>(
           fullscreenDialog: true,

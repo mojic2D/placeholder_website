@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:placeholder_website/ui/summoner_viewer/rito_api/rito_api_calls.dart';
 import 'package:placeholder_website/ui/summoner_viewer/rito_api/summoner/summoner.dart';
 import 'package:placeholder_website/ui/summoner_viewer/summoner_search/search_page_model.dart';
@@ -18,9 +19,19 @@ class SearchPageBloc{
     _modelController.close();
   }
 
-  Future<Summoner> searchBySummonerName() async{
+  Future<Summoner> searchBySummonerName(BuildContext context) async{
     updateWith(submitted:true,isLoading: true);
     try {
+      if(_model.searchText!='Venour'){
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          content: const Text(
+            'Hint: Try searching for \'Venour\'',
+            textAlign: TextAlign.center,
+          ),
+          duration: const Duration(seconds: 5),
+        ));
+        return null;
+      }
       Summoner summoner=await post.getSummoner(_model.searchText,regionTextFix(_model.dropdownValue));
       print('SummonerID:${summoner.id}');
       return summoner;

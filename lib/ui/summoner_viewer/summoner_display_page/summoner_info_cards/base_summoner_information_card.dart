@@ -12,7 +12,7 @@ class BaseSummonerInformationCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SummonerInfoDisplayCard(
-      imageAsset: 'assets/profileicon/${summoner.profileIconId}.png',
+      imageAsset: 'http://testiramo.dreamhosters.com/sv_api/1668.png',
       columnChildren: [
         Text(
           '${summoner.name}',

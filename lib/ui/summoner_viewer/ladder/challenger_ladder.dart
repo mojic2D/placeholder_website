@@ -39,7 +39,7 @@ class _ChallengerLadderState extends State<ChallengerLadder> {
           ),
           child: Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
             Image.asset(
-              'assets/ranked-emblems/Emblem_Challenjour.png',
+              'assets/summoner_viewer/Emblem_Challenjour.png',
               height: 50,
               width: 50,
             ),
@@ -58,18 +58,15 @@ class _ChallengerLadderState extends State<ChallengerLadder> {
   }
 
   Widget build(BuildContext context) {
-    print('build metod ladera');
     return Scaffold(
       appBar: AppBar(
         title: Text("EUW Challenjour List"),
       ),
       body: Container(
         child: FutureBuilder(
-            future: lista,
+            future: widget.post.getChallengerLadder(),
             builder: (BuildContext context, AsyncSnapshot snapshot) {
-              print('future builder bato!');
               if (snapshot.data == null) {
-                print('future je null !');
                 return Container(
                   child: Center(
                     child: Text("Loading..."),
