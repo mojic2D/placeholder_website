@@ -10,11 +10,11 @@ class HousekeepingListTile extends ProjectListTileVertical {
           poweredByIcons: [
             ProjectsTechIcon(
               icon: Image.asset(
-                'assets/images/flutter-image.png',
+                'assets/images/flutter-logo.png',
               ),
             ),
             ProjectsTechIcon(
-              icon: Icon(MyFlutterApp.java,color: const Color(0xFF5382a1)),
+              icon: Icon(MyFlutterApp.java,color: const Color(0xFFf89820)),
             ),
             ProjectsTechIcon(
               icon: Icon(MyFlutterApp.php,color: const Color(0xFF8993be)),

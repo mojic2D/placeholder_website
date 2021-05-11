@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:placeholder_website/bloc/main_bloc.dart';
+import 'package:placeholder_website/languages/language.dart';
 import 'package:placeholder_website/model/projects_model.dart';
 import 'package:placeholder_website/ui/my_flutter_app_icons.dart';
 import 'package:provider/provider.dart';
@@ -21,8 +22,9 @@ class ProjectListTileVertical extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var color =
-        Provider.of<MainBloc>(context, listen: false).model.colorSchemes[0];
+    ProjectsModel model=Provider.of<MainBloc>(context, listen: false).model;
+    Color color = model.colorSchemes[0];
+    Language lang=model.currentLanguage;
     return Padding(
       padding: EdgeInsets.all(4.0),
       child: Column(
@@ -86,7 +88,7 @@ class ProjectListTileVertical extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.all(1.0),
                   child: Text(
-                    'For platforms:',
+                    lang.forPlatforms,
                     style: TextStyle(
                         fontSize: 12,
                         fontWeight: FontWeight.bold,
@@ -100,7 +102,7 @@ class ProjectListTileVertical extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.all(1.0),
                   child: Text(
-                    'Powered by:',
+                    lang.poweredBy,
                     style: TextStyle(
                         fontSize: 12,
                         fontWeight: FontWeight.bold,

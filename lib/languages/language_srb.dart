@@ -27,4 +27,34 @@ class LanguageSRB extends Language{
   @override
   String get summonerViewerSearchHint => 'Pomoć: Probaj tražiti \'Venour\'';
 
+  @override
+  String get forPlatforms => 'Za platforme:';
+
+  @override
+  String get poweredBy => 'Pokreće:';
+
+  @override
+  String get accept => 'Potvrdi';
+
+  @override
+  String get confirmRoomChange => 'Sigurno promjeniti stanje sobe';
+
+  @override
+  String get confirmationNeeded => 'Potrebna potvrda!';
+
+  @override
+  String get decline => 'Prekini';
+
+  @override
+  String get undo => 'Poništi';
+
+  @override
+  String get undoAction => 'Poništi akciju?';
+
+  @override
+  String get room =>'Soba';
+
+  @override
+  String get clean =>'Očišćeno';
+
 }

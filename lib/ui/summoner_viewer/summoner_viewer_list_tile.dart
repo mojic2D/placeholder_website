@@ -16,7 +16,7 @@ class SummonerViewerListTile extends ProjectListTileVertical {
     poweredByIcons: [
       ProjectsTechIcon(
         icon: Image.asset(
-          'assets/images/flutter-image.png',
+          'assets/images/flutter-logo.png',
         ),
       ),
     ],

@@ -27,7 +27,34 @@ class LanguageEN extends Language{
   @override
   String get summonerViewerSearchHint => 'Hint: Try searching for \'Venour\'';
 
+  @override
+  String get forPlatforms => 'For platforms:';
 
+  @override
+  String get poweredBy => 'Powered by:';
 
+  @override
+  String get accept => 'Accept';
+
+  @override
+  String get confirmRoomChange => 'Confirm change. Room ';
+
+  @override
+  String get confirmationNeeded => 'Confirmation necessary';
+
+  @override
+  String get decline => 'Decline';
+
+  @override
+  String get undo => 'UNDO';
+
+  @override
+  String get undoAction =>'Undo action?';
+
+  @override
+  String get room =>'Room';
+
+  @override
+  String get clean =>'Clean';
 
 }

@@ -10,13 +10,14 @@ class JSetSwapListTileVertical extends ProjectListTileVertical {
     forPlatformsIcons: [
       ProjectsTechIcon(
         icon: Image.asset(
-          'assets/images/eclipse-logo.png',
+          'assets/images/eclipse-4.png',
         ),
+        width: 100,
       ),
     ],
     poweredByIcons: [
       ProjectsTechIcon(
-        icon: Icon(MyFlutterApp.java,color: const Color(0xFF5382a1)),
+        icon: Icon(MyFlutterApp.java,color: const Color(0xFFf89820)),
       ),
     ],
     gitProjectName: 'JSetSwap',
