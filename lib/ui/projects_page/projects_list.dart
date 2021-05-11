@@ -29,7 +29,7 @@ class ProjectsList extends StatelessWidget {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20.0),
           color: Color.fromRGBO(245, 245, 245, 1),
-          border: Border.all(width: 1.0, color: Colors.black),
+          border: Border.all(width: 2.0, color: Colors.white),
         ),
         child: ClipRRect(
           borderRadius: BorderRadius.circular(20.0),

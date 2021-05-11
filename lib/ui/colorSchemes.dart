@@ -5,7 +5,8 @@ class ColorSchemes{
     switch(colorID){
       case 'ONE':
         return [
-          Colors.grey,
+          //Color.fromRGBO(120, 120, 120,0.5),
+          Colors.grey[700],
           Colors.blueGrey
           // Color(0xFF5680e9),
           // Color(0xFF84ceeb),

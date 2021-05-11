@@ -20,5 +20,6 @@ class SummonerViewerListTile extends ProjectListTileVertical {
         ),
       ),
     ],
+    gitProjectName: 'summoner_viewer',
   );
 }

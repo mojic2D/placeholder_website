@@ -25,6 +25,8 @@ class MyFlutterApp {
   static const _kFontFam = 'MyFlutterApp';
   static const String _kFontPkg = null;
 
+  static const IconData linkedin = IconData(0xf08c, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData github = IconData(0xf09b, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData globe = IconData(0xf0ac, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData windows = IconData(0xf17a, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData android = IconData(0xf17b, fontFamily: _kFontFam, fontPackage: _kFontPkg);

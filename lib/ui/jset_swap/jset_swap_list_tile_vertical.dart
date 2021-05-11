@@ -19,6 +19,6 @@ class JSetSwapListTileVertical extends ProjectListTileVertical {
         icon: Icon(MyFlutterApp.java,color: const Color(0xFF5382a1)),
       ),
     ],
-
+    gitProjectName: 'JSetSwap',
   );
 }

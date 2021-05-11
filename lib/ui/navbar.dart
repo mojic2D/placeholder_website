@@ -5,7 +5,9 @@ import 'package:placeholder_website/languages/language_en.dart';
 import 'package:placeholder_website/languages/language_srb.dart';
 import 'package:placeholder_website/model/projects_model.dart';
 import 'package:placeholder_website/ui/colorSchemes.dart';
+import 'package:placeholder_website/ui/my_flutter_app_icons.dart';
 import 'package:provider/provider.dart';
+import 'dart:js' as js;
 
 class Navbar extends StatelessWidget {
   @override
@@ -39,6 +41,7 @@ class DesktopNavbar extends StatelessWidget {
           children: <Widget>[
             Row(
               children: [
+                _buildGithubIcon(),
                 Text(
                   '${lang.nameSurname}',
                   style: TextStyle(
@@ -75,16 +78,25 @@ class DesktopNavbar extends StatelessWidget {
 class MobileNavbar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    Language lang =
-        Provider.of<MainBloc>(context, listen: false).model.currentLanguage;
+    ProjectsModel model = Provider.of<MainBloc>(context, listen: false).model;
+    Language lang = model.currentLanguage;
+    String colorScheme = model.colorScheme;
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 40),
       child: Container(
         child: Column(children: <Widget>[
-          Text(
-            "${lang.nameSurname}",
-            style: TextStyle(
-                fontWeight: FontWeight.bold, color: Colors.white, fontSize: 30),
+          Row(
+            children: [
+              _buildGithubIcon(),
+              Text(
+                "${lang.nameSurname}",
+                style: TextStyle(
+                    fontWeight: FontWeight.bold, color: Colors.white, fontSize: 30),
+              ),
+              SizedBox(width: 8.0,),
+              _buildColorPicker(context, colorScheme),
+              _buildLanguageButtons(context),
+            ],
           ),
           Padding(
             padding: const EdgeInsets.all(12.0),
@@ -246,5 +258,15 @@ Widget _buildLanguageButtons(BuildContext context) {
         ),
       ],
     ),
+  );
+}
+
+Widget _buildGithubIcon(){
+  return IconButton(
+    icon: Icon(MyFlutterApp.github,),
+    tooltip: 'Github',
+    onPressed: () {
+      js.context.callMethod('open', ['https://github.com/mojic2d']);
+    },
   );
 }

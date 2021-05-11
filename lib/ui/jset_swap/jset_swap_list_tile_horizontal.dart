@@ -3,7 +3,7 @@ import 'package:placeholder_website/ui/projects_page/project_list_tile_horizonta
 
 class JSetSwapListTileHorizontal extends ProjectListTileHorizontal {
   const JSetSwapListTileHorizontal({Key key}) : super(key: key,
-    projectName: 'PROPERTIES SWAPPER',
-    width: 185,
+    projectName: 'PROPERTIES SWAP',
+    width: 215,
   );
 }

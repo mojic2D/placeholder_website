@@ -29,5 +29,6 @@ class HousekeepingListTile extends ProjectListTileVertical {
             ProjectsTechIcon(icon: Icon(MyFlutterApp.windows,color: Color.fromRGBO(0, 161, 241,1),)),
             ProjectsTechIcon(icon: Icon(MyFlutterApp.android,color: const Color(0xFF3DDC84))),
           ],
+       gitProjectName: 'housekeeping_prototype'
         );
 }

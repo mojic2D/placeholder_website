@@ -4,6 +4,6 @@ import 'package:placeholder_website/ui/projects_page/project_list_tile_horizonta
 class HousekeepingListTileHorizontal extends ProjectListTileHorizontal {
   const HousekeepingListTileHorizontal({Key key}) : super(key: key,
   projectName: 'HOUSEKEEPING',
-    width: 135,
+    width: 190,
   );
 }
