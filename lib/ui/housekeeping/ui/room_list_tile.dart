@@ -145,7 +145,7 @@ class _RoomListTileState extends State<RoomListTile> {
             padding: EdgeInsets.only(right: 20.0),
             child: Container(
               height: 45,
-              width:90,
+              width:100,
               child: ElevatedButton(
 
                 onPressed: room.isClean

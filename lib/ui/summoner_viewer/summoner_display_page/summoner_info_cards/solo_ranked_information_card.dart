@@ -12,7 +12,7 @@ class SoloRankedInformationCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SummonerInfoDisplayCard(
-      imageAsset: 'http://testiramo.dreamhosters.com/sv_api/Emblem_${summoner.soloRank.tier}.png',
+      imageAsset: 'assets/summoner_viewer/Emblem_Challenjour.png',
       columnChildren: [
         SizedBox(height: 5.0),
         Text(

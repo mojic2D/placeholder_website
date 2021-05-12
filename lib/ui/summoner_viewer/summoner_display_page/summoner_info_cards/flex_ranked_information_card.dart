@@ -12,7 +12,7 @@ class FlexRankedInformationCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SummonerInfoDisplayCard(
-      imageAsset: 'http://testiramo.dreamhosters.com/sv_api/Emblem_${summoner.flexRank.tier}.png',
+      imageAsset: 'assets/summoner_viewer/Emblem_Platinum.png',
       imageHeight: 100,
       imageWidth: 100,
       columnChildren: [

@@ -39,8 +39,8 @@ class SummonerInfoDisplayCard extends StatelessWidget {
               Container(
                 width: 128,
                 child: Center(
-                  child: Image.network(
-                    '$imageAsset',
+                  child: Image.asset(
+                    imageAsset,
                     height: this.imageHeight,
                     width: this.imageWidth,
                   ),

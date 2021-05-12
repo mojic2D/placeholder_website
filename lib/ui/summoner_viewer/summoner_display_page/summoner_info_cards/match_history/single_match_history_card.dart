@@ -49,8 +49,8 @@ class SingleMatchHistoryCard extends StatelessWidget {
               ),
               ClipRRect(
                 borderRadius: BorderRadius.circular(20.0),
-                child: Image.network(
-                  'http://testiramo.dreamhosters.com/sv_api/${matchHistoryData.champion}_0.jpg',
+                child: Image.asset(
+                  'assets/summoner_viewer/${matchHistoryData.champion}_0.jpg',
                   width: 50,
                   height: 50,
                 ),
