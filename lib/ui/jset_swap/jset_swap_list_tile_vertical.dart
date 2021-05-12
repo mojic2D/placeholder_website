@@ -6,7 +6,7 @@ import 'package:placeholder_website/ui/projects_page/projects_tech_icon.dart';
 class JSetSwapListTileVertical extends ProjectListTileVertical {
   JSetSwapListTileVertical()
       : super(
-    projectName: 'PROPERTIES SWAPPER',
+    projectName: 'PROPERTIES SWAP',
     forPlatformsIcons: [
       ProjectsTechIcon(
         icon: Image.asset(

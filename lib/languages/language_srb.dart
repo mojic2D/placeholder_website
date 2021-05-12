@@ -57,4 +57,10 @@ class LanguageSRB extends Language{
   @override
   String get clean =>'Očišćeno';
 
+  @override
+  String get summonerViewerDescriptionP1 => 'Search for summoner information from League of Legends players by their username. Find information like their level, position on rank list, match history...';
+
+  @override
+  String get summonerViewerDescriptionP2 => 'SUMMONER VIEWER consumes Riot API for player information.';
+
 }

@@ -5,5 +5,6 @@ class SummonerViewerListTileHorizontal extends ProjectListTileHorizontal {
   const SummonerViewerListTileHorizontal({Key key}) : super(key: key,
     projectName: 'SUMMONER VIEWER',
     width: 220,
+    gitProjectName: 'summoner_viewer',
   );
 }

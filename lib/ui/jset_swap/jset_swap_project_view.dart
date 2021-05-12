@@ -5,8 +5,17 @@ class JSetSwapProjectView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Container(child: Text('JSEETSWAPPER'),),
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        SizedBox(height: 300,),
+        Container(
+          child: Text('Bigger description soon to come...',style: TextStyle(
+            fontSize: 25,
+          ),),
+        ),
+      ],
     );
   }
 }

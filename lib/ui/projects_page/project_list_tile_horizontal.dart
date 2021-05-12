@@ -2,16 +2,24 @@ import 'package:flutter/material.dart';
 import 'package:placeholder_website/bloc/main_bloc.dart';
 import 'package:placeholder_website/ui/my_flutter_app_icons.dart';
 import 'package:provider/provider.dart';
+import 'dart:js' as js;
 
 class ProjectListTileHorizontal extends StatelessWidget {
-  const ProjectListTileHorizontal({Key key,@required this.projectName,@required this.width}) : super(key: key);
+  const ProjectListTileHorizontal({
+    Key key,
+    @required this.projectName,
+    @required this.width,
+    @required this.gitProjectName,
+  }) : super(key: key);
 
   final String projectName;
   final double width;
+  final String gitProjectName;
 
   @override
   Widget build(BuildContext context) {
-    var color=Provider.of<MainBloc>(context,listen: false).model.colorSchemes[0];
+    var color =
+        Provider.of<MainBloc>(context, listen: false).model.colorSchemes[0];
     return Padding(
       padding: EdgeInsets.all(4.0),
       child: Container(
@@ -20,13 +28,14 @@ class ProjectListTileHorizontal extends StatelessWidget {
           children: [
             ElevatedButton(
               onPressed: () {
-                Provider.of<MainBloc>(context,listen: false).model.setCurrentProject(projectName);
+                Provider.of<MainBloc>(context, listen: false)
+                    .model
+                    .setCurrentProject(projectName);
               },
               style: ButtonStyle(
                 foregroundColor: MaterialStateProperty.all<Color>(color),
                 backgroundColor: MaterialStateProperty.all<Color>(Colors.white),
-                overlayColor: MaterialStateProperty.all<Color>(
-                    Colors.grey),
+                overlayColor: MaterialStateProperty.all<Color>(Colors.grey),
                 shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                   RoundedRectangleBorder(
                     borderRadius: BorderRadius.only(
@@ -35,18 +44,19 @@ class ProjectListTileHorizontal extends StatelessWidget {
                     ),
                     side: BorderSide(color: Colors.white, width: 2.2),
                   ),
-              ),),
+                ),
+              ),
               child: Text('$projectName'),
             ),
             ElevatedButton(
               onPressed: () {
-                Provider.of<MainBloc>(context,listen: false).model.setCurrentProject(projectName);
+                js.context.callMethod(
+                    'open', ['https://github.com/mojic2d/$gitProjectName']);
               },
               style: ButtonStyle(
                 foregroundColor: MaterialStateProperty.all<Color>(color),
                 backgroundColor: MaterialStateProperty.all<Color>(Colors.white),
-                overlayColor: MaterialStateProperty.all<Color>(
-                    Colors.grey),
+                overlayColor: MaterialStateProperty.all<Color>(Colors.grey),
                 shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                   RoundedRectangleBorder(
                     borderRadius: BorderRadius.only(
@@ -55,12 +65,12 @@ class ProjectListTileHorizontal extends StatelessWidget {
                     ),
                     side: BorderSide(color: Colors.white, width: 2.2),
                   ),
-                ),),
+                ),
+              ),
               child: Icon(
                 MyFlutterApp.github,
               ),
             ),
-
           ],
         ),
       ),

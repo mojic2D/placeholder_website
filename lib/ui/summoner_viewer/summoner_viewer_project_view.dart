@@ -15,19 +15,39 @@ class SummonerViewerProjectView extends StatelessWidget {
     Language lang=Provider.of<ProjectsModel>(context,listen:false).currentLanguage;
     if (size.width > 1170) {
       return Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
+          SizedBox(
+            width: 75,
+          ),
           Flexible(
             child: Padding(
               padding: const EdgeInsets.all(20.0),
               child: Column(
                 children: [
-                  Text(
-                    lang.housekeepingDescriptionP1,
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.w600,
+                  Container(
+                    width: 550,
+                    child: Column(
+                      children: [
+                        Text(
+                          lang.summonerViewerDescriptionP1,
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                        SizedBox(height: 25,),
+                        Text(
+                          lang.summonerViewerDescriptionP2,
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                   SizedBox(height: 10,),
@@ -38,17 +58,9 @@ class SummonerViewerProjectView extends StatelessWidget {
                   Text(lang.summonerViewerSearchHint,style: TextStyle(color: Colors.white,fontSize: 16)),
                   Icon(Icons.arrow_forward_rounded,size: 80,
                       color:Colors.white),
-                  Text(
-                    lang.housekeepingDescriptionP2,
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-
                 ],
               ),
+
             ),
           ),
 
@@ -62,7 +74,7 @@ class SummonerViewerProjectView extends StatelessWidget {
       child: Column(
         children: [
           Text(
-            lang.housekeepingDescriptionP1,
+            lang.summonerViewerDescriptionP1,
             textAlign: TextAlign.center,
             style: TextStyle(
               fontSize: 18,
@@ -71,15 +83,7 @@ class SummonerViewerProjectView extends StatelessWidget {
           ),
           SizedBox(height: 10,),
           Text(
-            lang.tryDemo
-            ,style: TextStyle(color: Colors.white,fontSize: 40,fontWeight: FontWeight.bold),
-          ),
-          Text(lang.summonerViewerSearchHint,style: TextStyle(color: Colors.white,fontSize: 25)),
-          Icon(Icons.arrow_downward_rounded,size: 80,
-              color:Colors.white),
-          SummonerViewerSimulator(),
-          Text(
-            lang.housekeepingDescriptionP2,
+            lang.summonerViewerDescriptionP2,
             textAlign: TextAlign.center,
             style: TextStyle(
               fontSize: 18,
@@ -87,8 +91,18 @@ class SummonerViewerProjectView extends StatelessWidget {
             ),
           ),
           SizedBox(
-            height: 25,
-          )
+            height: 10,
+          ),
+          Text(
+            lang.tryDemo
+            ,style: TextStyle(color: Colors.white,fontSize: 40,fontWeight: FontWeight.bold),
+          ),
+          Text(lang.summonerViewerSearchHint,style: TextStyle(color: Colors.white,fontSize: 25)),
+          Icon(Icons.arrow_downward_rounded,size: 80,
+              color:Colors.white),
+          SummonerViewerSimulator(),
+
+
 
         ],
       ),

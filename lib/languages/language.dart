@@ -24,5 +24,7 @@ abstract class Language{
 
   //summoner viewer project
   String get summonerViewerSearchHint;
+  String get summonerViewerDescriptionP1;
+  String get summonerViewerDescriptionP2;
 
 }

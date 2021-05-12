@@ -39,7 +39,7 @@ class ProjectsView extends StatelessWidget {
               if(projectsModel.currentProject=='SUMMONER VIEWER'){
                 return SummonerViewerProjectView();
               }
-              if(projectsModel.currentProject=='PROPERTIES SWAPPER'){
+              if(projectsModel.currentProject=='PROPERTIES SWAP'){
                 return JSetSwapProjectView();
               }
               return HousekeepingProjectView();

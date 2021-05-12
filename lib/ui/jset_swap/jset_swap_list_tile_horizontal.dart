@@ -5,5 +5,6 @@ class JSetSwapListTileHorizontal extends ProjectListTileHorizontal {
   const JSetSwapListTileHorizontal({Key key}) : super(key: key,
     projectName: 'PROPERTIES SWAP',
     width: 215,
+    gitProjectName: 'JSetSwap',
   );
 }
