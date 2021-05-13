@@ -170,7 +170,9 @@ MaterialButton _buildCVButton(Language lang) {
     color: Colors.pink,
     shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.all(Radius.circular(20.0))),
-    onPressed: () {},
+    onPressed: () {
+      js.context.callMethod('open', ['https://dragoljubmojic.me/cv/Dragoljub%20Moji%C4%87%20CV.pdf']);
+    },
     child: Text(
       "${lang.downloadCVLabel}",
       style: TextStyle(color: Colors.white),
