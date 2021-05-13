@@ -5,14 +5,8 @@ class ColorSchemes{
     switch(colorID){
       case 'ONE':
         return [
-          //Color.fromRGBO(120, 120, 120,0.5),
           Colors.grey[700],
           Colors.blueGrey
-          // Color(0xFF5680e9),
-          // Color(0xFF84ceeb),
-          // Color(0xFF5ab9ea),
-          // Color(0xFFc1c8e4),
-          // Color(0xFF8860d0),
 
         ];
       case 'TWO':
@@ -23,8 +17,14 @@ class ColorSchemes{
         ];
       case 'THREE':
         return [
-          Color(0xFF8ee4af),
-          Color(0xFFedf5e1),
+          Color(0xFF61892f),
+          Color(0xFF474b4f),
+        ];
+      case 'FOUR':
+        return[
+          Color(0xFF46344e),
+          Color(0xFF9b786f),
+          Color(0xFF9d8d8f),
         ];
     }
     return [

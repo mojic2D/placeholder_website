@@ -199,6 +199,7 @@ DropdownButtonHideUnderline _buildColorPicker(
         'ONE',
         'TWO',
         'THREE',
+        'FOUR',
       ].map<DropdownMenuItem<String>>((String value) {
         return DropdownMenuItem<String>(
           value: value,
